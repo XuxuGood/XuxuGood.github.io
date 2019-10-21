@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Xu&#39;Home</title>
+  
+  <subtitle>博观而约取，厚积而薄发</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://hasaik.com/"/>
+  <updated>2019-10-21T05:27:36.540Z</updated>
+  <id>https://hasaik.com/</id>
+  
+  <author>
+    <name>John Xu</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hexo搭建个人博客（基础篇）</title>
+    <link href="https://hasaik.com/posts/e1b9c6c5/"/>
+    <id>https://hasaik.com/posts/e1b9c6c5/</id>
+    <published>2019-10-12T09:21:07.000Z</published>
+    <updated>2019-10-21T05:27:36.540Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p><strong>初识Hexo</strong></p></blockquote><p>&emsp;&emsp;Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 <a href="http://daringfireball.net/projects/markdown/" rel="external nofollow noopener noreferrer" target="_blank">Markdown</a>（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p><h2 id="1-安装Hexo"><a href="#1-安装Hexo" class="headerlink" title="1.安装Hexo"></a><em>1.安装Hexo</em></h2><p>&emsp;&emsp;建立Hexo只需要几分钟，安装Hexo非常简单。但是，您首先需要安装其他一些东西。</p><ul><li><a href="http://nodejs.org/" rel="external nofollow noopener noreferrer" target="_blank">Node.js</a> (Node.js 版本需不低于 8.6，建议使用 Node.js 10.0 及以上版本)</li><li><a href="http://git-scm.com/" rel="external nofollow noopener noreferrer" target="_blank">Git</a></li></ul><p>&emsp;&emsp;如果您的电脑中已经安装上述必备程序，那么恭喜您！接下来只需要使用 npm 即可完成 Hexo 的安装。</p><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="CMD"><figure class="iseeu highlight /cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure></div><p>&emsp;&emsp;如果没有，那就一起来看下面吧(<code>这里只说一下windows的安装，因为本人现在比较穷，买不起mac啊 テ_デ，其他相关教程大家就去搜搜很多的。</code>)</p><h3 id="emsp-emsp-安装git"><a href="#emsp-emsp-安装git" class="headerlink" title="&emsp;&emsp;安装git"></a>&emsp;&emsp;<em>安装git</em></h3><p><img src="https://s2.ax1x.com/2019/10/21/KlpZvD.md.png" alt="安装git"></p><div class="image-caption">安装git.png</div><a href="https://git-scm.com/downloads" class="LinkCard" rel="external nofollow noopener noreferrer" target="_blank">安装地址</a><p>&emsp;&emsp;一切按照默认走就行了，没什么特殊的地方，安装完成之后检查git是否安装成功（执行一下cmd命令），显示版本号即为成功！</p><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="CMD"><figure class="iseeu highlight /cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git --version</span><br></pre></td></tr></table></figure></div><h3 id="emsp-emsp-安装Node-js"><a href="#emsp-emsp-安装Node-js" class="headerlink" title="&emsp;&emsp;安装Node.js"></a>&emsp;&emsp;<em>安装Node.js</em></h3><p><img src="https://s2.ax1x.com/2019/10/21/KlpmKe.md.png" alt="安装Node.js"></p><div class="image-caption">安装Node.js.png</div><p><a href="https://nodejs.org/en/" class="LinkCard" rel="external nofollow noopener noreferrer" target="_blank">安装地址</a></p><p>&emsp;&emsp;我们这里简单点，直接下载并运行安装程序就完了，还是走默认就行，安装完成之后检查node是否安装成功（执行一下cmd命令），显示版本号即为成功！</p><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="CMD"><figure class="iseeu highlight /cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure></div><h3 id="emsp-emsp-安装Hexo"><a href="#emsp-emsp-安装Hexo" class="headerlink" title="&emsp;&emsp;安装Hexo"></a>&emsp;&emsp;<em>安装Hexo</em></h3><p>&emsp;&emsp;所有必备的应用程序安装完成后，即可使用 npm 安装 Hexo。</p><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="CMD"><figure class="iseeu highlight /cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure></div><h2 id="2-利用Hexo初始化我们的站点跟目录-文件"><a href="#2-利用Hexo初始化我们的站点跟目录-文件" class="headerlink" title="2.利用Hexo初始化我们的站点跟目录(文件)"></a><em>2.利用Hexo初始化我们的站点跟目录(文件)</em></h2><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="CMD"><figure class="iseeu highlight /cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init &lt;文件夹&gt;</span><br><span class="line">$ <span class="built_in">cd</span> &lt;文件夹&gt;</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure></div><p>&emsp;&emsp;选择你想要的盘符来建立我们的博客站点文件,我这里选择D:\blog，这里的blog是你的文件夹名字（根据自己的喜好建一个文件夹）</p><p><img src="https://s2.ax1x.com/2019/10/21/KlPjo9.png" alt="init hexo"></p><p>&emsp;&emsp;cd到你的站点目录下，然后 初始化站点$ npm install，执行成功后到你的blog文件夹下看看是否这样的（一致就成功啦~~）</p><p><img src="https://s2.ax1x.com/2019/10/21/Klkwa4.png" alt="blog"></p><p>&emsp;&emsp;介绍几个个命令 ,以后经常要用到的</p><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="CMD"><figure class="iseeu highlight /cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo g: 编译,生成静态文件，也就是public文件夹的东西。</span><br><span class="line">hexo s: 开启本地服务(以上两步的操作可以合并成hexo s -g)。</span><br><span class="line">hexo clean: 顾名思义就是清除缓存的意思了啦，这招一般在你改动之后网站没有变化时候用。</span><br></pre></td></tr></table></figure></div><p>&emsp;&emsp;接下来看看 你博客的初步成果吧。</p><p>&emsp;&emsp;进入blog文件根目录:</p><p>&emsp;&emsp;&emsp;&emsp;执行命令: hexo g 和 hexo s</p><p>&emsp;&emsp;然后在你的浏览器输入<code>http://localhost:4000</code>，查看你的博客。</p><p><img src="https://s2.ax1x.com/2019/10/21/KlAJFH.png" alt="blog首页"></p><p>&emsp;到此为止，你的个人博客就已经搭建完成了。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;初识Hexo&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&amp;emsp;&amp;emsp;Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 &lt;a href=&quot;http://daringfireball.net/pr
+      
+    
+    </summary>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/tags/Hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://hasaik.com/posts/27514/"/>
+    <id>https://hasaik.com/posts/27514/</id>
+    <published>2019-10-11T12:08:00.000Z</published>
+    <updated>2019-10-21T05:27:36.540Z</updated>
+    
+    <content type="html"><![CDATA[<p><font size="4">Welcome to <a href="https://hexo.io/" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" rel="external nofollow noopener noreferrer" target="_blank">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" rel="external nofollow noopener noreferrer" target="_blank">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" rel="external nofollow noopener noreferrer" target="_blank">GitHub</a>.</font></p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure></div><p>More info: <a href="https://hexo.io/docs/writing.html" rel="external nofollow noopener noreferrer" target="_blank">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></div><p>More info: <a href="https://hexo.io/docs/server.html" rel="external nofollow noopener noreferrer" target="_blank">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure></div><p>More info: <a href="https://hexo.io/docs/generating.html" rel="external nofollow noopener noreferrer" target="_blank">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure></div><p>More info: <a href="https://hexo.io/docs/deployment.html" rel="external nofollow noopener noreferrer" target="_blank">Deployment</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;font size=&quot;4&quot;&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; rel=&quot;external nofollow noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Hexo&lt;/a&gt;! This is your v
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+</feed>
