@@ -1,0 +1,19 @@
+{"list":[{"date":"2019-10","arr":{"year":2019,"month":10,"link":["2019-10-29_Me4.jpg","2019-10-29_Me3.jpg","2019-10-29_Me2.jpg","2019-10-29_Me1.jpg"],"text":["Me4","Me3","Me2","Me1"],"type":["image","image","image","image"]}}]}<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
