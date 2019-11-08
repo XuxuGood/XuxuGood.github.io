@@ -1,0 +1,19 @@
+{"list":[{"date":"2019-10","arr":{"year":2019,"month":10,"link":["2019-10-29_风景4.jpg","2019-10-29_风景3.jpeg","2019-10-29_风景2.jpeg","2019-10-29_风景1.jpg"],"text":["风景4","风景3","风景2","风景1"],"type":["image","image","image","image"]}},{"date":"2019-09","arr":{"year":2019,"month":9,"link":["2019-09-29_风景4.jpg","2019-09-29_风景3.jpeg","2019-09-29_风景2.jpg","2019-09-29_风景1.jpg"],"text":["风景4","风景3","风景2","风景1"],"type":["image","image","image","image"]}},{"date":"2019-08","arr":{"year":2019,"month":8,"link":["2019-08-29_风景4.jpg","2019-08-29_风景3.jpg","2019-08-29_风景2.jpg","2019-08-29_风景1.jpg"],"text":["风景4","风景3","风景2","风景1"],"type":["image","image","image","image"]}}]}<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
