@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Xu&#39;s Blog</title>
+  
+  <subtitle>博观而约取，厚积而薄发</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://hasaik.com/"/>
+  <updated>2019-11-14T08:56:52.636Z</updated>
+  <id>https://hasaik.com/</id>
+  
+  <author>
+    <name>John Xu</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hexo博客中加入豆瓣读书页面</title>
+    <link href="https://hasaik.com/posts/7fbe9500.html"/>
+    <id>https://hasaik.com/posts/7fbe9500.html</id>
+    <published>2019-11-14T15:08:54.000Z</published>
+    <updated>2019-11-14T08:56:52.636Z</updated>
+    
+    <summary type="html">
+    
+      在Hexo博客个性化定制中，加入豆瓣读书界面是一个很不错的功能，可以进入我的个人阅读界面查看效果，那么我是怎么做到的呢？其实很简单，我们只需要加入一个 hexo-douban 模块即可。
+    
+    </summary>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/categories/Hexo/"/>
+    
+      <category term="豆瓣" scheme="https://hasaik.com/categories/Hexo/%E8%B1%86%E7%93%A3/"/>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/tags/Hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo博客+Next主题进阶写作技巧</title>
+    <link href="https://hasaik.com/posts/c7631ec1.html"/>
+    <id>https://hasaik.com/posts/c7631ec1.html</id>
+    <published>2019-11-14T14:53:24.000Z</published>
+    <updated>2019-11-14T08:56:52.636Z</updated>
+    
+    <summary type="html">
+    
+      以下博客写作都是基于Next主题，其它主题不一定集成了以下写作方式。
+    
+    </summary>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/tags/Hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo博客界面美化</title>
+    <link href="https://hasaik.com/posts/dff7e11c.html"/>
+    <id>https://hasaik.com/posts/dff7e11c.html</id>
+    <published>2019-11-14T10:43:11.000Z</published>
+    <updated>2019-11-14T08:56:52.636Z</updated>
+    
+    <summary type="html">
+    
+      本样式美化方式只适用于 Next 主题，并且最好懂一些 CSS 前端知识，以便有些不兼容样式部分可以自行在浏览器中 F12 调试。
+    
+    </summary>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/tags/Hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo博客+Next主题深度优化与定制</title>
+    <link href="https://hasaik.com/posts/ab21860c.html"/>
+    <id>https://hasaik.com/posts/ab21860c.html</id>
+    <published>2019-10-17T16:17:56.000Z</published>
+    <updated>2019-11-14T08:56:52.640Z</updated>
+    
+    <summary type="html">
+    
+      本教程只适用于 Next5 或者 Next6 主题，Next7 开始做了大量修改，并删除了 custom.styl 文件，同时增加了很多在 Next7 之前需要手动配置的功能，请随个人喜好进行版本选择。
+    
+    </summary>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/tags/Hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo+NexT 自定义样式博文加密</title>
+    <link href="https://hasaik.com/posts/c1cdcf68.html"/>
+    <id>https://hasaik.com/posts/c1cdcf68.html</id>
+    <published>2019-10-16T16:31:27.000Z</published>
+    <updated>2019-11-14T08:56:52.636Z</updated>
+    
+    <summary type="html">
+    
+      介绍一种自定义博文加密方式，不需要插件，极简模式，相对安全。
+    
+    </summary>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/tags/Hexo/"/>
+    
+      <category term="Next" scheme="https://hasaik.com/tags/Next/"/>
+    
+      <category term="Password" scheme="https://hasaik.com/tags/Password/"/>
+    
+      <category term="Security" scheme="https://hasaik.com/tags/Security/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo+NexT 博客搭建相册</title>
+    <link href="https://hasaik.com/posts/39d47c89.html"/>
+    <id>https://hasaik.com/posts/39d47c89.html</id>
+    <published>2019-10-15T09:26:09.000Z</published>
+    <updated>2019-11-14T08:56:52.636Z</updated>
+    
+    <summary type="html">
+    
+      Next主题是不带相册功能的，但是我们还想拥有一个自己的小相册，怎么办呢，经过一番资料的查找与爬坑，相册功能终于搭建成功，接下来为大家分享一下如何实现。
+    
+    </summary>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/tags/Hexo/"/>
+    
+      <category term="Next" scheme="https://hasaik.com/tags/Next/"/>
+    
+      <category term="Photos" scheme="https://hasaik.com/tags/Photos/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo NexT主题之代码块Mac Panel特效</title>
+    <link href="https://hasaik.com/posts/d7399e80.html"/>
+    <id>https://hasaik.com/posts/d7399e80.html</id>
+    <published>2019-10-14T14:45:29.000Z</published>
+    <updated>2019-11-14T08:56:52.640Z</updated>
+    
+    <summary type="html">
+    
+      偶然间发现一款不错的文章代码块样式，类似Mac的面板效果。能设置阴影效果和实现文本编辑功能，不过文本只存在浏览器页面上，不会真正保存。配置的方式也很简单，觉得不错的朋友可以试一下。
+    
+    </summary>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/tags/Hexo/"/>
+    
+      <category term="Next" scheme="https://hasaik.com/tags/Next/"/>
+    
+      <category term="代码块" scheme="https://hasaik.com/tags/%E4%BB%A3%E7%A0%81%E5%9D%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo博客静态资源压缩</title>
+    <link href="https://hasaik.com/posts/495d0b23.html"/>
+    <id>https://hasaik.com/posts/495d0b23.html</id>
+    <published>2019-10-13T12:52:32.000Z</published>
+    <updated>2019-11-14T08:56:52.640Z</updated>
+    
+    <summary type="html">
+    
+      对于个人博客来说，优化页面的访问速度是很有必要的，如果打开你的个人站点，加载个首页就要十几秒，页面长时间处于空白状态，想必没什么人能够忍受得了吧。个人觉得，如果能把页面的加载时间控制在三四秒内，就很不错了。
+    
+    </summary>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/tags/Hexo/"/>
+    
+      <category term="Gulp" scheme="https://hasaik.com/tags/Gulp/"/>
+    
+      <category term="Hexo-Neat" scheme="https://hasaik.com/tags/Hexo-Neat/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>基于 TravisCI 实现 Hexo 在 Github 和 Coding 的同步部署</title>
+    <link href="https://hasaik.com/posts/3e5a3bb6.html"/>
+    <id>https://hasaik.com/posts/3e5a3bb6.html</id>
+    <published>2019-10-12T14:43:34.000Z</published>
+    <updated>2019-11-14T08:56:52.640Z</updated>
+    
+    <summary type="html">
+    
+      关于TravisCI我这里简单介绍一下，TravisCI是一个在线的、分布式的持续集成服务，可以用来构建和测试托管在Github上的代码，并且其本身就是开源的。TravisCI提供了主流编程语言如C#、Java、JavaScript、Ruby、PHP、Node.js等的支持，相比Jenkins而言，它是一个轻量级的持续集成平台，它会在每次提交代码后，根据配置文件来创建一个虚拟机，并执行用户定义的Build任务，这个虚拟机提供版本控制(Git)、项目构建(Node.js)等，在此前提下，我们下面着手Hexo的自动化部署。
+    
+    </summary>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/tags/Hexo/"/>
+    
+      <category term="Github" scheme="https://hasaik.com/tags/Github/"/>
+    
+      <category term="Coding" scheme="https://hasaik.com/tags/Coding/"/>
+    
+      <category term="TravisCI" scheme="https://hasaik.com/tags/TravisCI/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo搭建本地个人博客（基础篇）</title>
+    <link href="https://hasaik.com/posts/e1b9c6c5.html"/>
+    <id>https://hasaik.com/posts/e1b9c6c5.html</id>
+    <published>2019-10-12T09:21:07.000Z</published>
+    <updated>2019-11-14T08:56:52.640Z</updated>
+    
+    <summary type="html">
+    
+      Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。
+    
+    </summary>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/tags/Hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://hasaik.com/posts/27514.html"/>
+    <id>https://hasaik.com/posts/27514.html</id>
+    <published>2019-10-11T12:08:00.000Z</published>
+    <updated>2019-11-14T08:56:52.640Z</updated>
+    
+    <summary type="html">
+    
+      Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+</feed>
