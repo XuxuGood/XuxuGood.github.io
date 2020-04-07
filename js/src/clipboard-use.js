@@ -1,0 +1,3 @@
+// build time:Tue Apr 07 2020 02:30:14 GMT+0000 (Coordinated Universal Time)
+!function(n,t,e){var i=function(){var n="";n+='<button class="btn-copy" data-clipboard-snippet="">';n+='  <i class="fa fa-clipboard"></i><span>复制</span>';n+="</button>";$(".highlight .code pre").before(n);new ClipboardJS(".btn-copy",{target:function(n){return n.nextElementSibling}})};i()}(window,document);var M={};$(document).delegate(".btn-copy","click",function(){if(M.dialog){return M.dialog.show()}M.dialog=jqueryAlert({icon:"../jquery_alert/img/right.png",content:"复制成功",closeTime:1e3})});
+//rebuild by neat 
