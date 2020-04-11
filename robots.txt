@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+Disallow: /archives/
+Disallow: /categories/
+Disallow: /tags/
+Disallow: /books/
+Disallow: /gallery/
+Disallow: /games/
+Disallow: /links/
+Disallow: /love/
+Disallow: /movies/
+Disallow: /top/
+
+Sitemap: https://hasaik.com/sitemap.xml
+Sitemap: https://hasaik.com/baidusitemap.xml
