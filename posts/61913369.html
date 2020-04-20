@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="google-site-verification" content="Qjx2aydp_6x5Ah5OXkYTFyEqpH4VjYbSveDBh-YYSt0">
+  <meta name="baidu-site-verification" content="nqrNwmGERs">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hasaik.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Hexo 博客虽然功能很强大，但也越来越繁重了，访问速度上有了一些问题，这里我也考虑了许多，例如加 cdn，将国外的资源引用改为国内镜像等方式。今天又想到如果一个页面的图片很多，那么如何来提高博客的访问速度呢？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo优化之lazyload图片懒加载">
+<meta property="og:url" content="https://hasaik.com/posts/61913369.html">
+<meta property="og:site_name" content="Xu&#39;s Blog">
+<meta property="og:description" content="Hexo 博客虽然功能很强大，但也越来越繁重了，访问速度上有了一些问题，这里我也考虑了许多，例如加 cdn，将国外的资源引用改为国内镜像等方式。今天又想到如果一个页面的图片很多，那么如何来提高博客的访问速度呢？">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-11-19T14:54:16.000Z">
+<meta property="article:modified_time" content="2020-04-20T12:16:28.232Z">
+<meta property="article:author" content="John Xu">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="lazyload">
+<meta property="article:tag" content="图片懒加载">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://hasaik.com/posts/61913369.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Hexo优化之lazyload图片懒加载 | Xu's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="تشغيل شريط التصفح">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Xu's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">博观而约取，厚积而薄发</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">34</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">29</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">33</span></a>
+
+  </li>
+        <li class="menu-item menu-item-life">
+
+    <a href="/life/" rel="section"><i class="fa fa-fw fa-apple"></i>生活</a>
+
+  </li>
+        <li class="menu-item menu-item-love">
+
+    <a href="/love/" rel="section"><i class="fa fa-fw fa-heart"></i>表白</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
+
+  </li>
+        <li class="menu-item menu-item-top">
+
+    <a href="/top/" rel="section"><i class="fa fa-fw fa-signal"></i>热榜</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" placeholder="搜索...(◕ܫ◕)" spellcheck="false" type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/xuxugood" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="external nofollow noopener noreferrer" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hasaik.com/posts/61913369.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="John Xu">
+      <meta itemprop="description" content>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xu's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Hexo优化之lazyload图片懒加载
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建于：2019-11-19 14:54:16" itemprop="dateCreated datePublished" datetime="2019-11-19T14:54:16Z">2019-11-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="更新于：2020-04-20 12:16:28" itemprop="dateModified" datetime="2020-04-20T12:16:28Z">2020-04-20</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+                </span>
+                  ， 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hexo/lazyload/" itemprop="url" rel="index"><span itemprop="name">lazyload</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/posts/61913369.html" class="post-meta-item leancloud_visitors" data-flag-title="Hexo优化之lazyload图片懒加载" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/posts/61913369.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/posts/61913369.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+
+            <span class="post-meta-item" title="文章字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">文章字数：</span>
+              <span>470</span>
+            </span>
+            <span class="post-meta-item" title="所需阅读时间">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">所需阅读时间 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+            <div class="post-description">Hexo 博客虽然功能很强大，但也越来越繁重了，访问速度上有了一些问题，这里我也考虑了许多，例如加 cdn，将国外的资源引用改为国内镜像等方式。今天又想到如果一个页面的图片很多，那么如何来提高博客的访问速度呢？</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="前言">前言</h2>
+<p>Hexo 博客虽然功能很强大，但也越来越繁重了，访问速度上有了一些问题，这里我也考虑了许多，例如加 cdn，将国外的资源引用改为国内镜像等方式。今天又想到如果一个页面的图片很多，那么如何来提高博客的访问速度呢？</p>
+<p>经过一番寻找之后，找到一个方案，就是懒加载，通俗点讲就是当你翻到图片的时候再加载那张图片，而不是以下将本页面的所有图片都加载完。</p>
+<h2 id="配置">配置</h2>
+<p>在你的 Hexo 目录下，执行以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-lazyload-image --save</span><br></pre></td></tr></table></figure>
+<p>然后在你的 Hexo 目录的配置文件 <code>_config.yml</code> 中添加配置:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lazyload:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br><span class="line">  onlypost: <span class="literal">false</span></span><br><span class="line">  loadingImg: /images/loading.gif</span><br></pre></td></tr></table></figure>
+<h2 id="注意">注意</h2>
+<ol>
+<li>onlypost：是否仅文章中的图片做懒加载，如果为 false，则主题中的其他图片，也会做懒加载，如头像，logo 等任何图片。</li>
+<li>loadingImg：图片未加载时的代替图，不填写使用默认加载图片，如果需要自定义，添填入 loading 图片地址，如果是本地图片，不要忘记把图片添加到你的主题目录下。 Next 主题需将图片放到 <code>\themes\next\source\images</code> 目录下，然后引用时：<code>loadingImg: /images/图片文件名</code></li>
+</ol>
+<h2 id="福利">福利</h2>
+<p>送上两个gif加载中动图</p>
+<a class="btn" href="https://hasaik.com/images/loading3.gif">
+            <i class="fa fa-download fa-lg fa-fw"></i>点击下载动图1
+          </a>
+<a class="btn" href="https://hasaik.com/images/loading4.gif">
+            <i class="fa fa-download fa-lg fa-fw"></i>点击下载动图2
+          </a>
+
+    </div>
+
+    
+    
+    
+      
+  <div class="popular-posts-header">📚&nbsp;&nbsp;相关文章</div>
+  <details>
+    <summary>点击查看</summary>
+    <ul class="popular-posts">
+      <li class="popular-posts-item">
+        <div class="popular-posts-title"><a href="/posts/7fbe9500.html" rel="bookmark">Hexo博客中加入豆瓣读书页面</a></div>
+      </li>
+      <li class="popular-posts-item">
+        <div class="popular-posts-title"><a href="/posts/ab21860c.html" rel="bookmark">Hexo博客+Next主题深度优化与定制</a></div>
+      </li>
+      <li class="popular-posts-item">
+        <div class="popular-posts-title"><a href="/posts/19c94341.html" rel="bookmark">为Hexo添加RSS订阅</a></div>
+      </li>
+      <li class="popular-posts-item">
+        <div class="popular-posts-title"><a href="/posts/dd9d9f86.html" rel="bookmark">本站已开通订阅功能</a></div>
+      </li>
+      <li class="popular-posts-item">
+        <div class="popular-posts-title"><a href="/posts/bf9eba42.html" rel="bookmark">使用增强版valine</a></div>
+      </li>
+      <li class="popular-posts-item">
+        <div class="popular-posts-title"><a href="/posts/f68f129b.html" rel="bookmark">Hexo博客+Next主题归档页美化</a></div>
+      </li>
+      <li class="popular-posts-item">
+        <div class="popular-posts-title"><a href="/posts/89ea6c8b.html" rel="bookmark">Hexo博客Valine评论样式美化</a></div>
+      </li>
+      <li class="popular-posts-item">
+        <div class="popular-posts-title"><a href="/posts/9c9b482b.html" rel="bookmark">Hexo博客+Next主题鼠标点击特效</a></div>
+      </li>
+      <li class="popular-posts-item">
+        <div class="popular-posts-title"><a href="/posts/9b280ea3.html" rel="bookmark">Hexo中使用emoji表情</a></div>
+      </li>
+      <li class="popular-posts-item">
+        <div class="popular-posts-title"><a href="/posts/c7631ec1.html" rel="bookmark">Hexo博客+Next主题进阶写作技巧</a></div>
+      </li>
+    </ul>
+   </details>
+<div class="read-over">-------------------本文结束 <i class="fa fa-paw"></i> 感谢您的阅读-------------------</div>
+
+        <div class="reward-container">
+  <div>坚持原创技术分享，感谢您的支持和鼓励！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="John Xu 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="John Xu 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>John Xu
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://hasaik.com/posts/61913369.html" title="Hexo优化之lazyload图片懒加载">https://hasaik.com/posts/61913369.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      
+      
+       <div id="share" data-weibo-title="分享到微博" data-qq-title="分享到QQ" data-douban-title="分享到豆瓣" class="social-share" data-disabled="qzone,google+,linkedin" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣...">
+          分享到：
+       </div>
+      
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/Hexo/" rel="tag"><i class="fa fa-tag"></i> Hexo</a>
+              <a href="/tags/lazyload/" rel="tag"><i class="fa fa-tag"></i> lazyload</a>
+              <a href="/tags/%E5%9B%BE%E7%89%87/" rel="tag"><i class="fa fa-tag"></i> 图片</a>
+          </div>
+
+        
+  <div class="post-widgets">
+    <div class="wp_rating">
+      <div id="wpac-rating"></div>
+    </div>
+  </div>
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/c4782247.html" rel="prev" title="Java base64加密解密">
+      <i class="fa fa-chevron-left"></i> Java base64加密解密
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/dd9d9f86.html" rel="next" title="本站已开通订阅功能">
+      本站已开通订阅功能 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+
+
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置"><span class="nav-number">2.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注意"><span class="nav-number">3.</span> <span class="nav-text">注意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#福利"><span class="nav-number">4.</span> <span class="nav-text">福利</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="John Xu" src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">John Xu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/XuxuGood" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;XuxuGood" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:22476705@qq.com" title="E-Mail → mailto:22476705@qq.com" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://mailchi.mp/3ca18a2a9749/xuxuy" title="订阅本站 → https:&#x2F;&#x2F;mailchi.mp&#x2F;3ca18a2a9749&#x2F;xuxuy" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-fw fa-heartbeat"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/0ce70d122cd4" title="简书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;0ce70d122cd4" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-fw fa-instagram coffee"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_42889280" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_42889280" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-fw fa-coffee"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://hasaik.com/atom.xml" title="RSS → https:&#x2F;&#x2F;hasaik.com&#x2F;atom.xml"><i class="fa fa-fw fa-rss"></i></a>
+      </span>
+  </div>
+
+
+
+    <div class="links-of-blogroll motion-element links-of-blogroll-block">
+      <div class="links-of-blogroll-title">
+        <!-- modify icon to fire by szw -->
+        <i class="fa fa-history fa-" aria-hidden="true"></i>
+        近期文章
+      </div>
+      <ul class="links-of-blogroll-list">
+        
+        
+          <li>
+            <a href="/posts/a460b91e.html" title="CentOS搭建Gitlab的详细教程" target="_blank">CentOS搭建Gitlab的详细教程</a>
+          </li>
+        
+          <li>
+            <a href="/posts/45c03634.html" title="Spring Boot 通用解决 LocalDateTime 转为字符串后中间含“T”" target="_blank">Spring Boot 通用解决 LocalDateTime 转为字符串后中间含“T”</a>
+          </li>
+        
+          <li>
+            <a href="/posts/9b280ea3.html" title="Hexo中使用emoji表情" target="_blank">Hexo中使用emoji表情</a>
+          </li>
+        
+          <li>
+            <a href="/posts/358f95d9.html" title="FFmpeg + nginx-http-flv-module + flv.js 实现视频流播放" target="_blank">FFmpeg + nginx-http-flv-module + flv.js 实现视频流播放</a>
+          </li>
+        
+          <li>
+            <a href="/posts/fc31ea3.html" title="Vue axios 刷新 Jwt" target="_blank">Vue axios 刷新 Jwt</a>
+          </li>
+        
+      </ul>
+    </div>
+
+
+<!-- 粒子时钟 begin-->
+<div style>
+  <canvas id="canvas" style="width:60%;margin-top:20px">当前浏览器不支持canvas，请更换浏览器后再试</canvas>
+</div>
+<script>
+(function(){
+    var WINDOW_WIDTH = 820;
+    var WINDOW_HEIGHT = 250;
+    var RADIUS = 7; //球半径
+    var NUMBER_GAP = 10; //数字之间的间隙
+    var u=0.65; //碰撞能量损耗系数
+    var context; //Canvas绘制上下文
+    var balls = []; //存储彩色的小球
+    const colors = ["#33B5E5","#0099CC","#AA66CC","#9933CC","#99CC00","#669900","#FFBB33","#FF8800","#FF4444","#CC0000"]; //彩色小球的颜色
+    var currentNums = []; //屏幕显示的8个字符
+    var digit =
+        [
+            [
+                [0,0,1,1,1,0,0],
+                [0,1,1,0,1,1,0],
+                [1,1,0,0,0,1,1],
+                [1,1,0,0,0,1,1],
+                [1,1,0,0,0,1,1],
+                [1,1,0,0,0,1,1],
+                [1,1,0,0,0,1,1],
+                [1,1,0,0,0,1,1],
+                [0,1,1,0,1,1,0],
+                [0,0,1,1,1,0,0]
+            ],//0
+            [
+                [0,0,0,1,1,0,0],
+                [0,1,1,1,1,0,0],
+                [0,0,0,1,1,0,0],
+                [0,0,0,1,1,0,0],
+                [0,0,0,1,1,0,0],
+                [0,0,0,1,1,0,0],
+                [0,0,0,1,1,0,0],
+                [0,0,0,1,1,0,0],
+                [0,0,0,1,1,0,0],
+                [1,1,1,1,1,1,1]
+            ],//1
+            [
+                [0,1,1,1,1,1,0],
+                [1,1,0,0,0,1,1],
+                [0,0,0,0,0,1,1],
+                [0,0,0,0,1,1,0],
+                [0,0,0,1,1,0,0],
+                [0,0,1,1,0,0,0],
+                [0,1,1,0,0,0,0],
+                [1,1,0,0,0,0,0],
+                [1,1,0,0,0,1,1],
+                [1,1,1,1,1,1,1]
+            ],//2
+            [
+                [1,1,1,1,1,1,1],
+                [0,0,0,0,0,1,1],
+                [0,0,0,0,1,1,0],
+                [0,0,0,1,1,0,0],
+                [0,0,1,1,1,0,0],
+                [0,0,0,0,1,1,0],
+                [0,0,0,0,0,1,1],
+                [0,0,0,0,0,1,1],
+                [1,1,0,0,0,1,1],
+                [0,1,1,1,1,1,0]
+            ],//3
+            [
+                [0,0,0,0,1,1,0],
+                [0,0,0,1,1,1,0],
+                [0,0,1,1,1,1,0],
+                [0,1,1,0,1,1,0],
+                [1,1,0,0,1,1,0],
+                [1,1,1,1,1,1,1],
+                [0,0,0,0,1,1,0],
+                [0,0,0,0,1,1,0],
+                [0,0,0,0,1,1,0],
+                [0,0,0,1,1,1,1]
+            ],//4
+            [
+                [1,1,1,1,1,1,1],
+                [1,1,0,0,0,0,0],
+                [1,1,0,0,0,0,0],
+                [1,1,1,1,1,1,0],
+                [0,0,0,0,0,1,1],
+                [0,0,0,0,0,1,1],
+                [0,0,0,0,0,1,1],
+                [0,0,0,0,0,1,1],
+                [1,1,0,0,0,1,1],
+                [0,1,1,1,1,1,0]
+            ],//5
+            [
+                [0,0,0,0,1,1,0],
+                [0,0,1,1,0,0,0],
+                [0,1,1,0,0,0,0],
+                [1,1,0,0,0,0,0],
+                [1,1,0,1,1,1,0],
+                [1,1,0,0,0,1,1],
+                [1,1,0,0,0,1,1],
+                [1,1,0,0,0,1,1],
+                [1,1,0,0,0,1,1],
+                [0,1,1,1,1,1,0]
+            ],//6
+            [
+                [1,1,1,1,1,1,1],
+                [1,1,0,0,0,1,1],
+                [0,0,0,0,1,1,0],
+                [0,0,0,0,1,1,0],
+                [0,0,0,1,1,0,0],
+                [0,0,0,1,1,0,0],
+                [0,0,1,1,0,0,0],
+                [0,0,1,1,0,0,0],
+                [0,0,1,1,0,0,0],
+                [0,0,1,1,0,0,0]
+            ],//7
+            [
+                [0,1,1,1,1,1,0],
+                [1,1,0,0,0,1,1],
+                [1,1,0,0,0,1,1],
+                [1,1,0,0,0,1,1],
+                [0,1,1,1,1,1,0],
+                [1,1,0,0,0,1,1],
+                [1,1,0,0,0,1,1],
+                [1,1,0,0,0,1,1],
+                [1,1,0,0,0,1,1],
+                [0,1,1,1,1,1,0]
+            ],//8
+            [
+                [0,1,1,1,1,1,0],
+                [1,1,0,0,0,1,1],
+                [1,1,0,0,0,1,1],
+                [1,1,0,0,0,1,1],
+                [0,1,1,1,0,1,1],
+                [0,0,0,0,0,1,1],
+                [0,0,0,0,0,1,1],
+                [0,0,0,0,1,1,0],
+                [0,0,0,1,1,0,0],
+                [0,1,1,0,0,0,0]
+            ],//9
+            [
+                [0,0,0,0],
+                [0,0,0,0],
+                [0,1,1,0],
+                [0,1,1,0],
+                [0,0,0,0],
+                [0,0,0,0],
+                [0,1,1,0],
+                [0,1,1,0],
+                [0,0,0,0],
+                [0,0,0,0]
+            ]//:
+        ];
+
+    function drawDatetime(cxt){
+        var nums = [];
+
+        context.fillStyle="#005eac"
+        var date = new Date();
+        var offsetX = 70, offsetY = 30;
+        var hours = date.getHours();
+        var num1 = Math.floor(hours/10);
+        var num2 = hours%10;
+        nums.push({num: num1});
+        nums.push({num: num2});
+        nums.push({num: 10}); //冒号
+        var minutes = date.getMinutes();
+        var num1 = Math.floor(minutes/10);
+        var num2 = minutes%10;
+        nums.push({num: num1});
+        nums.push({num: num2});
+        nums.push({num: 10}); //冒号
+        var seconds = date.getSeconds();
+        var num1 = Math.floor(seconds/10);
+        var num2 = seconds%10;
+        nums.push({num: num1});
+        nums.push({num: num2});
+
+        for(var x = 0;x<nums.length;x++){
+            nums[x].offsetX = offsetX;
+            offsetX = drawSingleNumber(offsetX,offsetY, nums[x].num,cxt);
+            //两个数字连一块，应该间隔一些距离
+            if(x<nums.length-1){
+                if((nums[x].num!=10) &&(nums[x+1].num!=10)){
+                    offsetX+=NUMBER_GAP;
+                }
+            }
+        }
+
+        //说明这是初始化
+        if(currentNums.length ==0){
+            currentNums = nums;
+        }else{
+            //进行比较
+            for(var index = 0;index<currentNums.length;index++){
+                if(currentNums[index].num!=nums[index].num){
+                    //不一样时，添加彩色小球
+                    addBalls(nums[index]);
+                    currentNums[index].num=nums[index].num;
+                }
+            }
+        }
+        renderBalls(cxt);
+        updateBalls();
+
+        return date;
+    }
+
+    function addBalls (item) {
+        var num = item.num;
+        var numMatrix = digit[num];
+        for(var y = 0;y<numMatrix.length;y++){
+            for(var x = 0;x<numMatrix[y].length;x++){
+                if(numMatrix[y][x]==1){
+                    var ball={
+                        offsetX:item.offsetX+RADIUS+RADIUS*2*x,
+                        offsetY:30+RADIUS+RADIUS*2*y,
+                        color:colors[Math.floor(Math.random()*colors.length)],
+                        g:1.5+Math.random(),
+                        vx:Math.pow(-1, Math.ceil(Math.random()*10))*4+Math.random(),
+                        vy:-5
+                    }
+                    balls.push(ball);
+                }
+            }
+        }
+    }
+
+    function renderBalls(cxt){
+        for(var index = 0;index<balls.length;index++){
+            cxt.beginPath();
+            cxt.fillStyle=balls[index].color;
+            cxt.arc(balls[index].offsetX, balls[index].offsetY, RADIUS, 0, 2*Math.PI);
+            cxt.fill();
+        }
+    }
+
+    function updateBalls () {
+        var i =0;
+        for(var index = 0;index<balls.length;index++){
+            var ball = balls[index];
+            ball.offsetX += ball.vx;
+            ball.offsetY += ball.vy;
+            ball.vy+=ball.g;
+            if(ball.offsetY > (WINDOW_HEIGHT-RADIUS)){
+                ball.offsetY= WINDOW_HEIGHT-RADIUS;
+                ball.vy=-ball.vy*u;
+            }
+            if(ball.offsetX>RADIUS&&ball.offsetX<(WINDOW_WIDTH-RADIUS)){
+
+                balls[i]=balls[index];
+                i++;
+            }
+        }
+        //去除出边界的球
+        for(;i<balls.length;i++){
+            balls.pop();
+        }
+    }
+    function drawSingleNumber(offsetX, offsetY, num, cxt){
+        var numMatrix = digit[num];
+        for(var y = 0;y<numMatrix.length;y++){
+            for(var x = 0;x<numMatrix[y].length;x++){
+                if(numMatrix[y][x]==1){
+                    cxt.beginPath();
+                    cxt.arc(offsetX+RADIUS+RADIUS*2*x,offsetY+RADIUS+RADIUS*2*y,RADIUS,0,2*Math.PI);
+                    cxt.fill();
+                }
+            }
+        }
+        cxt.beginPath();
+        offsetX += numMatrix[0].length*RADIUS*2;
+        return offsetX;
+    }
+
+    var canvas = document.getElementById("canvas");
+    canvas.width=WINDOW_WIDTH;
+    canvas.height=WINDOW_HEIGHT;
+    context = canvas.getContext("2d");
+
+    //记录当前绘制的时刻
+    var currentDate = new Date();
+
+    setInterval(function(){
+        //清空整个Canvas，重新绘制内容
+        context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+        drawDatetime(context);
+    }, 50)
+})();
+</script>
+<!-- 粒子时钟 end-->
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+      <!-- 此处为新加的代码 -->
+          <script src="https://cdn.staticfile.org/jquery/3.1.1/jquery.min.js"></script>
+<script>
+    //暂时储存文章中的内容
+    var div = $('.post-body');
+    //暂时储存目录的内容
+    var toc=$('.post-toc')
+    function password() {
+        if(''){
+            //将文章内容删除
+            div.remove();
+            //将目录删除
+            toc.remove();
+            //将文章删除后，向原来文章的地方添加，应该出现的提示用户输入密码的样式
+            //下面这里的第一个用textarea是因为如果在手机端的时候只能显示一部分文字，
+            //只是拓展:input里面的字只能显示一行，不会自动换行，目前上网搜索没有发现好的办法，所以用了textarea，右下角的小三角通过resize:none 去掉。
+            $('.post-header').after(
+            '<span class="description" value="请输入密码，然后按 Enter 键阅读" style="font-style: oblique;font-weight: bold;border: none;display: block;'+
+            'width: 60%;margin: 0 auto;text-align: center;outline: none;margin-bottom: 40px;resize:none ">'+
+            '<i class="fa fa-heartbeat" id="myheartbeat"></i>&nbsp;'+
+            '请输入密码，然后按 Enter 键阅读' +
+            '&nbsp;&nbsp;<i class="fa fa-heartbeat" id="myheartbeat"></i>'+
+            '</span>' +
+            '<div class="qiang" style="height: 100px;width: 60%;margin:0 auto">' +
+            '<input class="password"  type="password" autocomplete="new-password" autofocus="autofocus" value="" style="border-radius: 5px;height: 30px;display: block;border: 1px solid #908585;' +
+            'margin: 0 auto;outline: none;width:95%"/>' +
+            '</div>')
+            //绑定点击事件，如果是点击的.password 这个div就改变样式，如果是document中除了div之外的其他任何元素，就变回原来的样式。
+            document.onclick = function (event) {
+                var e = event || window.event;
+                var elem = e.srcElement || e.target;
+
+                while (elem) {
+                    if (elem != document) {
+                        if (elem.className == "password") {
+                            //$(".password").animate({paddingTop:"30px",width:"100%",borderWidth:"2px"},300)
+                            return;
+                        }
+                        elem = elem.parentNode;
+                    } else {
+                        //$(".password").animate({paddingTop:"0px",width:"95%",borderWidth:"1px"},300)
+                        return;
+                    }
+                }
+            }
+            //绑定enter键按下后离开的事件
+            $(document).keyup(function(event){
+                if(event.keyCode ==13&&$('.password').length>0){
+                    //console.log($('.password').val())
+                    //console.log('')
+                    if ($('.password').val() == '') {
+                        // 恢复文章内容
+                        $(".post-header").after(div)
+                        // 恢复目录
+                        toc.appendTo($(".post-toc-wrap"))
+                        // 解决类Mac Panel特效丢失
+                        NexT.utils.registerCopyCode();
+                        NexT.utils.wrapTableWithBox();
+                        // 显示侧边栏
+                        $(".sidebar-nav").show();
+                        document.querySelector('.sidebar-nav-toc').click();
+                        // 删除本页面的输入密码组件
+                        $(".description").remove();
+                        $(".qiang").remove();
+                        $(".password").remove();
+                        $(".post-body").css({opacity:1});
+                    }else {
+                        alert("对不起，密码输入错误。")
+                    }
+                }
+                //将document的keyup移除，防止在pjax的情况下会重复绑定事件
+            });
+        }
+    }
+
+    password();
+</script>
+
+
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heartbeat"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Xu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">总字数：</span>
+    <span title="总字数">84k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">所需总阅读时间 &asymp;</span>
+    <span title="所需总阅读时间">1:16</span>
+</div><!-- 在网页底部添加网站运行时间 -->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("10/09/2019 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "网站已运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+setInterval("createtime()",250);
+</script>
+
+<!-- 在网页底部添加简体繁体一键切换 -->
+<div class="translate-style">
+    繁/简：<a id="translateLink" href="javascript:translatePage();" rel="external nofollow noreferrer">繁体</a>
+</div>
+<script type="text/javascript" src="/js/tw_cn.js"></script>
+<script type="text/javascript">
+    var defaultEncoding = 2; //网站编写字体是否繁体，1-繁体，2-简体
+    var translateDelay = 0; //延迟时间,若不在前, 要设定延迟翻译时间, 如100表示100ms,默认为0
+    var cookieDomain = "https://tding.top/"; //Cookie地址, 一定要设定, 通常为你的网址
+    var msgToTraditionalChinese = "繁体"; //此处可以更改为你想要显示的文字
+    var msgToSimplifiedChinese = "简体"; //同上，但两处均不建议更改
+    var translateButtonId = "translateLink"; //默认互换id
+    translateInitilization();
+</script>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="إجمالي الزوار">
+        &nbsp;本站访客数&nbsp;<span id="busuanzi_value_site_uv"></span>人
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="إجمالي المشاهدات">
+        &nbsp;本站总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>次
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+<script>
+  (function() {
+    function leancloudSelector(url) {
+      url = encodeURI(url);
+      return document.getElementById(url).querySelector('.leancloud-visitors-count');
+    }
+
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = decodeURI(visitors.id);
+      var title = visitors.dataset.flagTitle;
+
+      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url })))
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+            leancloudSelector(url).innerText = counter.time + 1;
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .catch(error => {
+                console.error('Failed to save visitor count', error);
+              });
+          } else {
+              Counter('post', '/classes/Counter', { title, url, time: 1 })
+                .then(response => response.json())
+                .then(() => {
+                  leancloudSelector(url).innerText = 1;
+                })
+                .catch(error => {
+                  console.error('Failed to create', error);
+                });
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return decodeURI(element.id);
+      });
+
+      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url: { '$in': entries } })))
+        .then(response => response.json())
+        .then(({ results }) => {
+          for (let url of entries) {
+            let target = results.find(item => item.url === url);
+            leancloudSelector(url).innerText = target ? target.time : 0;
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+
+    let { app_id, app_key, server_url } = {"enable":true,"app_id":"gYcUzERw1BSKyARbzWH2OQzu-gzGzoHsz","app_key":"7xvFncnnyG2QI60iDY3E4PuO","security":false,"betterPerformance":true};
+    function fetchData(api_server) {
+      var Counter = (method, url, data) => {
+        return fetch(`${api_server}/1.1${url}`, {
+          method,
+          headers: {
+            'X-LC-Id'     : app_id,
+            'X-LC-Key'    : app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        if (CONFIG.hostname !== location.hostname) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    }
+
+    let api_server = app_id.slice(-9) !== '-MdYXbMMI' ? server_url : `https://${app_id.slice(0, 8).toLowerCase()}.api.lncldglobal.com`;
+
+    if (api_server) {
+      fetchData(api_server);
+    } else {
+      fetch('https://app-router.leancloud.cn/2/route?appId=' + app_id)
+        .then(response => response.json())
+        .then(({ api_server }) => {
+          fetchData('https://' + api_server);
+        });
+    }
+  })();
+</script>
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3.1.1/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.2.1/velocity.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1.2.1/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+  <script>
+  if (CONFIG.page.isPost) {
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id    : 21530,
+      el    : 'wpac-rating',
+      color : 'ff9800'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  }
+  </script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'gYcUzERw1BSKyARbzWH2OQzu-gzGzoHsz',
+      appKey     : '7xvFncnnyG2QI60iDY3E4PuO',
+      placeholder: "既然来了，那就留个痕迹吧~",
+      avatar     : 'monsterid',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+
+  <script async src="/js/cursor/love.min.js"></script>
+
+
+
+
+  <script src="/js/activate-power-mode.js"></script>
+  <script>
+    POWERMODE.colorful = true;
+    POWERMODE.shake = false;
+    document.body.addEventListener('input', POWERMODE);
+  </script>
+
+
+
+
+   <script async src="/js/crash_cheat.js"></script>
+
+
+
+<script type="text/javascript" src="/js/fold_action.js"></script>
+
+
+
+   <script src="https://player.lmih.cn/player/js/player.js" id="myhk" key="158649506326" m="1"></script>
+
+
+
+<link rel="stylesheet" href="/js/sharejs/css/share.min.css">
+<script src="/js/sharejs/js/social-share.min.js"></script>
+
+
+<script src="/js/typed.js"></script>
+<script>
+var typed = new Typed('.site-description', {
+  strings: ['人生若只如初见','何事秋风悲画扇','等闲变却故人心','却道故人心易变','骊山语罢清宵半','泪雨霖铃终不怨','何如薄幸锦衣郎','比翼连枝当日愿'],
+  loop: true, //开启循环
+  typeSpeed: 200, //打印的速度。数值越大，速度越慢
+  backSpeed: 100, //延迟时间后才后退，值越大，延迟的时间就越长
+  cursorChar: '&nbsp;<i class="fa fa-heartbeat" id="myheartbeat"></i>' // 用于在在输出字符结尾闪烁的符号
+});
+</script>
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div class="moon-menu-item" onclick="back2bottom()">
+      <i class="fa fa-chevron-down"></i>    </div>
+    
+    <div class="moon-menu-item" onclick="back2top()">
+      <i class="fa fa-chevron-up"></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button" onclick="moonMenuClick()">
+    <svg class="moon-menu-svg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"/>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"/>
+      <g class="moon-menu-points">
+        <circle class="moon-menu-point" r=".2rem" cx="0" cy="-.8rem"/>
+        <circle class="moon-menu-point" r=".2rem"/>
+        <circle class="moon-menu-point" r=".2rem" cx="0" cy=".8rem"/>
+      </g>
+    </svg>
+    <div class="moon-menu-icon">
+    </div>
+    <div class="moon-menu-text">
+    </div>
+  </div>
+</div>
+<script src="/js/injector.js"></script>
+</body>
+</html>
