@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="google-site-verification" content="Qjx2aydp_6x5Ah5OXkYTFyEqpH4VjYbSveDBh-YYSt0">
+  <meta name="baidu-site-verification" content="nqrNwmGERs">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/themes/blue/pace-theme-bounce.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hasaik.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Valine 是一款比较轻量级的纯前端的评论系统，目前很多个人博客都在使用 Valine 评论系统，并且支持匿名留言。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo博客Valine评论样式美化">
+<meta property="og:url" content="https://hasaik.com/posts/89ea6c8b.html">
+<meta property="og:site_name" content="Xu&#39;s Blog">
+<meta property="og:description" content="Valine 是一款比较轻量级的纯前端的评论系统，目前很多个人博客都在使用 Valine 评论系统，并且支持匿名留言。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-11-14T15:36:50.000Z">
+<meta property="article:modified_time" content="2020-05-09T09:06:42.564Z">
+<meta property="article:author" content="John Xu">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="Valine评论样式美化">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://hasaik.com/posts/89ea6c8b.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Hexo博客Valine评论样式美化 | Xu's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="تشغيل شريط التصفح">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Xu's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">博观而约取，厚积而薄发</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">37</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">31</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">35</span></a>
+
+  </li>
+        <li class="menu-item menu-item-life">
+
+    <a href="/life/" rel="section"><i class="fa fa-fw fa-apple"></i>生活</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
+
+  </li>
+        <li class="menu-item menu-item-top">
+
+    <a href="/top/" rel="section"><i class="fa fa-fw fa-signal"></i>热榜</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" placeholder="搜索...(◕ܫ◕)" spellcheck="false" type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/xuxugood" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="external nofollow noopener noreferrer" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hasaik.com/posts/89ea6c8b.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="John Xu">
+      <meta itemprop="description" content>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xu's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Hexo博客Valine评论样式美化
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建于：2019-11-14 15:36:50" itemprop="dateCreated datePublished" datetime="2019-11-14T15:36:50Z">2019-11-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="更新于：2020-05-09 09:06:42" itemprop="dateModified" datetime="2020-05-09T09:06:42Z">2020-05-09</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+                </span>
+                  ， 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hexo/Valine/" itemprop="url" rel="index"><span itemprop="name">Valine</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/posts/89ea6c8b.html" class="post-meta-item leancloud_visitors" data-flag-title="Hexo博客Valine评论样式美化" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/posts/89ea6c8b.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/posts/89ea6c8b.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+
+            <span class="post-meta-item" title="文章字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">文章字数：</span>
+              <span>2.3k</span>
+            </span>
+            <span class="post-meta-item" title="所需阅读时间">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">所需阅读时间 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+            <div class="post-description">Valine 是一款比较轻量级的纯前端的评论系统，目前很多个人博客都在使用 Valine 评论系统，并且支持匿名留言。</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Valine 是一款比较轻量级的纯前端的评论系统，目前很多个人博客都在使用 Valine 评论系统，并且支持匿名留言。</p>
+<a href="https://github.com/xCss/Valine" target="_blank" class="LinkCard" rel="external nofollow noopener noreferrer"><style type="text/css">.LinkCard,.LinkCard:hover{text-decoration:none;border:none!important;color:inherit!important}.LinkCard{position:relative;display:block;margin:5px auto;width:330px;box-sizing:border-box;border-radius:12px;max-width:100%;overflow:hidden;color:inherit;text-decoration:none}.ztext{word-break:break-word;line-height:1.6}.LinkCard-backdrop{position:absolute;top:0;left:0;right:0;bottom:0;background-repeat:no-repeat;-webkit-filter:blur(20px);filter:blur(20px);background-size:cover;background-position:center}.LinkCard,.LinkCard:hover{text-decoration:none;border:none!important;color:inherit!important}.LinkCard-content{position:relative;display:flex;align-items:center;justify-content:space-between;padding:12px;border-radius:inherit;background-color:rgba(246,246,246,0.88)}.LinkCard-text{overflow:hidden;width:260px;}.LinkCard-title{white-space: nowrap;display:-webkit-box;-webkit-line-clamp:2;overflow:hidden;text-overflow:ellipsis;max-height:calc(16px * 1.25 * 2);font-size:16px;font-weight:500;line-height:1.25;color:#1a1a1a}@media(max-width: 767px){.LinkCard-title{font-size:13px;}}.LinkCard-meta{display:flex;margin-top:4px;font-size:14px;line-height:20px;color:#999;white-space:nowrap}.LinkCard-imageCell{margin-left:28px;border-radius:30px;width:70px;}.LinkCard-image{background-image:url('/images/linkcard.png');background-size: 100% 100%;display:block;width:65px;height:65px;border-radius:inherit;margin-bottom: 0 !important;}</style><span class="LinkCard-backdrop" style="background-image:url(https://zhstatic.zhihu.com/assets/zhihu/editor/zhihu-card-default.svg)"></span><span class="LinkCard-content"><span class="LinkCard-text"><span class="LinkCard-title">Valine的Github地址</span><span class="LinkCard-meta"><span style="display:inline-flex;align-items:center"><svg class="Zi Zi--InsertLink" fill="currentColor" viewbox="0 0 24 24" width="17" height="17"><path d="M6.77 17.23c-.905-.904-.94-2.333-.08-3.193l3.059-3.06-1.192-1.19-3.059 3.058c-1.489 1.489-1.427 3.954.138 5.519s4.03 1.627 5.519.138l3.059-3.059-1.192-1.192-3.059 3.06c-.86.86-2.289.824-3.193-.08zm3.016-8.673l1.192 1.192 3.059-3.06c.86-.86 2.289-.824 3.193.08.905.905.94 2.334.08 3.194l-3.059 3.06 1.192 1.19 3.059-3.058c1.489-1.489 1.427-3.954-.138-5.519s-4.03-1.627-5.519-.138L9.786 8.557zm-1.023 6.68c.33.33.863.343 1.177.029l5.34-5.34c.314-.314.3-.846-.03-1.176-.33-.33-.862-.344-1.176-.03l-5.34 5.34c-.314.314-.3.846.03 1.177z" fill-rule="evenodd"/></svg></span>https://github.com/xCss/Valine</span></span><span class="LinkCard-imageCell"><div class="LinkCard-image"></div></span></span></a>
+<p>我个人也是很喜欢这一款评论系统的，之前用过来必力、Gitalk 等评论系统，都觉得很难用，尤其是来必力，这款韩国人做的评论系统在国内使用很容易出现加载非常慢的情况，往往博客内容都加载完成评论系统还需要好久才加载完，在国内体验比较差吧。</p>
+<p>那么 Valine 默认的样式其实比较素，当然不同人喜欢的风格都不一样，如果有喜欢我这种评论样式的，不妨留个言并且在文章末尾给个五星好评吧~</p>
+<div class="note danger">
+<p>注意：本Valine美化目前只适应于 <code>valine1.3.4</code> 版本的，如果是其它版本的可能css样式会错乱。</p>
+</div>
+<p>具体更改 Valine 版本的话，主要是更改Valine的js版本，比如我的是next主题，那么就在主题目录下 <code>next\layout\_third-party\comments\valine.swig</code> 中找到引入 <code>valine.js</code> 的 <code>&lt;script&gt;&lt;/script&gt;</code> 语句，我是将 Valine 的 <code>1.3.4</code> 版本的 <code>js</code> 放到目录本地的，所以将引入 <code>js</code> 的语句改成了：<code>&lt;script src=&quot;/js/src/valine1.3.4.js&quot;&gt;&lt;/script&gt;</code></p>
+<p>当然不同版本的next主题中 <code>valine.swig</code> 中内容也不同。</p>
+<p>比如next6主题的 <code>valine.swig</code> 中代码是这样的：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;% <span class="built_in">set</span> valine_uri = <span class="string">'//unpkg.com/valine/dist/Valine.min.js'</span> %&#125;</span><br><span class="line">&#123;% <span class="keyword">if</span> theme.vendors.valine %&#125;</span><br><span class="line">  &#123;% <span class="built_in">set</span> valine_uri = theme.vendors.valine %&#125;</span><br><span class="line">&#123;% endif %&#125;</span><br><span class="line">&lt;script src=<span class="string">"&#123;&#123; valine_uri &#125;&#125;"</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>而next5主题的就在valine.swig开头，内容如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% <span class="keyword">if</span> theme.valine.enable and theme.valine.appid and theme.valine.appkey %&#125;</span><br><span class="line">  &lt;script src=<span class="string">"//cdn1.lncld.net/static/js/3.0.4/av-min.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">  &lt;script src=<span class="string">"//unpkg.com/valine/dist/Valine.min.js"</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>而url中 <code>//unpkg.com/valine/dist/Valine.min.js</code> 默认是引入最新的 <code>valine.js</code> 文件，所以不管是next5还是next6主题都是修改这个url地址，只要修改成 <code>valine1.3.4</code> 版本的js文件即可。</p>
+<p>然后打开主题目录下 <code>next\source\css\_custom\custom.styl</code> ，在文件末尾添加如下代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br></pre></td><td class="code"><pre><span class="line">/*valine 评论系统样式*/</span><br><span class="line">div<span class="comment">#comments.comments.v&#123;</span></span><br><span class="line">  margin-top: 0px !important;</span><br><span class="line">  margin-left: 0px !important;</span><br><span class="line">  margin-right: 0px !important;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">div.vheader.item2&#123;</span><br><span class="line">  border-bottom: 1px solid <span class="comment">#5f5f5f;</span></span><br><span class="line">  height: 35px !important;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.v .vwrap .vheader.item2 .vinput&#123;</span><br><span class="line">  height: 30px !important;</span><br><span class="line">  border: 0px !important;</span><br><span class="line">  width: 25% !important;</span><br><span class="line">  margin: 0px !important;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">input.vnick.vinput&#123;</span><br><span class="line">  border-right: 2px solid <span class="comment">#a4d8fa !important;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">div.vcontrol&#123;</span><br><span class="line">  padding-top: 0px !important;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">div<span class="comment">#comments.comments.v&#123;</span></span><br><span class="line">  border: 0px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">.v .vwrap&#123;</span><br><span class="line">  border: 2px solid black !important;</span><br><span class="line">  height: 250px !important;</span><br><span class="line">  border-radius: 6px !important;</span><br><span class="line">  overflow: visible !important;</span><br><span class="line">  counter-reset: avater;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.v .vwrap .vedit .vemojis&#123;</span><br><span class="line">  width: 600px !important;</span><br><span class="line">  background-color: <span class="comment">#fff !important;</span></span><br><span class="line">  border-radius: 5px !important;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.v .vwrap .vedit .vpreview &#123;</span><br><span class="line">  width: 600px !important;</span><br><span class="line">  background-color: <span class="comment">#fff !important;</span></span><br><span class="line">  border-radius: 5px !important;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.v .vbtn&#123;</span><br><span class="line">  background-color: <span class="comment">#971212 !important;</span></span><br><span class="line">  color: <span class="comment">#fff !important;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.v .vwrap .vedit .vctrl&#123;</span><br><span class="line">  text-align: left !important;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.v .vwrap .vedit .vctrl span&#123;</span><br><span class="line">  background-color: <span class="comment">#7f7f7f !important;</span></span><br><span class="line">  color: <span class="comment">#fff !important;</span></span><br><span class="line">  border-radius: 3px !important;</span><br><span class="line">  padding: 3px !important;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.v .vwrap .vedit .vctrl&#123;</span><br><span class="line">  padding: 0px !important;</span><br><span class="line">  margin: 0px !important;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.v .vlist .vcard .vquote .vcontent &#123;</span><br><span class="line">  font-size: 15px;</span><br><span class="line">  font-weight: 200;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">div.vedit&#123;</span><br><span class="line">  height: 120px;</span><br><span class="line">&#125;</span><br><span class="line">div.vcontrol&#123;</span><br><span class="line">	margin-top: 30px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.v .veditor&#123;</span><br><span class="line">  min-height: 70px !important;</span><br><span class="line">  height: 100px !important;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.v .vlist .vcard &#123;</span><br><span class="line">  border: 1px solid <span class="comment">#ccc !important;</span></span><br><span class="line">  padding-left: 14px !important;</span><br><span class="line">  padding-right: 14px !important;</span><br><span class="line">  margin-bottom: 20px !important;</span><br><span class="line">  border-radius: 10px !important;</span><br><span class="line">&#125;</span><br><span class="line">.v .vlist  .vquote .vcard&#123;</span><br><span class="line">  border: 0px !important;</span><br><span class="line">  margin-bottom: 0px !important;</span><br><span class="line">  border-radius: 0px !important;</span><br><span class="line">  padding: 0px !important;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.v .vlist .vcard .vhead .vsys&#123;</span><br><span class="line">  display:none !important;</span><br><span class="line">  background-color: <span class="comment">#fff !important;</span></span><br><span class="line">&#125;</span><br><span class="line">.v .vlist .vcard .vh .vmeta .vat&#123;</span><br><span class="line">  background-color: <span class="comment">#177714 !important;</span></span><br><span class="line">  color: <span class="comment">#fff !important;</span></span><br><span class="line">  border-radius: 3px !important;</span><br><span class="line">  padding-left: 10px !important;</span><br><span class="line">  padding-right: 10px !important;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.v .vlist .vcard .vimg&#123;</span><br><span class="line">  margin: 0 12px 0 0;</span><br><span class="line">  counter-increment: avater;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*设置评论头像旋转*/</span><br><span class="line">.v .vlist .vcard .vimg:hover &#123;</span><br><span class="line">    -webkit-transform: rotate(360deg);</span><br><span class="line">    -moz-transform: rotate(360deg);</span><br><span class="line">    -ms-transform: rotate(360deg);</span><br><span class="line">    -transform: rotate(360deg);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.v .vlist .vcard .vquote&#123;</span><br><span class="line">  margin-left: 40px; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.v .vlist .vcard .vquote&#123;</span><br><span class="line">  counter-reset: avaters;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.v .vlist .vcard .vquote .vimg&#123;</span><br><span class="line">  display: avaters !important;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.v .vlist .vcard .vquote  .vhead:before&#123;</span><br><span class="line">    display: block;</span><br><span class="line">    <span class="built_in">float</span>: left;</span><br><span class="line">    width: 38px;</span><br><span class="line">    height: 38px;</span><br><span class="line">    line-height: 38px;</span><br><span class="line">    margin: 0 12px 0 0;</span><br><span class="line">    color: <span class="comment">#fff;</span></span><br><span class="line">    font-size: 15px;</span><br><span class="line">    font-weight: bold;</span><br><span class="line">    font-style: normal;</span><br><span class="line">    background-color: <span class="comment">#2d4e41;</span></span><br><span class="line">    border: 3px solid <span class="comment">#60a1e5;</span></span><br><span class="line">    border-radius: 50%;</span><br><span class="line">    text-align: center;</span><br><span class="line"></span><br><span class="line">    /*content: counter(avater)<span class="string">'.'</span>counter(avaters);</span><br><span class="line">    counter-increment: avaters;*/</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.v .vlist .vcard p &#123;</span><br><span class="line">  top: -1.5em;</span><br><span class="line">  position: relative;</span><br><span class="line">  z-index: 1;</span><br><span class="line">  margin: <span class="built_in">unset</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.v .vlist .vcard .vquote a.at &#123;</span><br><span class="line">  font-size: 13px;</span><br><span class="line">  color: <span class="comment">#bea124;</span></span><br><span class="line">  text-decoration: none;</span><br><span class="line">  border: <span class="built_in">unset</span>;</span><br><span class="line">  position: relative;</span><br><span class="line">  top: -40px;</span><br><span class="line">&#125;</span><br><span class="line">.v .vlist .vcard .vquote .vcontent&#123;</span><br><span class="line">  font-size: 15px;</span><br><span class="line">  font-weight: 200;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.v .vlist .vcard .vcontent &#123;</span><br><span class="line">  margin-top: 58px !important;</span><br><span class="line">  font-size: 15px !important;</span><br><span class="line">  font-weight: 500 !important;</span><br><span class="line">  padding-top: 0 !important;</span><br><span class="line">  margin-bottom: <span class="built_in">unset</span> !important;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.v .vlist .vcard .vquote .vhead .vnick &#123;</span><br><span class="line">  color: <span class="comment">#5af !important;</span></span><br><span class="line">  font-weight: 300 !important;</span><br><span class="line">  font-size: 15px !important;</span><br><span class="line">&#125;</span><br><span class="line">.v .vlist .vcard .vhead .vnick &#123;</span><br><span class="line">  font-size: 18px !important;</span><br><span class="line">  font-weight: 500 !important;</span><br><span class="line">  color: <span class="comment">#5b6b68 !important;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.v .vlist .vcard&#123;</span><br><span class="line">  padding-top: 8px !important;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.v .vlist .vcard .vhead&#123;</span><br><span class="line">  <span class="built_in">float</span>: left !important;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.v .vlist .vcard .vh .vmeta&#123;</span><br><span class="line">  <span class="built_in">float</span>: right !important;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.v .vlist .vcard .vcontent.expand:after&#123;</span><br><span class="line">  content: <span class="string">"点击查看全部"</span> !important;</span><br><span class="line">  font-weight: 400 !important;</span><br><span class="line">&#125;</span><br><span class="line">/**/</span><br></pre></td></tr></table></figure>
+<p>其中有需要自己修改的地方可以在浏览器中F12自行修改css样式即可。</p>
+
+    </div>
+
+    
+    
+    
+      
+  <div class="popular-posts-header">📚&nbsp;&nbsp;相关文章</div>
+  <div id="popular-custom">
+    <details>
+      <summary>点击查看</summary>
+      <ul class="popular-posts">
+        <li class="popular-posts-item">
+          <div class="popular-posts-title"><a href="/posts/bf9eba42.html" rel="bookmark">使用增强版valine</a></div>
+        </li>
+        <li class="popular-posts-item">
+          <div class="popular-posts-title"><a href="/posts/7fbe9500.html" rel="bookmark">Hexo博客中加入豆瓣读书页面</a></div>
+        </li>
+        <li class="popular-posts-item">
+          <div class="popular-posts-title"><a href="/posts/9b280ea3.html" rel="bookmark">Hexo中使用emoji表情</a></div>
+        </li>
+        <li class="popular-posts-item">
+          <div class="popular-posts-title"><a href="/posts/19c94341.html" rel="bookmark">为Hexo添加RSS订阅</a></div>
+        </li>
+        <li class="popular-posts-item">
+          <div class="popular-posts-title"><a href="/posts/dd9d9f86.html" rel="bookmark">本站已开通订阅功能</a></div>
+        </li>
+        <li class="popular-posts-item">
+          <div class="popular-posts-title"><a href="/posts/61913369.html" rel="bookmark">Hexo优化之lazyload图片懒加载</a></div>
+        </li>
+        <li class="popular-posts-item">
+          <div class="popular-posts-title"><a href="/posts/ab21860c.html" rel="bookmark">Hexo博客+Next主题深度优化与定制</a></div>
+        </li>
+        <li class="popular-posts-item">
+          <div class="popular-posts-title"><a href="/posts/f68f129b.html" rel="bookmark">Hexo博客+Next主题归档页美化</a></div>
+        </li>
+        <li class="popular-posts-item">
+          <div class="popular-posts-title"><a href="/posts/9c9b482b.html" rel="bookmark">Hexo博客+Next主题鼠标点击特效</a></div>
+        </li>
+        <li class="popular-posts-item">
+          <div class="popular-posts-title"><a href="/posts/d0bc4f5d.html" rel="bookmark">Hexo+Next7.8.0 引入 Folding 容器</a></div>
+        </li>
+      </ul>
+     </details>
+   </div>
+<div class="read-over">-------------------本文结束 <i class="fa fa-paw"></i> 感谢您的阅读-------------------</div>
+
+        <div class="reward-container">
+  <div>坚持原创技术分享，感谢您的支持和鼓励！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="John Xu 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="John Xu 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>John Xu
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://hasaik.com/posts/89ea6c8b.html" title="Hexo博客Valine评论样式美化">https://hasaik.com/posts/89ea6c8b.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      
+      
+       <div id="share" data-weibo-title="分享到微博" data-qq-title="分享到QQ" data-douban-title="分享到豆瓣" class="social-share" data-disabled="qzone,google+,linkedin" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣...">
+          分享到：
+       </div>
+      
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/Hexo/" rel="tag"><i class="fa fa-tag"></i> Hexo</a>
+              <a href="/tags/Valine/" rel="tag"><i class="fa fa-tag"></i> Valine</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/9c9b482b.html" rel="prev" title="Hexo博客+Next主题鼠标点击特效">
+      <i class="fa fa-chevron-left"></i> Hexo博客+Next主题鼠标点击特效
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/f68f129b.html" rel="next" title="Hexo博客+Next主题归档页美化">
+      Hexo博客+Next主题归档页美化 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+
+
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="John Xu" src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">John Xu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">37</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">31</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/XuxuGood" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;XuxuGood" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:22476705@qq.com" title="E-Mail → mailto:22476705@qq.com" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://mailchi.mp/3ca18a2a9749/xuxuy" title="订阅本站 → https:&#x2F;&#x2F;mailchi.mp&#x2F;3ca18a2a9749&#x2F;xuxuy" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-fw fa-heartbeat"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/0ce70d122cd4" title="简书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;0ce70d122cd4" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-fw fa-instagram coffee"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_42889280" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_42889280" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-fw fa-coffee"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://hasaik.com/atom.xml" title="RSS → https:&#x2F;&#x2F;hasaik.com&#x2F;atom.xml"><i class="fa fa-fw fa-rss"></i></a>
+      </span>
+  </div>
+
+
+
+
+   <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+   <script id="myhk" src="https://player.lmih.cn/player/js/player.js" key="158649506326"></script>
+
+
+
+
+  <script async src="/js/cursor/love.min.js"></script>
+
+
+
+<script src="/js/typed.js"></script>
+<script>
+var typed = new Typed('.site-description', {
+  strings: ['人生若只如初见','何事秋风悲画扇','等闲变却故人心','却道故人心易变','骊山语罢清宵半','泪雨霖铃终不怨','何如薄幸锦衣郎','比翼连枝当日愿'],
+  loop: true, //开启循环
+  typeSpeed: 200, //打印的速度。数值越大，速度越慢
+  backSpeed: 100, //延迟时间后才后退，值越大，延迟的时间就越长
+  cursorChar: '&nbsp;<i class="fa fa-heartbeat" id="myheartbeat"></i>' // 用于在在输出字符结尾闪烁的符号
+});
+</script>
+
+
+
+    <div class="links-of-blogroll motion-element links-of-blogroll-block">
+      <div class="links-of-blogroll-title">
+        <!-- modify icon to fire by szw -->
+        <i class="fa fa-history fa-" aria-hidden="true"></i>
+        近期文章
+      </div>
+      <ul class="links-of-blogroll-list">
+        
+        
+          <li>
+            <a href="/posts/41567ba6.html" title="Vue 获取 url 上的参数" target="_blank">Vue 获取 url 上的参数</a>
+          </li>
+        
+          <li>
+            <a href="/posts/7fabafee.html" title="SpringBoot 使用 Allatori 进行代码混淆" target="_blank">SpringBoot 使用 Allatori 进行代码混淆</a>
+          </li>
+        
+          <li>
+            <a href="/posts/d0bc4f5d.html" title="Hexo+Next7.8.0 引入 Folding 容器" target="_blank">Hexo+Next7.8.0 引入 Folding 容器</a>
+          </li>
+        
+          <li>
+            <a href="/posts/a460b91e.html" title="CentOS搭建Gitlab的详细教程" target="_blank">CentOS搭建Gitlab的详细教程</a>
+          </li>
+        
+          <li>
+            <a href="/posts/45c03634.html" title="Spring Boot 通用解决 LocalDateTime 转为字符串后中间含“T”" target="_blank">Spring Boot 通用解决 LocalDateTime 转为字符串后中间含“T”</a>
+          </li>
+        
+      </ul>
+    </div>
+
+
+
+<div style>
+  <canvas id="canvas" style="width:60%;margin-top:20px">当前浏览器不支持canvas，请更换浏览器后再试</canvas>
+</div>
+<script src="/js/canvas-clock.js"></script>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heartbeat"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Xu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">总字数：</span>
+    <span title="总字数">86k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">所需总阅读时间 &asymp;</span>
+    <span title="所需总阅读时间">1:19</span>
+</div><!-- 在网页底部添加网站运行时间 -->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("10/09/2019 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "网站已运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+setInterval("createtime()",250);
+</script>
+
+<!-- 在网页底部添加简体繁体一键切换 -->
+<div class="translate-style">
+    繁/简：<a id="translateLink" href="javascript:translatePage();" rel="external nofollow noreferrer">繁体</a>
+</div>
+<script type="text/javascript" src="/js/tw_cn.js"></script>
+<script type="text/javascript">
+    var defaultEncoding = 2; //网站编写字体是否繁体，1-繁体，2-简体
+    var translateDelay = 0; //延迟时间,若不在前, 要设定延迟翻译时间, 如100表示100ms,默认为0
+    var cookieDomain = "https://tding.top/"; //Cookie地址, 一定要设定, 通常为你的网址
+    var msgToTraditionalChinese = "繁体"; //此处可以更改为你想要显示的文字
+    var msgToSimplifiedChinese = "简体"; //同上，但两处均不建议更改
+    var translateButtonId = "translateLink"; //默认互换id
+    translateInitilization();
+</script>
+
+
+        
+<div class="busuanzi-count">
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="إجمالي الزوار">
+        &nbsp;本站访客数&nbsp;<span id="busuanzi_value_site_uv"></span>人
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="إجمالي المشاهدات">
+        &nbsp;本站总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>次
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+<script data-pjax>
+  (function() {
+    function leancloudSelector(url) {
+      url = encodeURI(url);
+      return document.getElementById(url).querySelector('.leancloud-visitors-count');
+    }
+
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = decodeURI(visitors.id);
+      var title = visitors.dataset.flagTitle;
+
+      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url })))
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+            leancloudSelector(url).innerText = counter.time + 1;
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .catch(error => {
+                console.error('Failed to save visitor count', error);
+              });
+          } else {
+              Counter('post', '/classes/Counter', { title, url, time: 1 })
+                .then(response => response.json())
+                .then(() => {
+                  leancloudSelector(url).innerText = 1;
+                })
+                .catch(error => {
+                  console.error('Failed to create', error);
+                });
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return decodeURI(element.id);
+      });
+
+      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url: { '$in': entries } })))
+        .then(response => response.json())
+        .then(({ results }) => {
+          for (let url of entries) {
+            let target = results.find(item => item.url === url);
+            leancloudSelector(url).innerText = target ? target.time : 0;
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+
+    let { app_id, app_key, server_url } = {"enable":true,"app_id":"gYcUzERw1BSKyARbzWH2OQzu-gzGzoHsz","app_key":"7xvFncnnyG2QI60iDY3E4PuO","security":false,"betterPerformance":true};
+    function fetchData(api_server) {
+      var Counter = (method, url, data) => {
+        return fetch(`${api_server}/1.1${url}`, {
+          method,
+          headers: {
+            'X-LC-Id'     : app_id,
+            'X-LC-Key'    : app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        if (CONFIG.hostname !== location.hostname) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    }
+
+    let api_server = app_id.slice(-9) !== '-MdYXbMMI' ? server_url : `https://${app_id.slice(0, 8).toLowerCase()}.api.lncldglobal.com`;
+
+    if (api_server) {
+      fetchData(api_server);
+    } else {
+      fetch('https://app-router.leancloud.cn/2/route?appId=' + app_id)
+        .then(response => response.json())
+        .then(({ api_server }) => {
+          fetchData('https://' + api_server);
+        });
+    }
+  })();
+</script>
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3.1.1/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/lozad.js/1.14.0/lozad.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.2.1/velocity.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1.2.1/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+  <script data-pjax>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1.4.4/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'gYcUzERw1BSKyARbzWH2OQzu-gzGzoHsz',
+      appKey     : '7xvFncnnyG2QI60iDY3E4PuO',
+      placeholder: "既然来了，那就留个痕迹吧~",
+      avatar     : 'monsterid',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+
+  <script src="/js/activate-power-mode.js"></script>
+  <script>
+    POWERMODE.colorful = true;
+    POWERMODE.shake = false;
+    document.body.addEventListener('input', POWERMODE);
+  </script>
+
+
+
+
+   <script async src="/js/crash_cheat.js"></script>
+
+
+
+<link rel="stylesheet" href="/js/sharejs/css/share.min.css">
+<script src="/js/sharejs/js/social-share.min.js"></script>
+
+
+<script type="text/javascript" src="/js/category-color.js"></script>
+
+
+<script type="text/javascript" src="/js/tag-color.js"></script>
+
+
+<script type="text/javascript" src="/js/links-color.js"></script>
+
+
+<script type="text/javascript" src="/js/top.js"></script>
+
+
+<script type="text/javascript" src="/about/renxi/jscex.min.js"></script>
+<script type="text/javascript" src="/about/renxi/jscex-parser.js"></script>
+<script type="text/javascript" src="/about/renxi/jscex-jit.js"></script>
+<script type="text/javascript" src="/about/renxi/jscex-builderbase.min.js"></script>
+<script type="text/javascript" src="/about/renxi/jscex-async.min.js"></script>
+<script type="text/javascript" src="/about/renxi/jscex-async-powerpack.min.js"></script>
+<script type="text/javascript" src="/about/renxi/functions.js" charset="utf-8"></script>
+<script type="text/javascript" src="/about/renxi/love.js" charset="utf-8"></script>
+<script type="text/javascript" src="/about/renxi/about.js"></script>
+
+
+    <script type="text/javascript" src="/js/password.js"></script>
+    <script type="text/javascript">
+        password('');
+    </script>
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div class="moon-menu-item" onclick="back2bottom()">
+      <i class="fa fa-chevron-down"></i>    </div>
+    
+    <div class="moon-menu-item" onclick="back2top()">
+      <i class="fa fa-chevron-up"></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button" onclick="moonMenuClick()">
+    <svg class="moon-menu-svg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"/>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"/>
+      <g class="moon-menu-points">
+        <circle class="moon-menu-point" r=".2rem" cx="0" cy="-.8rem"/>
+        <circle class="moon-menu-point" r=".2rem"/>
+        <circle class="moon-menu-point" r=".2rem" cx="0" cy=".8rem"/>
+      </g>
+    </svg>
+    <div class="moon-menu-icon">
+    </div>
+    <div class="moon-menu-text">
+    </div>
+  </div>
+</div>
+<script src="/js/injector.js"></script>
+    </div>
+</body>
+</html>
