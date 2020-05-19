@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="google-site-verification" content="Qjx2aydp_6x5Ah5OXkYTFyEqpH4VjYbSveDBh-YYSt0">
+  <meta name="baidu-site-verification" content="nqrNwmGERs">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/themes/blue/pace-theme-minimal.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hasaik.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="本篇介绍一下自己的博客如何添加 RSS 订阅功能。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="为Hexo添加RSS订阅">
+<meta property="og:url" content="https://hasaik.com/posts/19c94341.html">
+<meta property="og:site_name" content="Xu&#39;s Blog">
+<meta property="og:description" content="本篇介绍一下自己的博客如何添加 RSS 订阅功能。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/29/QAuHOO.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/29/QAKg3t.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/29/QAKqg0.png">
+<meta property="article:published_time" content="2019-11-29T16:04:03.000Z">
+<meta property="article:modified_time" content="2020-05-19T10:08:56.507Z">
+<meta property="article:author" content="John Xu">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="Rss订阅">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/11/29/QAuHOO.png">
+
+<link rel="canonical" href="https://hasaik.com/posts/19c94341.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+
+    <meta name="360_site_verification" content="b78db9e81a48e668d5313d031925d270">
+
+
+
+<link rel="stylesheet" href="/css/iziToast.css">
+
+  <title>为Hexo添加RSS订阅 | Xu's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Xu's Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="تشغيل شريط التصفح">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Xu's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">博观而约取，厚积而薄发</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">38</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">9</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">41</span></a>
+
+  </li>
+        <li class="menu-item menu-item-life">
+
+    <a href="/life/" rel="section"><i class="fa fa-fw fa-apple"></i>生活</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
+
+  </li>
+        <li class="menu-item menu-item-top">
+
+    <a href="/top/" rel="section"><i class="fa fa-fw fa-signal"></i>热榜</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" placeholder="搜索...(◕ܫ◕)" spellcheck="false" type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/xuxugood" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="external nofollow noopener noreferrer" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hasaik.com/posts/19c94341.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="John Xu">
+      <meta itemprop="description" content="终有溺水替沧海，再无相思寄巫山~">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xu's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          为Hexo添加RSS订阅
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建于：2019-11-29 16:04:03" itemprop="dateCreated datePublished" datetime="2019-11-29T16:04:03Z">2019-11-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="更新于：2020-05-19 10:08:56" itemprop="dateModified" datetime="2020-05-19T10:08:56Z">2020-05-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/posts/19c94341.html" class="post-meta-item leancloud_visitors" data-flag-title="为Hexo添加RSS订阅" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/posts/19c94341.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/posts/19c94341.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+
+            <span class="post-meta-item" title="文章字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">文章字数：</span>
+              <span>636</span>
+            </span>
+            <span class="post-meta-item" title="所需阅读时间">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">所需阅读时间 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+            <div class="post-description">本篇介绍一下自己的博客如何添加 RSS 订阅功能。</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="配置">配置</h2>
+<p>首先添加功能插件，在 hexo 项目根目录下执行该命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-feed --save</span><br></pre></td></tr></table></figure>
+<p>然后在 hexo 根目录下的 <code>_config.yml</code> 文件中添加配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#订阅RSS</span></span><br><span class="line">feed:</span><br><span class="line">  <span class="built_in">type</span>: atom</span><br><span class="line">  path: atom.xml</span><br><span class="line">  <span class="built_in">limit</span>: <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<p>配置含义：</p>
+<ol>
+<li><code>type</code>: RSS的类型(atom/rss2)</li>
+<li><code>path</code>: 文件路径，默认是 atom.xml/rss2.xml</li>
+<li><code>limit</code>: 展示文章的数量,使用 0 或则 false 代表展示全部</li>
+<li><code>hub</code>: URL of the PubSubHubbub hubs (如果使用不到可以为空)</li>
+<li><code>content</code>: （可选）设置 <code>true</code> 可以在 RSS 文件中包含文章全部内容，默认：<code>false</code></li>
+<li><code>content_limit</code>: （可选）摘要中使用的帖子内容的默认长度。 仅在内容设置为false且未显示自定义帖子描述时才使用。</li>
+<li><code>content_limit_delim</code>: （可选）如果content_limit用于缩短post内容，则仅在此分隔符的最后一次出现时进行剪切，然后才达到字符限制。默认不使用。</li>
+<li><code>icon</code>: （可选）自定义订阅图标，默认设置为主配置中指定的图标。</li>
+<li><code>order_by</code>: 订阅内容的顺序。 (默认: -date)</li>
+</ol>
+<p>然后在 theme 目录下的 _config.yml 文件中添加配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rss: /atom.xml</span><br></pre></td></tr></table></figure>
+<p>随后重新生成博客静态文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean &amp;&amp; hexo g</span><br></pre></td></tr></table></figure>
+<p>在 <code>public</code> 文件夹中就会生成 <code>atom.xml</code> 文件，部署后直接在根目录中访问该文件即可</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://hasaik.com/atom.xml</span><br></pre></td></tr></table></figure>
+<h2 id="订阅">订阅</h2>
+<p>下面以我博客为例子</p>
+<p>订阅地址为：<a href="https://hasaik.com/atom.xml">https://hasaik.com/atom.xml</a>（PS：订阅地址改为自己的博客）</p>
+<p><img data-src="https://s2.ax1x.com/2019/11/29/QAuHOO.png" alt="新建订阅"></p>
+<p><img data-src="https://s2.ax1x.com/2019/11/29/QAKg3t.png" alt="订阅成功"></p>
+<p><img data-src="https://s2.ax1x.com/2019/11/29/QAKqg0.png" alt="查看邮箱中的博文"></p>
+<p>以上就是关于博客 RSS 订阅的全部介绍，如果您喜欢我发布的文章，亦可订阅<a href="https://mailchi.mp/3ca18a2a9749/xuxuy" target="_blank" rel="external nofollow noopener noreferrer">小站</a>，小站将第一时间为您奉上新发布的文章。</p>
+
+    </div>
+
+    
+    
+    
+      
+  <div class="popular-posts-header">📚&nbsp;&nbsp;相关文章</div>
+  <div id="popular-custom">
+    <details>
+      <summary>点击查看</summary>
+      <ul class="popular-posts">
+        <li class="popular-posts-item">
+          <div class="popular-posts-title"><a href="/posts/7fbe9500.html" rel="bookmark">Hexo博客中加入豆瓣读书页面</a></div>
+        </li>
+        <li class="popular-posts-item">
+          <div class="popular-posts-title"><a href="/posts/ab21860c.html" rel="bookmark">Hexo博客+Next主题深度优化与定制</a></div>
+        </li>
+        <li class="popular-posts-item">
+          <div class="popular-posts-title"><a href="/posts/9b280ea3.html" rel="bookmark">Hexo中使用emoji表情</a></div>
+        </li>
+        <li class="popular-posts-item">
+          <div class="popular-posts-title"><a href="/posts/dd9d9f86.html" rel="bookmark">本站已开通订阅功能</a></div>
+        </li>
+        <li class="popular-posts-item">
+          <div class="popular-posts-title"><a href="/posts/61913369.html" rel="bookmark">Hexo优化之lazyload图片懒加载</a></div>
+        </li>
+        <li class="popular-posts-item">
+          <div class="popular-posts-title"><a href="/posts/bf9eba42.html" rel="bookmark">使用增强版valine</a></div>
+        </li>
+        <li class="popular-posts-item">
+          <div class="popular-posts-title"><a href="/posts/f68f129b.html" rel="bookmark">Hexo博客+Next主题归档页美化</a></div>
+        </li>
+        <li class="popular-posts-item">
+          <div class="popular-posts-title"><a href="/posts/89ea6c8b.html" rel="bookmark">Hexo博客Valine评论样式美化</a></div>
+        </li>
+        <li class="popular-posts-item">
+          <div class="popular-posts-title"><a href="/posts/9c9b482b.html" rel="bookmark">Hexo博客+Next主题鼠标点击特效</a></div>
+        </li>
+        <li class="popular-posts-item">
+          <div class="popular-posts-title"><a href="/posts/d0bc4f5d.html" rel="bookmark">Hexo+Next7.8.0 引入 Folding 容器</a></div>
+        </li>
+      </ul>
+     </details>
+   </div>
+<div class="read-over">-------------------本文结束 <i class="fa fa-paw"></i> 感谢您的阅读-------------------</div>
+
+        <div class="reward-container">
+  <div>坚持原创技术分享，感谢您的支持和鼓励！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="John Xu 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="John Xu 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>John Xu
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://hasaik.com/posts/19c94341.html" title="为Hexo添加RSS订阅">https://hasaik.com/posts/19c94341.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      
+      
+       <div id="share" data-weibo-title="分享到微博" data-qq-title="分享到QQ" data-douban-title="分享到豆瓣" class="social-share" data-disabled="qzone,google+,linkedin" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣...">
+          分享到：
+       </div>
+      
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/Hexo/" rel="tag"><i class="fa fa-tag"></i> Hexo</a>
+              <a href="/tags/Rss/" rel="tag"><i class="fa fa-tag"></i> Rss</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/b4831a5e.html" rel="prev" title="SpringBoot两种打包方式">
+      <i class="fa fa-chevron-left"></i> SpringBoot两种打包方式
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/4394a738.html" rel="next" title="Vue中Axios的封装与使用">
+      Vue中Axios的封装与使用 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+
+
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#配置"><span class="nav-number">1.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#订阅"><span class="nav-number">2.</span> <span class="nav-text">订阅</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="John Xu" src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">John Xu</p>
+  <div class="site-description" itemprop="description">终有溺水替沧海，再无相思寄巫山~</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">41</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/XuxuGood" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;XuxuGood" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:22476705@qq.com" title="E-Mail → mailto:22476705@qq.com" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://mailchi.mp/3ca18a2a9749/xuxuy" title="订阅本站 → https:&#x2F;&#x2F;mailchi.mp&#x2F;3ca18a2a9749&#x2F;xuxuy" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-fw fa-heartbeat"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/0ce70d122cd4" title="简书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;0ce70d122cd4" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-fw fa-instagram coffee"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_42889280" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_42889280" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-fw fa-coffee"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://hasaik.com/atom.xml" title="RSS → https:&#x2F;&#x2F;hasaik.com&#x2F;atom.xml"><i class="fa fa-fw fa-rss"></i></a>
+      </span>
+  </div>
+
+
+
+
+   <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+   <script id="myhk" src="https://player.lmih.cn/player/js/player.js" key="158649506326"></script>
+
+
+
+
+  <script async src="/js/cursor/love.min.js"></script>
+
+
+
+
+    
+    <script src="/js/typewriter-color.js"></script>
+
+
+
+
+    <div class="links-of-blogroll motion-element links-of-blogroll-block">
+      <div class="links-of-blogroll-title">
+        <!-- modify icon to fire by szw -->
+        <i class="fa fa-history fa-" aria-hidden="true"></i>
+        近期文章
+      </div>
+      <ul class="links-of-blogroll-list">
+        
+        
+          <li>
+            <a href="/posts/fe5c5e4f.html" title="事务的四个特性以及事务的隔离级别" target="_blank">事务的四个特性以及事务的隔离级别</a>
+          </li>
+        
+          <li>
+            <a href="/posts/41567ba6.html" title="Vue 获取 url 上的参数" target="_blank">Vue 获取 url 上的参数</a>
+          </li>
+        
+          <li>
+            <a href="/posts/7fabafee.html" title="SpringBoot 使用 Allatori 进行代码混淆" target="_blank">SpringBoot 使用 Allatori 进行代码混淆</a>
+          </li>
+        
+          <li>
+            <a href="/posts/d0bc4f5d.html" title="Hexo+Next7.8.0 引入 Folding 容器" target="_blank">Hexo+Next7.8.0 引入 Folding 容器</a>
+          </li>
+        
+          <li>
+            <a href="/posts/a460b91e.html" title="CentOS搭建Gitlab的详细教程" target="_blank">CentOS搭建Gitlab的详细教程</a>
+          </li>
+        
+      </ul>
+    </div>
+
+
+
+<div style>
+  <canvas id="canvas" style="width:60%;margin-top:20px">当前浏览器不支持canvas，请更换浏览器后再试</canvas>
+</div>
+<script src="/js/canvas-clock.js"></script>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heartbeat"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Xu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">总字数：</span>
+    <span title="总字数">89k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">所需总阅读时间 &asymp;</span>
+    <span title="所需总阅读时间">1:21</span>
+</div><!-- 在网页底部添加网站运行时间 -->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("10/09/2019 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "网站已运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+setInterval("createtime()",250);
+</script>
+
+<!-- 在网页底部添加简体繁体一键切换 -->
+<div class="translate-style">
+    繁/简：<a id="translateLink" href="javascript:translatePage();" rel="external nofollow noreferrer">繁体</a>
+</div>
+<script type="text/javascript" src="/js/tw_cn.js"></script>
+<script type="text/javascript">
+    var defaultEncoding = 2; //网站编写字体是否繁体，1-繁体，2-简体
+    var translateDelay = 0; //延迟时间,若不在前, 要设定延迟翻译时间, 如100表示100ms,默认为0
+    var cookieDomain = "https://tding.top/"; //Cookie地址, 一定要设定, 通常为你的网址
+    var msgToTraditionalChinese = "繁体"; //此处可以更改为你想要显示的文字
+    var msgToSimplifiedChinese = "简体"; //同上，但两处均不建议更改
+    var translateButtonId = "translateLink"; //默认互换id
+    translateInitilization();
+</script>
+
+
+
+  <script src="/js/activate-power-mode.js"></script>
+  <script>
+    POWERMODE.colorful = true;
+    POWERMODE.shake = false;
+    document.body.addEventListener('input', POWERMODE);
+  </script>
+
+
+
+
+   <script async src="/js/crash_cheat.js"></script>
+
+
+
+<script src="/js/iziToast.js"></script>
+<script>
+    //设置 iziToast
+    iziToast.settings({
+        timeout: 3000,
+        pauseOnHover: true,
+        close: true,
+        progressBar: true,
+    });
+</script>
+
+
+        
+<div class="busuanzi-count">
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="إجمالي الزوار">
+        &nbsp;本站访客数&nbsp;<span id="busuanzi_value_site_uv"></span>人
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="إجمالي المشاهدات">
+        &nbsp;本站总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>次
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+<script data-pjax>
+  (function() {
+    function leancloudSelector(url) {
+      url = encodeURI(url);
+      return document.getElementById(url).querySelector('.leancloud-visitors-count');
+    }
+
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = decodeURI(visitors.id);
+      var title = visitors.dataset.flagTitle;
+
+      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url })))
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+            leancloudSelector(url).innerText = counter.time + 1;
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .catch(error => {
+                console.error('Failed to save visitor count', error);
+              });
+          } else {
+              Counter('post', '/classes/Counter', { title, url, time: 1 })
+                .then(response => response.json())
+                .then(() => {
+                  leancloudSelector(url).innerText = 1;
+                })
+                .catch(error => {
+                  console.error('Failed to create', error);
+                });
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return decodeURI(element.id);
+      });
+
+      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url: { '$in': entries } })))
+        .then(response => response.json())
+        .then(({ results }) => {
+          for (let url of entries) {
+            let target = results.find(item => item.url === url);
+            leancloudSelector(url).innerText = target ? target.time : 0;
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+
+    let { app_id, app_key, server_url } = {"enable":true,"app_id":"gYcUzERw1BSKyARbzWH2OQzu-gzGzoHsz","app_key":"7xvFncnnyG2QI60iDY3E4PuO","security":false,"betterPerformance":true};
+    function fetchData(api_server) {
+      var Counter = (method, url, data) => {
+        return fetch(`${api_server}/1.1${url}`, {
+          method,
+          headers: {
+            'X-LC-Id'     : app_id,
+            'X-LC-Key'    : app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        if (CONFIG.hostname !== location.hostname) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    }
+
+    let api_server = app_id.slice(-9) !== '-MdYXbMMI' ? server_url : `https://${app_id.slice(0, 8).toLowerCase()}.api.lncldglobal.com`;
+
+    if (api_server) {
+      fetchData(api_server);
+    } else {
+      fetch('https://app-router.leancloud.cn/2/route?appId=' + app_id)
+        .then(response => response.json())
+        .then(({ api_server }) => {
+          fetchData('https://' + api_server);
+        });
+    }
+  })();
+</script>
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3.1.1/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/lozad.js/1.14.0/lozad.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.2.1/velocity.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1.2.1/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+  <script data-pjax>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'gYcUzERw1BSKyARbzWH2OQzu-gzGzoHsz',
+      appKey     : '7xvFncnnyG2QI60iDY3E4PuO',
+      placeholder: "📢📢📢留下邮箱可以收到回复提醒哦~",
+      avatar     : 'monsterid',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : '',
+      // 设置表情包地址
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/XuxuGood/blogImages/emoji/',
+      // 表情title和图片映射
+      emojiMaps: {
+          "weibo2": "weibo/d_aoteman.png",
+          "weibo3": "weibo/d_baibai.png",
+          "weibo4": "weibo/d_baobao.png",
+          "weibo5": "weibo/d_beishang.png",
+          "weibo6": "weibo/d_bingbujiandan.png",
+          "weibo7": "weibo/d_bishi.png",
+          "weibo8": "weibo/d_bizui.png",
+          "weibo9": "weibo/d_chanzui.png",
+          "weibo10": "weibo/d_chigua.png",
+          "weibo11": "weibo/d_chijing.png",
+          "weibo12": "weibo/d_dahaqi.png",
+          "weibo13": "weibo/d_dalian.png",
+          "weibo14": "weibo/d_ding.png",
+          "weibo15": "weibo/d_doge.png",
+          "weibo16": "weibo/d_erha.png",
+          "weibo17": "weibo/d_feijie.png",
+          "weibo18": "weibo/d_feizao.png",
+          "weibo19": "weibo/d_ganmao.png",
+          "weibo20": "weibo/d_guile.png",
+          "weibo21": "weibo/d_guzhang.png",
+          "weibo22": "weibo/d_haha.png",
+          "weibo23": "weibo/d_haixiu.png",
+          "weibo24": "weibo/d_han.png",
+          "weibo25": "weibo/d_hehe.png",
+          "weibo26": "weibo/d_heiheihei.png",
+          "weibo27": "weibo/d_heixian.png",
+          "weibo28": "weibo/d_heng.png",
+          "weibo29": "weibo/d_huaixiao.png",
+          "weibo30": "weibo/d_huaxin.png",
+          "weibo31": "weibo/d_jiyan.png",
+          "weibo32": "weibo/d_keai.png",
+          "weibo33": "weibo/d_kelian.png",
+          "weibo34": "weibo/d_ku.png",
+          "weibo35": "weibo/d_kulou.png",
+          "weibo36": "weibo/d_kun.png",
+          "weibo37": "weibo/d_landelini.png",
+          "weibo38": "weibo/d_lang.png",
+          "weibo39": "weibo/d_lei.png",
+          "weibo40": "weibo/d_miao.png",
+          "weibo41": "weibo/d_nanhaier.png",
+          "weibo42": "weibo/d_nu.png",
+          "weibo43": "weibo/d_numa.png",
+          "weibo44": "weibo/d_nvhaier.png",
+          "weibo45": "weibo/d_qian.png",
+          "weibo46": "weibo/d_qinqin.png",
+          "weibo47": "weibo/d_shayan.png",
+          "weibo48": "weibo/d_shengbing.png",
+          "weibo49": "weibo/d_shenshou.png",
+          "weibo50": "weibo/d_shiwang.png",
+          "weibo51": "weibo/d_shuai.png",
+          "weibo52": "weibo/d_shuijiao.png",
+          "weibo53": "weibo/d_sikao.png",
+          "weibo54": "weibo/d_taikaixin.png",
+          "weibo55": "weibo/d_tanshou.png",
+          "weibo56": "weibo/d_tian.png",
+          "weibo57": "weibo/d_touxiao.png",
+          "weibo58": "weibo/d_tu.png",
+          "weibo59": "weibo/d_tuzi.png",
+          "weibo60": "weibo/d_wabishi.png",
+          "weibo61": "weibo/d_weiqu.png",
+          "weibo62": "weibo/d_wu.png",
+          "weibo63": "weibo/d_xiaoku.png",
+          "weibo64": "weibo/d_xingxingyan.png",
+          "weibo65": "weibo/d_xiongmao.png",
+          "weibo66": "weibo/d_xixi.png",
+          "weibo67": "weibo/d_xu.png",
+          "weibo68": "weibo/d_yinxian.png",
+          "weibo69": "weibo/d_yiwen.png",
+          "weibo70": "weibo/d_youhengheng.png",
+          "weibo71": "weibo/d_yun.png",
+          "weibo72": "weibo/d_yunbei.png",
+          "weibo73": "weibo/d_zhuakuang.png",
+          "weibo74": "weibo/d_zhutou.png",
+          "weibo75": "weibo/d_zuiyou.png",
+          "weibo76": "weibo/emoji_0x1f31f.png",
+          "weibo77": "weibo/emoji_0x1f349.png",
+          "weibo78": "weibo/emoji_0x1f357.png",
+          "weibo79": "weibo/emoji_0x1f384.png",
+          "weibo80": "weibo/emoji_0x1f44f.png",
+          "weibo81": "weibo/emoji_0x1f47b.png",
+          "weibo82": "weibo/emoji_0x1f47f.png",
+          "weibo83": "weibo/emoji_0x1f48a.png",
+          "weibo84": "weibo/emoji_0x1f4a3.png",
+          "weibo85": "weibo/emoji_0x1f4a9.png",
+          "weibo86": "weibo/emoji_0x1f631.png",
+          "weibo87": "weibo/emoji_0x1f643.png",
+          "weibo88": "weibo/emoji_0x1f645.png",
+          "weibo89": "weibo/emoji_0x1f648.png",
+          "weibo90": "weibo/emoji_0x1f649.png",
+          "weibo91": "weibo/emoji_0x1f64a.png",
+          "weibo92": "weibo/emoji_0x1f64b.png",
+          "weibo93": "weibo/emoji_0x1f64f.png",
+          "weibo94": "weibo/emoji_0x1f913.png",
+          "weibo95": "weibo/emoji_0x1f917.png",
+          "weibo96": "weibo/emoji_0x26a1.png",
+          "weibo97": "weibo/h_buyao.png",
+          "weibo98": "weibo/h_good.png",
+          "weibo99": "weibo/h_haha.png",
+          "weibo100": "weibo/h_jiayou.png",
+          "weibo101": "weibo/h_lai.png",
+          "weibo102": "weibo/h_ok.png",
+          "weibo103": "weibo/h_quantou.png",
+          "weibo104": "weibo/h_ruo.png",
+          "weibo105": "weibo/h_woshou.png",
+          "weibo106": "weibo/h_ye.png",
+          "weibo107": "weibo/h_zan.png",
+          "weibo108": "weibo/h_zuoyi.png",
+          "bilibilitv2": "bilibilitv/[tv_doge].png",
+          "bilibilitv3": "bilibilitv/[tv_亲亲].png",
+          "bilibilitv4": "bilibilitv/[tv_偷笑].png",
+          "bilibilitv5": "bilibilitv/[tv_再见].png",
+          "bilibilitv6": "bilibilitv/[tv_冷漠].png",
+          "bilibilitv7": "bilibilitv/[tv_发怒].png",
+          "bilibilitv8": "bilibilitv/[tv_发财].png",
+          "bilibilitv9": "bilibilitv/[tv_可爱].png",
+          "bilibilitv10": "bilibilitv/[tv_吐血].png",
+          "bilibilitv11": "bilibilitv/[tv_呆].png",
+          "bilibilitv12": "bilibilitv/[tv_呕吐].png",
+          "bilibilitv13": "bilibilitv/[tv_困].png",
+          "bilibilitv14": "bilibilitv/[tv_坏笑].png",
+          "bilibilitv15": "bilibilitv/[tv_大佬].png",
+          "bilibilitv16": "bilibilitv/[tv_大哭].png",
+          "bilibilitv17": "bilibilitv/[tv_委屈].png",
+          "bilibilitv18": "bilibilitv/[tv_害羞].png",
+          "bilibilitv19": "bilibilitv/[tv_尴尬].png",
+          "bilibilitv20": "bilibilitv/[tv_微笑].png",
+          "bilibilitv21": "bilibilitv/[tv_思考].png",
+          "bilibilitv22": "bilibilitv/[tv_惊吓].png",
+          "bilibilitv23": "bilibilitv/[tv_打脸].png",
+          "bilibilitv24": "bilibilitv/[tv_抓狂].png",
+          "bilibilitv25": "bilibilitv/[tv_抠鼻].png",
+          "bilibilitv26": "bilibilitv/[tv_斜眼笑].png",
+          "bilibilitv27": "bilibilitv/[tv_无奈].png",
+          "bilibilitv28": "bilibilitv/[tv_晕].png",
+          "bilibilitv29": "bilibilitv/[tv_流汗].png",
+          "bilibilitv30": "bilibilitv/[tv_流泪].png",
+          "bilibilitv31": "bilibilitv/[tv_流鼻血].png",
+          "bilibilitv32": "bilibilitv/[tv_点赞].png",
+          "bilibilitv33": "bilibilitv/[tv_生气].png",
+          "bilibilitv34": "bilibilitv/[tv_生病].png",
+          "bilibilitv35": "bilibilitv/[tv_疑问].png",
+          "bilibilitv36": "bilibilitv/[tv_白眼].png",
+          "bilibilitv37": "bilibilitv/[tv_皱眉].png",
+          "bilibilitv38": "bilibilitv/[tv_目瞪口呆].png",
+          "bilibilitv39": "bilibilitv/[tv_睡着].png",
+          "bilibilitv40": "bilibilitv/[tv_笑哭].png",
+          "bilibilitv41": "bilibilitv/[tv_腼腆].png",
+          "bilibilitv42": "bilibilitv/[tv_色].png",
+          "bilibilitv43": "bilibilitv/[tv_调侃].png",
+          "bilibilitv44": "bilibilitv/[tv_调皮].png",
+          "bilibilitv45": "bilibilitv/[tv_鄙视].png",
+          "bilibilitv46": "bilibilitv/[tv_闭嘴].png",
+          "bilibilitv47": "bilibilitv/[tv_难过].png",
+          "bilibilitv48": "bilibilitv/[tv_馋].png",
+          "bilibilitv49": "bilibilitv/[tv_鬼脸].png",
+          "bilibilitv50": "bilibilitv/[tv_黑人问号].png",
+          "bilibilitv51": "bilibilitv/[tv_鼓掌].png"
+      }
+    });
+  }, window.Valine);
+});
+</script>
+
+<link rel="stylesheet" href="/js/sharejs/css/share.min.css">
+<script src="/js/sharejs/js/social-share.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+    <script type="text/javascript" src="/js/password.js"></script>
+    <script type="text/javascript">
+        password('');
+    </script>
+
+
+
+
+<script type="text/javascript" src="/js/valine-comment-jump.js"></script>
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div class="moon-menu-item" onclick="back2bottom()">
+      <i class="fa fa-chevron-down"></i>    </div>
+    
+    <div class="moon-menu-item" onclick="back2top()">
+      <i class="fa fa-chevron-up"></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button" onclick="moonMenuClick()">
+    <svg class="moon-menu-svg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"/>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"/>
+      <g class="moon-menu-points">
+        <circle class="moon-menu-point" r=".2rem" cx="0" cy="-.8rem"/>
+        <circle class="moon-menu-point" r=".2rem"/>
+        <circle class="moon-menu-point" r=".2rem" cx="0" cy=".8rem"/>
+      </g>
+    </svg>
+    <div class="moon-menu-icon">
+    </div>
+    <div class="moon-menu-text">
+    </div>
+  </div>
+</div>
+<script src="/js/injector.js"></script>
+    </div>
+</body>
+</html>
