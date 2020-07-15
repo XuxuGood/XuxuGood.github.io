@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Allow: /archives/
+Disallow: /categories/
+Disallow: /tags/
+Disallow: /gallery/
+Disallow: /links/
+Disallow: /photos/
+Disallow: /resume/
+
+Sitemap: https://hasaik.com/sitemap.xml
+Sitemap: https://hasaik.com/baidusitemap.xml
