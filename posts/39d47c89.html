@@ -1,0 +1,558 @@
+<!-- build time:Thu Aug 20 2020 12:17:59 GMT+0000 (Coordinated Universal Time) --><!DOCTYPE html><html><head hexo-theme="https://github.com/volantis-x/hexo-theme-volantis/tree/3.0.0"><meta charset="utf-8"><meta name="renderer" content="webkit"><meta name="force-rendering" content="webkit"><meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"><meta name="HandheldFriendly" content="True"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><title>Hexo+NexT 博客搭建相册 - Xu&#39;s Blog</title><meta name="keywords" content="Hexo,Next,Photos,博客相册"><meta name="description" content="Next主题是不带相册功能的，但是我们还想拥有一个自己的小相册，怎么办呢，经过一番资料的查找与爬坑，相册功能终于搭建成功，接下来为大家分享一下如何实现。"><link rel="alternate" href="/atom.xml" title="Xu's Blog" type="application/atom+xml"><meta name="theme-color" content="#FFFFFF"><meta name="msapplication-TileColor" content="#1BC3FB"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css"><link rel="shortcut icon" type="image/x-icon" href="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/favicon.png"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/message.css" type="text/css"><script src="https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js"></script></head><body><header class="l_header auto shadow blur" style="opacity:0"><div class="container"><div class="wrapper"><div class="nav-sub"><p class="title"></p><ul class="switcher nav-list-h m-phone" id="pjax-header-nav-list"><li><a class="s-comment fas fa-comments fa-fw" target="_self" href="javascript:void(0)"></a></li><li><a class="s-toc fas fa-list fa-fw" target="_self" href="javascript:void(0)"></a></li></ul></div><div class="nav-main"><a class="title flat-box" target="_self" href="/"><i class="fas fa-dragon"></i> Xu's Blog</a><div class="menu navigation"><ul class="nav-list-h m-pc"><li><a class="menuitem flat-box faa-parent animated-hover" href="/" id="home"><i class="fas fa-home faa-tada fa-fw"></i> 主页</a></li><li><a class="menuitem flat-box faa-parent animated-hover"><i class="fas fa-tasks fa-fw"></i> 找文章</a><ul class="list-v"><li><a class="menuitem flat-box faa-parent animated-hover" href="/archives/" id="archives"><i class="fas fa-archive faa-tada fa-fw"></i> 归档</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/" id="categories"><i class="fas fa-folder-open faa-tada fa-fw"></i> 分类</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/tags/" id="tags"><i class="fas fa-tags faa-tada fa-fw"></i> 标签</a></li></ul></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/links/" id="links"><i class="fas fa-link faa-tada fa-fw"></i> 朋友</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/about/" id="about"><i class="fas fa-info-circle faa-tada fa-fw"></i> 关于</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/comments/" id="comments"><i class="fas fa-comments faa-tada fa-fw"></i> 留言</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="https://travellings.now.sh" id="https:travellingsnowsh" rel="external nofollow noopener noreferrer" target="_blank"><i class="fas fa-paper-plane faa-tada fa-fw"></i> 开往</a></li><li><a class="menuitem flat-box faa-parent animated-hover"><i class="fas fa-fan fa-spin fa-fw"></i> 更多</a><ul class="list-v"><li><a class="menuitem flat-box faa-parent animated-hover" href="/photos/" id="photos"><i class="fas fa-camera-retro faa-tada fa-fw"></i> 我的相册</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/resume/" id="resume"><i class="fas fa-drafting-compass faa-tada fa-fw"></i> 我的简历</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="https://gycuzerwzfyu.leanapp.cn/" rel="external nofollow noopener noreferrer" target="_blank" id="https:gycuzerwzfyuleanappcn"><i class="fas fa-comments faa-tada fa-fw"></i> 评论管理</a></li><hr><li><a class="menuitem flat-box faa-parent animated-hover" href="/tools/" id="tools"><i class="fas fa-cog faa-tada fa-fw"></i> 实用工具</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/catchTheCat/" id="catchTheCat"><i class="fas fa-cat faa-tada fa-fw"></i> 围住小猫</a></li></ul></li></ul></div><div class="m_search"><form name="searchform" class="form u-search-form"><i class="icon fas fa-search fa-fw"></i> <input type="text" class="input u-search-input" placeholder="搜索...(◕ܫ◕)"></form></div><div style="display:flex;z-index:1"><canvas id="particleClockCanvas" style="width:100px;margin-top:4px;margin-left:20px"></canvas></div><script src="/js/canvas-clock.js"></script><style>@media screen and (max-width:768px){#particleClockCanvas{display:none}}</style><ul class="switcher nav-list-h m-phone"><li><a class="s-search fas fa-search fa-fw" target="_self" href="javascript:void(0)"></a></li><li><a class="s-menu fas fa-bars fa-fw" target="_self" href="javascript:void(0)"></a><ul class="menu-phone list-v navigation white-box"><li><a class="menuitem flat-box faa-parent animated-hover" href="/" id="home"><i class="fas fa-home faa-tada fa-fw"></i> 主页</a></li><li><a class="menuitem flat-box faa-parent animated-hover"><i class="fas fa-tasks fa-fw"></i> 找文章</a><ul class="list-v"><li><a class="menuitem flat-box faa-parent animated-hover" href="/archives/" id="archives"><i class="fas fa-archive faa-tada fa-fw"></i> 归档</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/" id="categories"><i class="fas fa-folder-open faa-tada fa-fw"></i> 分类</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/tags/" id="tags"><i class="fas fa-tags faa-tada fa-fw"></i> 标签</a></li></ul></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/links/" id="links"><i class="fas fa-link faa-tada fa-fw"></i> 朋友</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/about/" id="about"><i class="fas fa-info-circle faa-tada fa-fw"></i> 关于</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/comments/" id="comments"><i class="fas fa-comments faa-tada fa-fw"></i> 留言</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="https://travellings.now.sh" id="https:travellingsnowsh" rel="external nofollow noopener noreferrer" target="_blank"><i class="fas fa-paper-plane faa-tada fa-fw"></i> 开往</a></li><li><a class="menuitem flat-box faa-parent animated-hover"><i class="fas fa-fan fa-spin fa-fw"></i> 更多</a><ul class="list-v"><li><a class="menuitem flat-box faa-parent animated-hover" href="/photos/" id="photos"><i class="fas fa-camera-retro faa-tada fa-fw"></i> 我的相册</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/resume/" id="resume"><i class="fas fa-drafting-compass faa-tada fa-fw"></i> 我的简历</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="https://gycuzerwzfyu.leanapp.cn/" rel="external nofollow noopener noreferrer" target="_blank" id="https:gycuzerwzfyuleanappcn"><i class="fas fa-comments faa-tada fa-fw"></i> 评论管理</a></li><hr><li><a class="menuitem flat-box faa-parent animated-hover" href="/tools/" id="tools"><i class="fas fa-cog faa-tada fa-fw"></i> 实用工具</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/catchTheCat/" id="catchTheCat"><i class="fas fa-cat faa-tada fa-fw"></i> 围住小猫</a></li></ul></li></ul></li></ul></div></div></div></header><div class="l_body"><div class="l_cover"><div class="cover-wrapper post featured" style="display:none"><div class="cover-backstretch"></div><div class="cover-body"><div class="top"><img no-lazy class="logo" src="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/logo.png"></div><div class="bottom"><div class="menu navigation"><div class="list-h"><a href="/" id="home"><img src="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/menu/home.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/menu/home.png" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif"><p>主页</p></a><a href="/archives/" id="archives"><img src="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/menu/archive.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/menu/archive.png" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif"><p>归档</p></a><a href="/links/" id="links"><img src="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/menu/link.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/menu/link.png" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif"><p>朋友</p></a><a href="/comments/" id="comments"><img src="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/menu/comments.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/menu/comments.png" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif"><p>留言</p></a><a href="/about/" id="about"><img src="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/menu/about.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/menu/about.png" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif"><p>关于</p></a></div></div></div></div><div class="scroll-down" style="display:none"><i class="fa fa-chevron-down scroll-down-effects"></i></div></div></div><div class="safearea"><div class="body-wrapper" id="pjax-container"><div id="pjax-data" style="display:none"><div id="pjax-ispage">true</div><div id="pjax-pageTitle">Hexo+NexT 博客搭建相册</div><div id="pjax-enable-cover">true</div><div id="pjax-comment-path">none</div><div id="pjax-comment-placeholder">none</div></div><script>document.getElementsByClassName("cover-wrapper")[0].style.display="none",document.getElementsByClassName("l_header","cover-wrapper")[0].classList.add("show")</script><div class="l_main"><article id="post" class="post white-box reveal md shadow floatable article-type-post" itemscope itemprop="blogPost"><div class="article-header"><div class="article-meta" id="top"><a title="Hexo+NexT 博客搭建相册" href="/posts/39d47c89.html"><img class="thumbnail lazyload placeholder" src="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/article-thumbnail/hexo.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/article-thumbnail/hexo.png" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif"></a><h1 class="title"><a href="/posts/39d47c89.html">Hexo+NexT 博客搭建相册</a></h1><div class="new-meta-box"><div class="new-meta-item author"><a class="author" href="/" rel="nofollow"><img no-lazy src="https://hasaik.com/images/avatar.jpg"><p>Mr. X</p></a></div><div class="new-meta-item date"><a class="notlink"><i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i><p>发布于：2019-10-15</p></a></div><div class="new-meta-item category"><a class="notlink"><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i> <a class="category-link" href="/categories/Hexo/">Hexo</a></a></div><div class="new-meta-item comments-count"><a href="javascript:void(0);" onclick="scrollToComments()"><i class="fas fa-comment-dots fa-fw"></i> <span class="valine-comment-count" data-xid="/posts/39d47c89.html">0</span> <span class="leancloud-comments-count">&nbsp;条评论</span></a></div><script>function scrollToComments(){
+       // 校正页面定位（被导航栏挡住的区域）
+       var scrollCorrection = 80; // (header height = 64px) + (gap = 16px)
+       var $headerAnchor = $('.l_header');
+       if ($headerAnchor[0]) {
+           scrollCorrection = $headerAnchor[0].clientHeight + 16;
+       }
+       scrollToElement($('.l_body .comments'),scrollCorrection);
+    }
+   // 校正页面定位（被导航栏挡住的区域）
+   function scrollToElement(elem, scrollCorrection) {
+       const $elem = elem.href ? $(elem.getAttribute('href')) : $(elem);
+       $('html, body').animate({
+           'scrollTop': $elem.offset().top - scrollCorrection
+       }, 500);
+   }</script><div class="new-meta-item wordcount"><a class="notlink"><i class="fas fa-keyboard fa-fw" aria-hidden="true"></i><p>字数统计：2.9k字</p></a></div><div class="new-meta-item readtime"><a class="notlink"><i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i><p>阅读时长≈ 15分钟</p></a></div></div></div></div><section class="article typo"><div class="article-entry" itemprop="articleBody"><p>首先说一下实现想法，在 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://dev.tencent.com/">腾讯云开发者平台</a> 上面创建一个相册库（PS：腾讯云开发者平台是腾讯云与 CODING 共同为开发者打造的云端工具平台，旨在为更多的开发者带去便捷、高效的开发体验，提供包括需求管理、代码编写、代码管理、代码运行的整套系统），当有更新时，提交到腾讯云开发者平台上面，同时在博客 resource 下面生成一个 data.json 来生成所有相册文件的 json 文件，博客读取 data.json 来展示相册。</p><p>实现效果链接：</p><a href="https://hasaik.com/photos/" target="_blank" class="LinkCard"><style type="text/css">.LinkCard,.LinkCard:hover{text-decoration:none;border:none!important;color:inherit!important}.LinkCard{position:relative;display:block;margin:5px auto;width:330px;box-sizing:border-box;border-radius:12px;max-width:100%;overflow:hidden;color:inherit;text-decoration:none}.ztext{word-break:break-word;line-height:1.6}.LinkCard-backdrop{position:absolute;top:0;left:0;right:0;bottom:0;background-repeat:no-repeat;-webkit-filter:blur(20px);filter:blur(20px);background-size:cover;background-position:center}.LinkCard,.LinkCard:hover{text-decoration:none;border:none!important;color:inherit!important}.LinkCard-content{position:relative;display:flex;align-items:center;justify-content:space-between;padding:12px;border-radius:inherit;background-color:rgba(246,246,246,.88)}.LinkCard-text{overflow:hidden;width:260px}.LinkCard-title{white-space:nowrap;display:-webkit-box;-webkit-line-clamp:2;overflow:hidden;text-overflow:ellipsis;max-height:calc(16px * 1.25 * 2);font-size:16px;font-weight:500;line-height:1.25;color:#1a1a1a}@media(max-width:767px){.LinkCard-title{font-size:13px}}.LinkCard-meta{display:flex;margin-top:4px;font-size:14px;line-height:20px;color:#999;white-space:nowrap}.LinkCard-imageCell{margin-left:28px;border-radius:30px;width:70px}.LinkCard-image{background-image:url(https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/linkcard/spider-man.png);background-size:100% 100%;display:block;width:65px;height:65px;border-radius:inherit;margin-bottom:0!important}</style><span class="LinkCard-backdrop" style="background-image:url(https://zhstatic.zhihu.com/assets/zhihu/editor/zhihu-card-default.svg)"></span><span class="LinkCard-content"><span class="LinkCard-text"><span class="LinkCard-title">Photos</span><span class="LinkCard-meta"><span style="display:inline-flex;align-items:center"><svg class="Zi Zi--InsertLink" fill="currentColor" viewbox="0 0 24 24" width="17" height="17"><path d="M6.77 17.23c-.905-.904-.94-2.333-.08-3.193l3.059-3.06-1.192-1.19-3.059 3.058c-1.489 1.489-1.427 3.954.138 5.519s4.03 1.627 5.519.138l3.059-3.059-1.192-1.192-3.059 3.06c-.86.86-2.289.824-3.193-.08zm3.016-8.673l1.192 1.192 3.059-3.06c.86-.86 2.289-.824 3.193.08.905.905.94 2.334.08 3.194l-3.059 3.06 1.192 1.19 3.059-3.058c1.489-1.489 1.427-3.954-.138-5.519s-4.03-1.627-5.519-.138L9.786 8.557zm-1.023 6.68c.33.33.863.343 1.177.029l5.34-5.34c.314-.314.3-.846-.03-1.176-.33-.33-.862-.344-1.176-.03l-5.34 5.34c-.314.314-.3.846.03 1.177z" fill-rule="evenodd"/></svg></span><span style="margin-top:-.1rem">https://hasaik.com/photos/</span></span></span><span class="LinkCard-imageCell"><div class="LinkCard-image"></div></span></span></a><h2 id="创建相册">创建相册</h2><p>在腾讯云开发者平台上面创建一个仓库,命名为 <code>Blog_Back_Up</code> (仓库名字随便). 用 <code>git clone</code> 把仓库 <code>clone</code> 到本地来.</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Blog_Back_Up</span><br></pre></td></tr></table></figure><p>创建 <code>photos</code> 和 <code>min_photos</code> 两个目录,把要上传的相册图片 放到 <code>photos</code> 文件夹下面.</p><div class="note info">***相册图片命名方式 : yyyy-MM-dd_des.jpg/png/jpef/gif. &emsp;eg: 2017-9-18_风景.jpg***</div><h2 id="处理图片">处理图片</h2><p>图片的处理我用 <code>python</code> 脚本来处理，这样每次只要执行脚本就可以了。如果您的电脑没有 <code>Python</code> ，自行上网搜索安装教程，一搜一大把。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding: utf-8</span></span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"><span class="keyword">from</span> ImageProcess <span class="keyword">import</span> Graphics</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义压缩比，数值越大，压缩越小</span></span><br><span class="line">SIZE_normal = <span class="number">1.0</span></span><br><span class="line">SIZE_small = <span class="number">1.5</span></span><br><span class="line">SIZE_more_small = <span class="number">2.0</span></span><br><span class="line">SIZE_more_small_small = <span class="number">3.0</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">make_directory</span>(<span class="params">directory</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;创建目录&quot;&quot;&quot;</span></span><br><span class="line">    os.makedirs(directory)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">directory_exists</span>(<span class="params">directory</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;判断目录是否存在&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">if</span> os.path.exists(directory):</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">list_img_file</span>(<span class="params">directory</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;列出目录下所有文件，并筛选出图片文件列表返回&quot;&quot;&quot;</span></span><br><span class="line">    old_list = sorted(os.listdir(directory), reverse=<span class="literal">True</span>)</span><br><span class="line">    print(old_list)</span><br><span class="line">    new_list = []</span><br><span class="line">    <span class="keyword">for</span> filename <span class="keyword">in</span> old_list:</span><br><span class="line">        name, fileformat = filename.split(<span class="string">&quot;.&quot;</span>)</span><br><span class="line">        <span class="keyword">if</span> fileformat.lower() == <span class="string">&quot;jpg&quot;</span> <span class="keyword">or</span> fileformat.lower() == <span class="string">&quot;png&quot;</span> <span class="keyword">or</span> fileformat.lower() == <span class="string">&quot;gif&quot;</span> <span class="keyword">or</span> fileformat.lower() == <span class="string">&quot;jpeg&quot;</span>:</span><br><span class="line">            new_list.append(filename)</span><br><span class="line">    <span class="comment"># print new_list</span></span><br><span class="line">    <span class="keyword">return</span> new_list</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print_help</span>():</span></span><br><span class="line">    print(<span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    This program helps compress many image files</span></span><br><span class="line"><span class="string">    you can choose which scale you want to compress your img(jpg/png/etc)</span></span><br><span class="line"><span class="string">    1) normal compress(4M to 1M around)</span></span><br><span class="line"><span class="string">    2) small compress(4M to 500K around)</span></span><br><span class="line"><span class="string">    3) smaller compress(4M to 300K around)</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">compress</span>(<span class="params">choose, des_dir, src_dir, file_list</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;压缩算法，img.thumbnail对图片进行压缩，</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    参数</span></span><br><span class="line"><span class="string">    -----------</span></span><br><span class="line"><span class="string">    choose: str</span></span><br><span class="line"><span class="string">            选择压缩的比例，有4个选项，越大压缩后的图片越小</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">if</span> choose == <span class="string">&#x27;1&#x27;</span>:</span><br><span class="line">        scale = SIZE_normal</span><br><span class="line">    <span class="keyword">if</span> choose == <span class="string">&#x27;2&#x27;</span>:</span><br><span class="line">        scale = SIZE_small</span><br><span class="line">    <span class="keyword">if</span> choose == <span class="string">&#x27;3&#x27;</span>:</span><br><span class="line">        scale = SIZE_more_small</span><br><span class="line">    <span class="keyword">if</span> choose == <span class="string">&#x27;4&#x27;</span>:</span><br><span class="line">        scale = SIZE_more_small_small</span><br><span class="line">    <span class="keyword">for</span> infile <span class="keyword">in</span> file_list:</span><br><span class="line">        img = Image.open(src_dir+infile)</span><br><span class="line">        <span class="comment"># size_of_file = os.path.getsize(infile)</span></span><br><span class="line">        w, h = img.size</span><br><span class="line">        img.thumbnail((int(w/scale), int(h/scale)))</span><br><span class="line">        img.save(des_dir + infile)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">compress_photo</span>():</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;调用压缩图片的函数</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    src_dir, des_dir = <span class="string">&quot;photos/&quot;</span>, <span class="string">&quot;min_photos/&quot;</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> directory_exists(src_dir):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> directory_exists(src_dir):</span><br><span class="line">            make_directory(src_dir)</span><br><span class="line">        <span class="comment"># business logic</span></span><br><span class="line">        file_list_src = list_img_file(src_dir)</span><br><span class="line">    <span class="keyword">if</span> directory_exists(des_dir):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> directory_exists(des_dir):</span><br><span class="line">            make_directory(des_dir)</span><br><span class="line">        file_list_des = list_img_file(des_dir)</span><br><span class="line">        <span class="comment"># print file_list</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;如果已经压缩了，就不再压缩&#x27;&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(file_list_des)):</span><br><span class="line">        <span class="keyword">if</span> file_list_des[i] <span class="keyword">in</span> file_list_src:</span><br><span class="line">            file_list_src.remove(file_list_des[i])</span><br><span class="line">    compress(<span class="string">&#x27;4&#x27;</span>, des_dir, src_dir, file_list_src)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">handle_photo</span>():</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;根据图片的文件名处理成需要的json格式的数据</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    -----------</span></span><br><span class="line"><span class="string">    最后将data.json文件存到博客的source/photos文件夹下</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    src_dir, des_dir = <span class="string">&quot;photos/&quot;</span>, <span class="string">&quot;min_photos/&quot;</span></span><br><span class="line">    file_list = list_img_file(src_dir)</span><br><span class="line">    print(file_list)</span><br><span class="line">    list_info = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(file_list)):</span><br><span class="line">        filename = file_list[i]</span><br><span class="line">        date_str, info = filename.split(<span class="string">&quot;_&quot;</span>)</span><br><span class="line">        info, _ = info.split(<span class="string">&quot;.&quot;</span>)</span><br><span class="line">        date = datetime.strptime(date_str, <span class="string">&quot;%Y-%m-%d&quot;</span>)</span><br><span class="line">        year_month = date_str[<span class="number">0</span>:<span class="number">7</span>]            </span><br><span class="line">        <span class="keyword">if</span> i == <span class="number">0</span>:  <span class="comment"># 处理第一个文件</span></span><br><span class="line">            new_dict = &#123;<span class="string">&quot;date&quot;</span>: year_month, <span class="string">&quot;arr&quot;</span>:&#123;<span class="string">&#x27;year&#x27;</span>: date.year,</span><br><span class="line">                                                                   <span class="string">&#x27;month&#x27;</span>: date.month,</span><br><span class="line">                                                                   <span class="string">&#x27;link&#x27;</span>: [filename],</span><br><span class="line">                                                                   <span class="string">&#x27;text&#x27;</span>: [info],</span><br><span class="line">                                                                   <span class="string">&#x27;type&#x27;</span>: [<span class="string">&#x27;image&#x27;</span>]</span><br><span class="line">                                                                   &#125;</span><br><span class="line">                                        &#125; </span><br><span class="line">            list_info.append(new_dict)</span><br><span class="line">        <span class="keyword">elif</span> year_month != list_info[<span class="number">-1</span>][<span class="string">&#x27;date&#x27;</span>]:  <span class="comment"># 不是最后的一个日期，就新建一个dict</span></span><br><span class="line">            new_dict = &#123;<span class="string">&quot;date&quot;</span>: year_month, <span class="string">&quot;arr&quot;</span>:&#123;<span class="string">&#x27;year&#x27;</span>: date.year,</span><br><span class="line">                                                   <span class="string">&#x27;month&#x27;</span>: date.month,</span><br><span class="line">                                                   <span class="string">&#x27;link&#x27;</span>: [filename],</span><br><span class="line">                                                   <span class="string">&#x27;text&#x27;</span>: [info],</span><br><span class="line">                                                   <span class="string">&#x27;type&#x27;</span>: [<span class="string">&#x27;image&#x27;</span>]</span><br><span class="line">                                                   &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">            list_info.append(new_dict)</span><br><span class="line">        <span class="keyword">else</span>:  <span class="comment"># 同一个日期</span></span><br><span class="line">            list_info[<span class="number">-1</span>][<span class="string">&#x27;arr&#x27;</span>][<span class="string">&#x27;link&#x27;</span>].append(filename)</span><br><span class="line">            list_info[<span class="number">-1</span>][<span class="string">&#x27;arr&#x27;</span>][<span class="string">&#x27;text&#x27;</span>].append(info)</span><br><span class="line">            list_info[<span class="number">-1</span>][<span class="string">&#x27;arr&#x27;</span>][<span class="string">&#x27;type&#x27;</span>].append(<span class="string">&#x27;image&#x27;</span>)</span><br><span class="line">    list_info.reverse()  <span class="comment"># 翻转</span></span><br><span class="line">    tmp = bubbleYear(list_info)</span><br><span class="line">    bubble(tmp)</span><br><span class="line">    final_dict = &#123;<span class="string">&quot;list&quot;</span>: list_info&#125;</span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">&quot;../xuxugood.github.io/source/photos/data.json&quot;</span>,<span class="string">&quot;w&quot;</span>) <span class="keyword">as</span> fp:</span><br><span class="line">        json.dump(final_dict, fp)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">cut_photo</span>():</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;裁剪算法</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    ----------</span></span><br><span class="line"><span class="string">    调用Graphics类中的裁剪算法，将src_dir目录下的文件进行裁剪（裁剪成正方形）</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    src_dir = <span class="string">&quot;photos/&quot;</span></span><br><span class="line">    <span class="keyword">if</span> directory_exists(src_dir):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> directory_exists(src_dir):</span><br><span class="line">            make_directory(src_dir)</span><br><span class="line">        <span class="comment"># business logic</span></span><br><span class="line">        file_list = list_img_file(src_dir)</span><br><span class="line">        <span class="comment"># print file_list</span></span><br><span class="line">        <span class="keyword">if</span> file_list:</span><br><span class="line">            print_help()</span><br><span class="line">            <span class="keyword">for</span> infile <span class="keyword">in</span> file_list:</span><br><span class="line">                img = Image.open(src_dir+infile)</span><br><span class="line">                Graphics(infile=src_dir+infile, outfile=src_dir + infile).cut_by_ratio()            </span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">&quot;source directory not exist!&quot;</span>)     </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">git_operation</span>():</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    git 命令行函数，将仓库提交</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    ----------</span></span><br><span class="line"><span class="string">    需要安装git命令行工具，并且添加到环境变量中</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    os.system(<span class="string">&#x27;git add --all&#x27;</span>)</span><br><span class="line">    os.system(<span class="string">&#x27;git commit -m &quot;add photos&quot;&#x27;</span>)</span><br><span class="line">    os.system(<span class="string">&#x27;git push origin master&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bubble</span>(<span class="params">bubbleList</span>):</span></span><br><span class="line">    listLength = len(bubbleList)</span><br><span class="line">    <span class="keyword">while</span> listLength &gt; <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(listLength - <span class="number">1</span>):    <span class="comment"># 这个循环负责设置冒泡排序进行的次数</span></span><br><span class="line">            <span class="comment"># print(bubbleList[i])</span></span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(listLength-i<span class="number">-1</span>):  <span class="comment"># ｊ为列表下标</span></span><br><span class="line">                <span class="keyword">if</span>(bubbleList[j].get(<span class="string">&#x27;arr&#x27;</span>).get(<span class="string">&#x27;year&#x27;</span>) == bubbleList[j+<span class="number">1</span>].get(<span class="string">&#x27;arr&#x27;</span>).get(<span class="string">&#x27;year&#x27;</span>)):</span><br><span class="line">                    <span class="keyword">if</span> bubbleList[j].get(<span class="string">&#x27;arr&#x27;</span>).get(<span class="string">&#x27;month&#x27;</span>) &lt; bubbleList[j+<span class="number">1</span>].get(<span class="string">&#x27;arr&#x27;</span>).get(<span class="string">&#x27;month&#x27;</span>):</span><br><span class="line">                </span><br><span class="line">                        bubbleList[j], bubbleList[j+<span class="number">1</span>] = bubbleList[j+<span class="number">1</span>], bubbleList[j]</span><br><span class="line">        <span class="keyword">return</span> bubbleList</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">        <span class="comment"># for i in range(listLength - 1):</span></span><br><span class="line">        <span class="comment">#     if(bubbleList[i].get(&#x27;arr&#x27;).get(&#x27;year&#x27;) == bubbleList[i+1].get(&#x27;arr&#x27;).get(&#x27;year&#x27;)):</span></span><br><span class="line">        <span class="comment">#         if bubbleList[i].get(&#x27;arr&#x27;).get(&#x27;month&#x27;) &gt; bubbleList[i+1].get(&#x27;arr&#x27;).get(&#x27;month&#x27;):</span></span><br><span class="line">        <span class="comment">#             bubbleList[i] = bubbleList[i] + bubbleList[i+1]</span></span><br><span class="line">        <span class="comment">#             bubbleList[i+1] = bubbleList[i] - bubbleList[i+1]</span></span><br><span class="line">        <span class="comment">#             bubbleList[i] = bubbleList[i] - bubbleList[i+1]</span></span><br><span class="line">        <span class="comment"># listLength -= 1</span></span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bubbleYear</span>(<span class="params">bubbleList</span>):</span></span><br><span class="line">    listLength = len(bubbleList)</span><br><span class="line">    <span class="keyword">while</span> listLength &gt; <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(listLength - <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(listLength-i<span class="number">-1</span>):</span><br><span class="line">                <span class="keyword">if</span> bubbleList[j].get(<span class="string">&#x27;arr&#x27;</span>).get(<span class="string">&#x27;year&#x27;</span>) &lt; bubbleList[j+<span class="number">1</span>].get(<span class="string">&#x27;arr&#x27;</span>).get(<span class="string">&#x27;year&#x27;</span>):</span><br><span class="line">                    </span><br><span class="line">                    bubbleList[j], bubbleList[j+<span class="number">1</span>] = bubbleList[j+<span class="number">1</span>], bubbleList[j]</span><br><span class="line">        <span class="comment"># print(bubbleList)</span></span><br><span class="line">        <span class="keyword">return</span> bubbleList</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    cut_photo()        <span class="comment"># 裁剪图片，裁剪成正方形，去中间部分</span></span><br><span class="line">    compress_photo()   <span class="comment"># 压缩图片，并保存到mini_photos文件夹下</span></span><br><span class="line">    git_operation()    <span class="comment"># 提交到github仓库</span></span><br><span class="line">    handle_photo()     <span class="comment"># 将文件处理成json格式，存到博客仓库中</span></span><br></pre></td></tr></table></figure><p>其中 <code>../xuxugood.github.io/source/photos/data.json</code> 是我博客地址，这里换成你的博客地址。</p><h3 id="使用方法"><em>使用方法</em></h3><p>执行命令 <code>python3 tool.py</code> ，因为我用的是 <code>python3</code> 这里可以根据你的 <code>python</code> 版本来使用。</p><h3 id="问题">问题</h3><p>如果出现 <code>from PIL import Image</code> 这种报错，说明没有 PIL 这个库，执行 <code>python3 -m pip install Pillow</code></p><h2 id="增加相册style">增加相册style</h2><p>在 Next 主题下面增加 <code>photo.swig</code> 页面，路径如下 <code>next/layout</code></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&#123;% extends <span class="string">&#x27;_layout.swig&#x27;</span> %&#125;</span><br><span class="line">&#123;% import <span class="string">&#x27;_macro/post-collapse.swig&#x27;</span> as post_template %&#125;</span><br><span class="line">&#123;% import <span class="string">&#x27;_macro/sidebar.swig&#x27;</span> as sidebar_template %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% block title %&#125;&#123;&#123; page.title &#125;&#125; | &#123;&#123; config.title &#125;&#125;&#123;% endblock %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% block content %&#125;</span><br><span class="line"></span><br><span class="line">  &#123;<span class="comment">#################&#125;</span></span><br><span class="line">  &#123;<span class="comment">### Photo BLOCK ###&#125;</span></span><br><span class="line">  &#123;<span class="comment">#################&#125;</span></span><br><span class="line">  &lt;div class=<span class="string">&quot;post-block photo&quot;</span>&gt;</span><br><span class="line"></span><br><span class="line">    &lt;div id=<span class="string">&quot;posts&quot;</span> class=<span class="string">&quot;posts-collapse&quot;</span>&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">  &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">  &#123;<span class="comment">#####################&#125;</span></span><br><span class="line">  &#123;<span class="comment">### END Photo BLOCK ###&#125;</span></span><br><span class="line">  &#123;<span class="comment">#####################&#125;</span></span><br><span class="line"></span><br><span class="line">  &#123;% include <span class="string">&#x27;_partials/pagination.swig&#x27;</span> %&#125;</span><br><span class="line">&#123;% endblock %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% block sidebar %&#125;</span><br><span class="line">  &#123;&#123; sidebar_template.render(<span class="literal">false</span>) &#125;&#125;</span><br><span class="line">&#123;% endblock %&#125;</span><br></pre></td></tr></table></figure><h2 id="生成相册页面">生成相册页面</h2><p>生成相册页面 <code>hexo new page photos</code>，修改 <code>photos</code> 下的 <code>index.md</code> 文件如下</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">title: 我的相册</span><br><span class="line">date: 2017-09-15 09:51:05</span><br><span class="line"><span class="built_in">type</span>: <span class="string">&quot;photos&quot;</span></span><br><span class="line">comments: <span class="literal">false</span></span><br><span class="line">---</span><br><span class="line">&lt;link rel=<span class="string">&quot;stylesheet&quot;</span> href=<span class="string">&quot;./ins.css&quot;</span>&gt;</span><br><span class="line"> &lt;link rel=<span class="string">&quot;stylesheet&quot;</span> href=<span class="string">&quot;./photoswipe.css&quot;</span>&gt; </span><br><span class="line">&lt;link rel=<span class="string">&quot;stylesheet&quot;</span> href=<span class="string">&quot;./default-skin/default-skin.css&quot;</span>&gt; </span><br><span class="line">&lt;div class=<span class="string">&quot;photos-btn-wrap&quot;</span>&gt;</span><br><span class="line">	&lt;a class=<span class="string">&quot;photos-btn active&quot;</span> href=<span class="string">&quot;javascript:void(0)&quot;</span>&gt;Photos&lt;/a&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div class=<span class="string">&quot;instagram itemscope&quot;</span>&gt;</span><br><span class="line">	&lt;a href=<span class="string">&quot;https://xuxugood.github.io&quot;</span> target=<span class="string">&quot;_blank&quot;</span> class=<span class="string">&quot;open-ins&quot;</span>&gt;图片正在加载中…&lt;/a&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"> </span><br><span class="line">&lt;script&gt;</span><br><span class="line">  (<span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">    var loadScript = <span class="keyword">function</span>(path) &#123;</span><br><span class="line">      var <span class="variable">$script</span> = document.createElement(<span class="string">&#x27;script&#x27;</span>)</span><br><span class="line">      document.getElementsByTagName(<span class="string">&#x27;body&#x27;</span>)[0].appendChild(<span class="variable">$script</span>)</span><br><span class="line">      <span class="variable">$script</span>.setAttribute(<span class="string">&#x27;src&#x27;</span>, path)</span><br><span class="line">    &#125;</span><br><span class="line">    setTimeout(<span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">        loadScript(<span class="string">&#x27;./ins.js&#x27;</span>)</span><br><span class="line">    &#125;, 0)</span><br><span class="line">  &#125;)()</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure><p>其中 <code>&lt;a href=&quot;https://xuxugood.github.io&quot; target=&quot;_blank&quot; class=&quot;open-ins&quot;&gt;图片正在加载中…&lt;/a&gt;</code> 中的 url 替换成你的博客网址。</p><p>需要三个 css 文件和一个 js 文件放在 photos 文件夹下，其文件都在我的 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://johnxuxuy.coding.net/p/Blog_Back_Up/d/Blog_Back_Up/git/tree/master/source/photos">腾讯云开发者平台</a> 上面，需要修改 <code>ins.js</code> 的 120 和 121 行的 url 为你腾讯云开发者平台图片的网址。</p><h2 id="查看相册插件-photoswipe">查看相册插件 photoswipe</h2><p>上面 <code>index.md</code> 中加入了两个 css 文件，这是我们用 photoswipe 查看相册用到的，具体可以参考网址 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://photoswipe.com/">photoswipe</a> 。这里我们已经把 css 文件加上了，之后我们要加上 js 文件 <code>photoswipe.min.js</code> 和 <code>photoswipe-ui-default.min.js</code>，js 资源下载地址 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://johnxuxuy.coding.net/p/Blog_Back_Up/d/Blog_Back_Up/git/tree/master/source/photos/photoswipe.css">photoswipe</a> ，js 存放路径为 <code>next/source/js/src</code></p><h2 id="引用-js-文件">引用 js 文件</h2><p>在 <code>layout/_scripts/pages/post-details.swig</code> 中插入</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">&quot;&#123;&#123; url_for(theme.js) &#125;&#125;/src/photoswipe.min.js?v=&#123;&#123; theme.version &#125;&#125;&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=<span class="string">&quot;&#123;&#123; url_for(theme.js) &#125;&#125;/src/photoswipe-ui-default.min.js?v=&#123;&#123; theme.version &#125;&#125;&quot;</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure><h2 id="在根目录加入标签">在根目录加入标签</h2><p>在 <code>_layout.swig</code> 中的body标签里最前面插入以下内容</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&#123;% <span class="keyword">if</span> page.type === <span class="string">&quot;photos&quot;</span> %&#125;</span><br><span class="line">&lt;!-- Root element of PhotoSwipe. Must have class pswp. --&gt;</span><br><span class="line">&lt;div class=<span class="string">&quot;pswp&quot;</span> tabindex=<span class="string">&quot;-1&quot;</span> role=<span class="string">&quot;dialog&quot;</span> aria-hidden=<span class="string">&quot;true&quot;</span>&gt;</span><br><span class="line">    &lt;div class=<span class="string">&quot;pswp__bg&quot;</span>&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div class=<span class="string">&quot;pswp__scroll-wrap&quot;</span>&gt;</span><br><span class="line">        &lt;div class=<span class="string">&quot;pswp__container&quot;</span>&gt;</span><br><span class="line">            &lt;div class=<span class="string">&quot;pswp__item&quot;</span>&gt;&lt;/div&gt;</span><br><span class="line">            &lt;div class=<span class="string">&quot;pswp__item&quot;</span>&gt;&lt;/div&gt;</span><br><span class="line">            &lt;div class=<span class="string">&quot;pswp__item&quot;</span>&gt;&lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;div class=<span class="string">&quot;pswp__ui pswp__ui--hidden&quot;</span>&gt;</span><br><span class="line">            &lt;div class=<span class="string">&quot;pswp__top-bar&quot;</span>&gt;</span><br><span class="line">                &lt;div class=<span class="string">&quot;pswp__counter&quot;</span>&gt;&lt;/div&gt;</span><br><span class="line">                &lt;button class=<span class="string">&quot;pswp__button pswp__button--close&quot;</span> title=<span class="string">&quot;Close (Esc)&quot;</span>&gt;&lt;/button&gt;</span><br><span class="line">                &lt;button class=<span class="string">&quot;pswp__button pswp__button--share&quot;</span> title=<span class="string">&quot;Share&quot;</span>&gt;&lt;/button&gt;</span><br><span class="line">                &lt;button class=<span class="string">&quot;pswp__button pswp__button--fs&quot;</span> title=<span class="string">&quot;Toggle fullscreen&quot;</span>&gt;&lt;/button&gt;</span><br><span class="line">                &lt;button class=<span class="string">&quot;pswp__button pswp__button--zoom&quot;</span> title=<span class="string">&quot;Zoom in/out&quot;</span>&gt;&lt;/button&gt;</span><br><span class="line">                &lt;!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR --&gt;</span><br><span class="line">                &lt;!-- element will get class pswp__preloader--active when preloader is running --&gt;</span><br><span class="line">                &lt;div class=<span class="string">&quot;pswp__preloader&quot;</span>&gt;</span><br><span class="line">                    &lt;div class=<span class="string">&quot;pswp__preloader__icn&quot;</span>&gt;</span><br><span class="line">                      &lt;div class=<span class="string">&quot;pswp__preloader__cut&quot;</span>&gt;</span><br><span class="line">                        &lt;div class=<span class="string">&quot;pswp__preloader__donut&quot;</span>&gt;&lt;/div&gt;</span><br><span class="line">                      &lt;/div&gt;</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">            &lt;div class=<span class="string">&quot;pswp__share-modal pswp__share-modal--hidden pswp__single-tap&quot;</span>&gt;</span><br><span class="line">                &lt;div class=<span class="string">&quot;pswp__share-tooltip&quot;</span>&gt;&lt;/div&gt; </span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">            &lt;button class=<span class="string">&quot;pswp__button pswp__button--arrow--left&quot;</span> title=<span class="string">&quot;Previous (arrow left)&quot;</span>&gt;</span><br><span class="line">            &lt;/button&gt;</span><br><span class="line">            &lt;button class=<span class="string">&quot;pswp__button pswp__button--arrow--right&quot;</span> title=<span class="string">&quot;Next (arrow right)&quot;</span>&gt;</span><br><span class="line">            &lt;/button&gt;</span><br><span class="line">            &lt;div class=<span class="string">&quot;pswp__caption&quot;</span>&gt;</span><br><span class="line">                &lt;div class=<span class="string">&quot;pswp__caption__center&quot;</span>&gt;&lt;/div&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure><p>至此相册查看插件 photoswipe 已经配置完毕。</p><h2 id="整个流程使用">整个流程使用</h2><ol><li>在 Blog_Back_Up 里面加入图片,图片路径在 photos 里面 图片命名方式 yyyy-MM-dd_des.jpg/jpeg/gif/png</li><li>执行 python3 <a target="_blank" rel="external nofollow noopener noreferrer" href="http://tool.py">tool.py</a></li><li>切换到博客 resource 目录下</li><li>在 photos 里面生成了 data.json 文件，提交到腾讯云开发者平台仓库上面</li><li>输入网址查看照片</li></ol><div class="article_footer"><section class="widget copyright desktop mobile"><div class="content"><blockquote><p><svg id="icon-touxiang" viewbox="0 0 1024 1024" width="17" height="17" style="vertical-align:-3.2px"><path d="M614.72 554.538c-49.086-6.399-100.27-2.1-149.256-2.1-119.465 0-209.04 95.972-206.84 215.437 0 17.095 8.498 31.99 23.493 40.488 14.896 10.697 34.09 14.896 53.285 17.095 61.882 6.398 123.664 6.398 198.342 6.398 40.488 0 93.872-2.1 142.858-4.298 27.692 0 53.284-4.3 78.877-14.896 19.194-8.498 29.89-19.194 31.99-40.488 8.498-104.57-72.478-204.84-172.75-217.636zM680.8 375.39c0-87.474-74.678-162.053-164.251-162.053-89.574 0-162.053 74.679-162.053 162.053-2.1 87.474 74.678 164.252 162.053 164.252 89.673 0 164.252-74.678 164.252-164.252z" fill="#FFFFFF"/><path d="M512.35 0C228.733 0 0.5 228.233 0.5 511.85s228.233 511.85 511.85 511.85 511.85-228.233 511.85-511.85S795.967 0 512.35 0z m275.12 772.074c-2.1 21.294-12.797 31.99-31.991 40.488-25.593 10.697-51.185 14.896-78.877 14.896-49.086 2.099-102.37 4.298-142.858 4.298-74.678 0-136.46 0-198.342-6.398-19.195-2.1-38.389-6.398-53.285-17.095-14.895-8.497-23.493-23.493-23.493-40.488-2.1-119.465 87.475-215.437 206.84-215.437 49.085 0 100.27-4.299 149.256 2.1 100.27 12.896 181.247 113.166 172.75 217.636zM354.495 375.39c0-87.474 72.479-162.053 162.053-162.053S680.8 288.016 680.8 375.39c0 89.574-74.679 164.252-164.252 164.252-87.375 0-164.152-76.778-162.053-164.252z" fill="#249FF8"/></svg> 本文由 <a href="https://hasaik.com">·银河小徐</a> 创作，如果您觉得本文不错，请随意赞赏</p><p><svg id="icon-fenxiang" viewbox="0 0 1024 1024" width="17" height="17" style="vertical-align:-3.2px"><path d="M512 512m-512 0a512 512 0 1 0 1024 0 512 512 0 1 0-1024 0Z" fill="#F3B243"/><path d="M630.784 323.584m-90.112 0a90.112 90.112 0 1 0 180.224 0 90.112 90.112 0 1 0-180.224 0Z" fill="#FFFFFF"/><path d="M630.784 688.128m-90.112 0a90.112 90.112 0 1 0 180.224 0 90.112 90.112 0 1 0-180.224 0Z" fill="#FFFFFF"/><path d="M319.488 512m-90.112 0a90.112 90.112 0 1 0 180.224 0 90.112 90.112 0 1 0-180.224 0Z" fill="#FFFFFF"/><path d="M341.037056 480.370688l257.343488-175.7184 27.713536 40.59136-257.339392 175.7184z" fill="#FFFFFF"/><path d="M349.052928 488.452096l252.854272 182.10816-28.725248 39.886848-252.874752-182.10816z" fill="#FFFFFF"/></svg> 博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p><p><svg id="icon-ziyuan" viewbox="0 0 1024 1024" width="17" height="17" style="vertical-align:-3.2px"><path d="M511.854421 0a511.854421 511.854421 0 1 0 512.145579 511.854421A511.854421 511.854421 0 0 0 511.854421 0z" fill="#39B54A"/><path d="M576.491328 630.355417l-116.462895 116.462894a129.56497 129.56497 0 0 1-182.555587 0l-2.0381-2.038101a128.982656 128.982656 0 0 1 0-182.26443l81.232868-81.232868a179.644015 179.644015 0 0 0 13.102076 70.460051l-52.69946 52.408302a69.877737 69.877737 0 0 0 0 98.702303l2.038101 2.038101a70.168894 70.168894 0 0 0 98.702303 0l116.462895-116.462894a69.877737 69.877737 0 0 0 0-98.702304l-2.038101-2.0381a69.586579 69.586579 0 0 0-13.975547-10.772818l42.508956-42.508956a128.109184 128.109184 0 0 1 13.102076 11.355132l2.0381 2.0381a129.273813 129.273813 0 0 1 0 182.26443z" fill="#FFFFFF"/><path d="M746.235997 460.901905l-81.232869 81.232869a179.352858 179.352858 0 0 0-13.102076-70.460051l52.69946-52.408303a69.877737 69.877737 0 0 0 0-98.702303l-2.038101-2.038101a69.877737 69.877737 0 0 0-98.702303 0l-116.462894 116.462895a69.877737 69.877737 0 0 0 0 98.702303l2.0381 2.038101a68.421951 68.421951 0 0 0 13.975548 10.772817l-42.508957 42.508957a136.552744 136.552744 0 0 1-13.102076-11.355132l-2.0381-2.038101a128.982656 128.982656 0 0 1 0-182.26443l116.462894-116.462894a129.56497 129.56497 0 0 1 182.555587 0l2.038101 2.0381a128.982656 128.982656 0 0 1 0 182.26443z" fill="#FFFFFF"/></svg> 本文永久链接是：<a href="https://hasaik.com/posts/39d47c89.html">https://hasaik.com/posts/39d47c89.html</a></p></blockquote></div></section><div id="reward"><div>您的喜欢是作者写作最大的动力！❤️</div><div class="reward"><a href="https://github.com/Kaiyuan/donate-page" target="_blank" class="tr3" title="Github" rel="external nofollow noopener noreferrer"><span id="github"></span></a><ul id="RewardBox" class="list pos-f tr3"><li id="AliPayOR" title="支付宝打赏">AliPay</li><li id="WeChatPayOR" title="微信打赏">WeChatPay</li><li id="QQPayOR" title="QQ打赏">QQPay</li></ul><div id="RewardText" class="tr3">Donate</div><div id="QRBox" class="pos-f left-100"><div id="MainBox"></div></div></div></div><script>jQuery(document).ready(function(){var a=$("#QRBox"),d=$("#MainBox");function t(e){e&&d.css("background-image","url("+e+")"),$("#RewardText,#RewardBox,#github").addClass("blurC"),a.fadeIn(300,function(e){d.addClass("showQR")})}$("#RewardBox>li").click(function(e){var a=$(this).attr("id");"AliPayOR"===a?t("https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/reward/AliPayQR.png"):"WeChatPayOR"===a?t("https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/reward/WeChatQR.png"):"QQPayOR"===a&&t("https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/reward/QQPayQR.png")}),d.click(function(e){d.removeClass("showQR").addClass("hideQR"),setTimeout(function(e){a.fadeOut(300,function(e){d.removeClass("hideQR")}),$("#RewardText,#RewardBox,#github").removeClass("blurC")},600)})})</script><style>#reward{text-align:center;width:100%;margin-top:50px}#reward .reward{margin-top:80px;margin-bottom:-100px;display:inline-block}#RewardBox{position:relative;top:calc(50% - 15px);background-color:#fff;border:1px solid #ddd;border-radius:6px;float:left;z-index:1}.reward ul{padding-left:0;margin-left:0}#RewardBox #AliPayOR{background-image:url(https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/reward/alipay.png)}#RewardBox #WeChatPayOR{background-image:url(https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/reward/wechatpay.png)}#RewardBox #QQPayOR{background-image:url(https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/reward/qqpay.png)}#RewardBox>li:first-child{border-width:0}#RewardText{position:relative;font-size:12px;width:70px;height:70px;line-height:50px;color:#fff;background:#ffd886 url(https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/reward/like.png) no-repeat center 10px;background-size:20px;border-radius:35px;text-align:center;left:calc(50% - 120px);top:-80px;transform:rotatez(-15deg)}.tr3{transition:all .3s}#QRBox{position:relative;top:-100px;left:0;z-index:1;background-color:rgba(255,255,255,.3);display:none;perspective:400px}.left-100{width:100%;height:100%}#RewardBox li{margin-top:0;margin-bottom:0;width:74px;float:left;text-align:center;border-left:1px solid #ddd;background:no-repeat center center;background-color:rgba(204,217,220,.1);background-size:50px;transition:all .3s;cursor:url(https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/ayuda.cur),auto;overflow:hidden;line-height:600px;height:28px;-webkit-filter:grayscale(1);filter:grayscale(1);opacity:.5}#RewardBox li:hover{background-color:rgba(204,217,220,.3);-webkit-filter:grayscale(0);filter:grayscale(0);opacity:1}#RewardBox a{display:block}#github{position:relative;display:inline-block;z-index:1;width:24px;height:24px;top:-10px;left:-14px;background:no-repeat center center url(https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/reward/github.png);background-size:contain;opacity:.3;transform:rotatez(15deg)}#MainBox{cursor:url(https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/ayuda.cur),auto;position:absolute;text-align:center;width:200px;height:200px;left:calc(50% - 100px);top:calc(50% - 100px);background:#fff no-repeat center center;background-size:190px;border-radius:6px;box-shadow:0 2px 7px rgba(0,0,0,.3);opacity:0;transition:all 1s ease-in-out;transform-style:preserve-3d;transform-origin:center center;overflow:hidden}.reward .blurC{-webkit-filter:blur(3px);filter:blur(3px)}#MainBox.showQR{opacity:1;animation-name:showQR;animation-duration:3s;animation-timing-function:ease-in-out;animation-iteration-count:1;animation-fill-mode:forwards;-webkit-animation:showQR 3s ease-in-out 0s 1 normal forwards}@keyframes showQR{from{transform:rotateX(90deg)}8%{opacity:1;transform:rotateX(-60deg)}18%{opacity:1;transform:rotateX(40deg)}34%{opacity:1;transform:rotateX(-28deg)}44%{opacity:1;transform:rotateX(18deg)}58%{opacity:1;transform:rotateX(-12deg)}72%{opacity:1;transform:rotateX(9deg)}88%{opacity:1;transform:rotateX(-5deg)}96%{opacity:1;transform:rotateX(2deg)}to{opacity:1}}#MainBox.hideQR{opacity:1;animation-name:hideQR;animation-duration:.5s;animation-timing-function:ease-in-out;animation-iteration-count:1;animation-fill-mode:forwards;-webkit-animation:hideQR .5s ease-in-out 0s 1 normal forwards}@keyframes hideQR{20%,50%{transform:scale(1.08,1.08);opacity:1}to{opacity:0;transform:rotateZ(40deg) scale(.6,.6)}}.article .article-entry #reward .reward ul li:before{content:none}</style></div></div><div class="article-meta" id="bottom"><hr><div class="new-meta-box"><div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-08-20T12:17:14+00:00"><a class="notlink"><i class="fas fa-edit fa-fw" aria-hidden="true"></i><p>更新于：2020-08-20</p></a></div><div class="new-meta-item meta-tags"><a class="tag" href="/tags/Hexo/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Hexo</p></a></div><div class="new-meta-item meta-tags"><a class="tag" href="/tags/Photos/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Photos</p></a></div><div class="new-meta-item share -mob-share-list"><div class="-mob-share-list share-body"><a class="-mob-share-qq" rel="external nofollow noopener noreferrer" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://hasaik.com/posts/39d47c89.html&title=Hexo+NexT 博客搭建相册 - Xu's Blog&pics=https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/article-thumbnail/hexo.png&summary="><img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif"> </a><a class="-mob-share-qzone" rel="external nofollow noopener noreferrer" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://hasaik.com/posts/39d47c89.html&title=Hexo+NexT 博客搭建相册 - Xu's Blog&pics=https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/article-thumbnail/hexo.png&summary="><img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif"> </a><a class="-mob-share-weibo" rel="external nofollow noopener noreferrer" target="_blank" href="http://service.weibo.com/share/share.php?url=https://hasaik.com/posts/39d47c89.html&title=Hexo+NexT 博客搭建相册 - Xu's Blog&pics=https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/article-thumbnail/hexo.png&summary="><img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif"></a><div class="hoverbox"><a class="share"><img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif"></a><div class="target"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPgAAAD4CAAAAADkunTXAAACOklEQVR42u3dQY4CMQwEwPn/p3fvSGjidoLAU7khhuAKl5YdievvoesCBwcHBwcfBL/C9Xbjl/d37bOrXnBwcHBw8Inw5QDwBpYeQPWA2vWCg4ODg4MPhqdfnAaV1X121QsODg4ODg6+HlhSGDg4ODg4OPh5+F1QOTVQAAcHBwcHB+836HcFk7v9vm6SAg4ODg4O/kXw6lptQJx6HdcLDg4ODg4+CL5r7TqgbmC5rRMcHBwcHHwQvBsoVgcLuwJIOngABwcHBwd/EjwF7xpQVPdfvkgADg4ODg4+CH4qYKTPpRcRlhsi4ODg4ODgg+DxBsXn04PuBp/bRgQ4ODg4OPgPw7sNgW4wORV0lpMbODg4ODj4g+Bpo6B6sB8bKICDg4ODgw+Cn2o4pAOC1X3aAQYcHBwcHPwH4Z8KFqsDihh08xocHBwcHPxJ8N3BJT3I7QcEDg4ODg4+CP6pwLFrcFF9HxwcHBwcfDK8W3h6QOUGQrgvODg4ODj4ZPhqcKkOHqpB5QpXPFAABwcHBwcfAK8OBqoXAnZd0Et/EHBwcHBw8Mnw7koH/N1GQ9wYAQcHBwcHHwTvNgC6ha4GpeoBgYODg4ODPwmeBpZTFwSqDQ1wcHBwcHDwfX+g3h0cdC8sgIODg4ODg9/Djw8AqrDqQAEcHBwcHPzB8GrB3YbHap1v6wUHBwcHBx8M7xZU/XwcRMILCODg4ODg4BPh6QW/7oW77uCgfGEAHBwcHBx8EPxpCxwcHBwcfMD6B8rVxkF54XqOAAAAAElFTkSuQmCC"></div></div><a class="-mob-share-telegram" rel="external nofollow noopener noreferrer" target="_blank" href="https://t.me/share/url?url=https://hasaik.com/posts/39d47c89.html&text=Hexo+NexT 博客搭建相册 - Xu's Blog"><img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/telegram.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/telegram.png" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif"></a></div></div></div></div><div class="prev-next"><a class="prev" href="/posts/c1cdcf68.html"><p class="title"><i class="fas fa-chevron-left" aria-hidden="true"></i>Hexo+NexT 自定义样式博文加密</p><p class="content">介绍一种自定义博文加密方式，不需要插件，极简模式，相对安全。 先看一下效果： 代码 1、在目录 /themes/next/layout/ 下的 _layout.swig 中，找到main标签添...</p></a><a class="next" href="/posts/d7399e80.html"><p class="title">Hexo NexT主题之代码块Mac Panel特效<i class="fas fa-chevron-right" aria-hidden="true"></i></p><p class="content">偶然间发现一款不错的文章代码块样式，类似Mac的面板效果。能设置阴影效果和实现文本编辑功能，不过文本只存在浏览器页面上，不会真正保存。配置的方式也很简单，觉得不错的朋友可以试一下。 引入 JS ...</p></a></div></section></article><article class="post white-box reveal comments shadow floatable"><section class="article typo"><p ct><i class="fas fa-comments"></i> 用户交流区</p><p cst>温馨提示: 遵纪守法, 友善评论!</p><section id="comments"><div id="valine_container" class="valine_thread"><i class="fas fa-cog fa-spin fa-fw fa-2x"></i></div></section></section></article></div><aside class="l_side"><section class="widget blogger shadow floatable desktop mobile"><div class="content"><a class="avatar flat-box" rectangle href="/about/"><img no-lazy src="/images/avatar.jpg"></a><div class="text"><h2>·银河小徐</h2></div><div id="binft" align="center"></div><script src="/js/typewriter-color.js"></script><div class="social-wrapper"><a href="https://github.com/XuxuGood" class="social fab fa-github flat-btn" target="_blank" rel="external nofollow noopener noreferrer"></a> <a href="mailto:22476705@qq.com" class="social fas fa-envelope flat-btn" target="_blank" rel="external nofollow noopener noreferrer"></a> <a href="https://mailchi.mp/3ca18a2a9749/xuxuy" class="social fas fa-heartbeat flat-btn" target="_blank" rel="external nofollow noopener noreferrer"></a> <a href="https://blog.csdn.net/qq_42889280" class="social fab fa-cuttlefish flat-btn" target="_blank" rel="external nofollow noopener noreferrer"></a> <a href="/atom.xml" class="social fas fa-rss flat-btn" target="_blank" rel="external nofollow noopener noreferrer"></a></div></div></section><section class="widget toc-wrapper shadow floatable desktop mobile" id="toc-div"><header class="pure"><div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;本文目录</div></header><div class="content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%9B%B8%E5%86%8C"><span class="toc-number">1.</span> <span class="toc-text">创建相册</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%84%E7%90%86%E5%9B%BE%E7%89%87"><span class="toc-number">2.</span> <span class="toc-text">处理图片</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-number">2.1.</span> <span class="toc-text">使用方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">2.2.</span> <span class="toc-text">问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A2%9E%E5%8A%A0%E7%9B%B8%E5%86%8Cstyle"><span class="toc-number">3.</span> <span class="toc-text">增加相册style</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E7%9B%B8%E5%86%8C%E9%A1%B5%E9%9D%A2"><span class="toc-number">4.</span> <span class="toc-text">生成相册页面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E7%9B%B8%E5%86%8C%E6%8F%92%E4%BB%B6-photoswipe"><span class="toc-number">5.</span> <span class="toc-text">查看相册插件 photoswipe</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E7%94%A8-js-%E6%96%87%E4%BB%B6"><span class="toc-number">6.</span> <span class="toc-text">引用 js 文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8%E6%A0%B9%E7%9B%AE%E5%BD%95%E5%8A%A0%E5%85%A5%E6%A0%87%E7%AD%BE"><span class="toc-number">7.</span> <span class="toc-text">在根目录加入标签</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B4%E4%B8%AA%E6%B5%81%E7%A8%8B%E4%BD%BF%E7%94%A8"><span class="toc-number">8.</span> <span class="toc-text">整个流程使用</span></a></li></ol></div></section><script>$("span[class='toc-number']").each(function(){var t=$(this).text();$(this).text(t.substring(0,t.length-1))})</script><style>.l_side .toc-wrapper .toc-item .toc-link .toc-number:before{content:'【'}.l_side .toc-wrapper .toc-item .toc-link .toc-number:after{content:'】'}</style><section class="widget related_posts shadow floatable desktop mobile"><header class="pure"><div><i class="fas fa-bookmark fa-fw" aria-hidden="true"></i>&nbsp;相关文章</div></header><div class="content"><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/posts/9c9b482b.html" title="Hexo博客+Next主题鼠标点击特效" rel="bookmark">Hexo博客+Next主题鼠标点击特效</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/posts/d0bc4f5d.html" title="Hexo+Next7.8.0 引入 Folding 容器" rel="bookmark">Hexo+Next7.8.0 引入 Folding 容器</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/posts/19c94341.html" title="为Hexo添加RSS订阅" rel="bookmark">为Hexo添加RSS订阅</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/posts/dd9d9f86.html" title="本站已开通订阅功能" rel="bookmark">本站已开通订阅功能</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/posts/7fbe9500.html" title="Hexo博客中加入豆瓣读书页面" rel="bookmark">Hexo博客中加入豆瓣读书页面</a></h3></div></li></ul></div></section><script>var popularPosts=$(".popular-posts");0===popularPosts.length&&$(".related_posts .content").append('<div class="no-popular-posts">🔔 暂无相关文章(◕ܫ◕)</div>')</script></aside></div><footer class="clearfix"><br><br><div class="aplayer-container"><meting-js theme="#1BCDFC" autoplay volume="0.7" loop order="list" fixed="false" list-max-height="320px" server="netease" type="playlist" id="134573504" list-folded="true"></meting-js></div><br><div class="social-wrapper"><a href="https://github.com/XuxuGood" class="social fab fa-github flat-btn" target="_blank" rel="external nofollow noopener noreferrer"></a> <a href="mailto:22476705@qq.com" class="social fas fa-envelope flat-btn" target="_blank" rel="external nofollow noopener noreferrer"></a> <a href="https://mailchi.mp/3ca18a2a9749/xuxuy" class="social fas fa-heartbeat flat-btn" target="_blank" rel="external nofollow noopener noreferrer"></a> <a href="https://blog.csdn.net/qq_42889280" class="social fab fa-cuttlefish flat-btn" target="_blank" rel="external nofollow noopener noreferrer"></a> <a href="/atom.xml" class="social fas fa-rss flat-btn" target="_blank" rel="external nofollow noopener noreferrer"></a></div><a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank" rel="external nofollow noopener noreferrer"><img no-lazy src="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/upyun.png" width="60" height="auto"></a><br>Copyright <i class="far fa-copyright"></i> 2019-2020 <a href="/" target="_blank">XU'S BLOG </a>丨 <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span><script>var now=new Date;function createtime(){var n=new Date("10/09/2019 00:00:00");now.setTime(now.getTime()+250),days=(now-n)/1e3/60/60/24,dnum=Math.floor(days),hours=(now-n)/1e3/60/60-24*dnum,hnum=Math.floor(hours),1==String(hnum).length&&(hnum="0"+hnum),minutes=(now-n)/1e3/60-1440*dnum-60*hnum,mnum=Math.floor(minutes),1==String(mnum).length&&(mnum="0"+mnum),seconds=(now-n)/1e3-86400*dnum-3600*hnum-60*mnum,snum=Math.round(seconds),1==String(snum).length&&(snum="0"+snum),document.getElementById("timeDate").innerHTML="网站已运行 "+dnum+" 天 ",document.getElementById("times").innerHTML=hnum+" 小时 "+mnum+" 分 "+snum+" 秒"}setInterval("createtime()",250)</script><br><br><div class="github-badge"><a style="color:#fff" rel="external nofollow noopener noreferrer" href="https://hexo.io/" target="_blank" title="由 Hexo 强力驱动"><span class="badge-subject">Powered</span><span class="badge-value bg-blue">Hexo</span></a></div><div class="github-badge"><a style="color:#fff" rel="external nofollow noopener noreferrer" href="https://github.com/" target="_blank" title="静态网页托管于 GitHub Pages 和 Coding Pages"><span class="badge-subject">Hosted</span><span class="badge-value bg-brightgreen">GitHub &amp; Coding</span></a></div><div class="github-badge"><a style="color:#fff" rel="external nofollow noopener noreferrer" href="https://www.aliyun.com/" target="_blank" title="阿里云提供域名相关服务"><span class="badge-subject">DNS</span><span class="badge-value bg-blueviolet">Aliyun</span></a></div><div class="github-badge"><a style="color:#fff" rel="external nofollow noopener noreferrer" href="https://www.jsdelivr.com/" target="_blank" title="jsDelivr 提供 CDN 加速服务"><span class="badge-subject">CDN</span><span class="badge-value bg-orange">jsDelivr</span></a></div><div class="github-badge"><a style="color:#fff" rel="external nofollow noopener noreferrer" href="https://github.com/volantis-x/hexo-theme-volantis/" target="_blank" title="站点使用 Volantis 主题"><span class="badge-subject">Theme</span><span class="badge-value bg-blue">Volantis</span></a></div><div class="github-badge"><a style="color:#fff" rel="external nofollow noopener noreferrer" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="本站点采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议进行许可"><span class="badge-subject"><i class="fa fa-copyright"></i></span><span class="badge-value bg-gradient">BY-NC-SA 4.0</span></a></div><div class="github-badge"><span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet">73.4k</span></div></footer><a class="s-top fas fa-arrow-up fa-fw" href="javascript:void(0)"></a></div></div><div><div id="rightmenu-wrapper"><ul class="list-v rightmenu" id="rightmenu-content"><li class="option"><a class="vlts-menu opt fix-cursor-default" id="menu-copy-text" onclick="document.execCommand("copy")"><i class="fa fa-copy fa-fw"></i>复制文本<hr id="hr-text"><a class="vlts-menu opt fix-cursor-default" id="menu-copy-href"><i class="fa fa-link fa-fw"></i>复制链接</a> <a class="vlts-menu opt fix-cursor-default" id="menu-open-href"><i class="fa fa-external-link-square-alt fa-fw"></i>在新标签页打开</a><hr id="hr-href"><a class="vlts-menu opt fix-cursor-default" id="menu-copy-src"><i class="fa fa-image fa-fw"></i>复制图片地址</a><hr id="hr-src"></li><li class="navigation"><a class="nav icon-only fix-cursor-default" onclick="history.back()"><i class="fa fa-arrow-left fa-fw"></i></a> <a class="nav icon-only fix-cursor-default" onclick="history.forward()"><i class="fa fa-arrow-right fa-fw"></i></a> <a class="nav icon-only fix-cursor-default" onclick="window.location.reload()"><i class="fa fa-redo fa-fw"></i></a> <a class="nav icon-only fix-cursor-default" href="/"><i class="fa fa-home fa-fw"></i></a></li><hr><li><a class="vlts-menu fix-cursor-default" href="/comments/" id="comments"><i class="fas fa-comments fa-fw"></i> 留言</a></li><li><a class="vlts-menu fix-cursor-default" href="/photos/" id="photos"><i class="fas fa-camera-retro fa-fw"></i> 相册</a></li><li><a class="vlts-menu fix-cursor-default" href="/links/" id="links"><i class="fas fa-users fa-fw"></i> 小伙伴们</a></li><hr><li><a class="vlts-menu fix-cursor-default" href="/tools/" id="tools"><i class="fas fa-cog fa-fw"></i> 实用工具</a></li><li><a class="vlts-menu fix-cursor-default" href="/catchTheCat/" id="catchTheCat"><i class="fas fa-cat fa-fw"></i> 围住小猫</a></li><hr><li class="music name"><p class="nav music-title fix-cursor-default"></p></li><li class="music ctrl"><a class="nav icon-only backward fix-cursor-default" onclick="aplayerBackward()"><i class="fa fa-step-backward fa-fw"></i></a> <a class="nav icon-only toggle fix-cursor-default" onclick="aplayerToggle()"><i class="fa fa-play fa-fw"></i></a> <a class="nav icon-only forward fix-cursor-default" onclick="aplayerForward()"><i class="fa fa-step-forward fa-fw"></i></a></li><li class="music volume"><a class="nav volume"><div class="aplayer-volume-bar-wrap"><div class="aplayer-volume-bar fix-cursor-pointer"><div class="aplayer-volume"></div><i class="left fa fa-volume-off fa-fw"></i> <i class="right fa fa-volume-up fa-fw"></i></div></div></a></li></ul></div><script>window.document.oncontextmenu = function (event) {
+      if (event.ctrlKey) return true;
+      if (/Android|webOS|BlackBerry/i.test(navigator.userAgent)) return true;
+      return popMenu(event);
+    };
+    document.addEventListener("click", function (event) {
+      var mymenu = document.getElementById('rightmenu-wrapper');
+      mymenu.style.display = "none";
+    });
+    function popMenu(event) {
+      var mymenu = document.getElementById('rightmenu-wrapper');
+      var menuContent = document.getElementById('rightmenu-content');
+      var screenWidth = document.documentElement.clientWidth || document.body.clientWidth;
+      var screenHeight = document.documentElement.clientHeight || document.body.clientHeight;
+      mymenu.style.left = event.clientX + "px"; // 获取鼠标位置
+      mymenu.style.top = event.clientY + "px";
+      mymenu.style.display = 'block';
+      if (event.clientX * 2 > screenWidth) {
+        menuContent.classList.add('left');
+      } else {
+        menuContent.classList.remove('left');
+      }
+      if (event.clientY * 2 > screenHeight) {
+        menuContent.classList.add('top');
+      } else {
+        menuContent.classList.remove('top');
+      }
+
+      let hrText = document.getElementById('hr-text');
+      let hrSrc = document.getElementById('hr-src');
+      let hrHref = document.getElementById('hr-href');
+
+      // 选中图片
+      let copySrc = document.getElementById('menu-copy-src');
+      if (copySrc != undefined) {
+        if (event.target.currentSrc) {
+          copySrc.style.display = 'block';
+          copySrc.addEventListener("click", function (e) {
+            copyString(event.target.currentSrc);
+          },{once: true});
+          hrSrc.style.display = 'block';
+        } else {
+          copySrc.style.display = 'none';
+          hrSrc.style.display = 'none';
+        }
+      }
+
+      // 选中按钮
+      // 判断是不是按钮
+      let href = '';
+      if (event.path) {
+        for (i = 0; i < event.path.length; i++) {
+          if (event.path[i].href != undefined && event.path[i].href.length > 0) {
+            href = event.path[i].href;
+          }
+        }
+      }
+
+      let copyText = document.getElementById('menu-copy-text');
+      copyText.style.display = 'none';
+      hrText.style.display = 'none';
+      if (href.length == 0) {
+        // 选中文本
+        if (window.getSelection().toString()) {
+          copyText.style.display = 'block';
+          hrText.style.display = 'block';
+        }
+      }
+
+      // 在新标签页打开
+      let openHref = document.getElementById('menu-open-href');
+      if (openHref != undefined) {
+        if (href.length > 0) {
+          openHref.style.display = 'block';
+          openHref.addEventListener("click", function (e) {
+            window.open(href);
+          },{once: true});
+          hrHref.style.display = 'block';
+        } else {
+          openHref.style.display = 'none';
+          hrHref.style.display = 'none';
+        }
+      }
+      // 复制链接
+      let copyHref = document.getElementById('menu-copy-href');
+      if (copyHref != undefined) {
+        if (href.length > 0) {
+          copyHref.style.display = 'block';
+          copyHref.addEventListener("click", function (e) {
+            copyString(href);
+          },{once: true});
+        } else {
+          copyHref.style.display = 'none';
+        }
+      }
+
+      // 有音乐播放器
+      if (true == true && ('comments,photos,links,hr,tools,catchTheCat,hr,music'||[]).includes('music')) {
+        // 如果有aplayer，初始化一下
+      	try {
+      		checkAPlayer();
+          updateTitle();
+      	} catch (error) {
+      		console.log(error);
+      	}
+      }
+
+      return false; // 该行代码确保系统自带的右键菜单不会被调出
+    }
+    function hideMenu() {
+      document.getElementById('rightmenu-wrapper').style.display = 'none';
+    }
+    function copyString(str) {
+      const input = document.createElement('input');
+      input.setAttribute('readonly', 'readonly');
+      document.body.appendChild(input);
+      input.setAttribute('value', str);
+      input.select();
+      document.execCommand('copy');
+      document.body.removeChild(input);
+    }
+    document.execCommand('click');</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script><script type="text/javascript">$(function(){var a=["https://cdn.jsdelivr.net/gh/XuxuGood/cdn/blogImages/wallpaper/wallpaper5.png"];!function(a){for(var n=a.length;n--;){var r=Math.floor(Math.random()*n),t=a[r];a[r]=a[n],a[n]=t}}(a),$.backstretch(a,{duration:"10000",fade:"1500"})})</script><script>var SEARCH_SERVICE="hexo",ROOT="/";ROOT.endsWith("/")||(ROOT+="/")</script><script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script><script>window.lazyLoadOptions={elements_selector:".lazyload",threshold:0},window.addEventListener("LazyLoad::Initialized",function(n){window.lazyLoadInstance=n.detail.instance},!1),document.addEventListener("DOMContentLoaded",function(){lazyLoadInstance.update()}),document.addEventListener("pjax:complete",function(){lazyLoadInstance.update()})</script><script async src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script><script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script><script>function pjax_fancybox(){$(".md").find("img").not(".inline").not("a img").each(function(){var t=document.createElement("a");$(t).attr("pjax-fancybox",""),$(t).attr("href",$(this).attr("src")),$(this).attr("data-original")&&$(t).attr("href",$(this).attr("data-original")),$(t).attr("data-fancybox","images");var a="";$(this).attr("alt")&&($(t).attr("data-caption",$(this).attr("alt")),a=$(this).attr("alt"));var e=document.createElement("div");$(e).addClass("fancybox"),$(this).wrap(e);var i=document.createElement("span");$(i).addClass("image-caption"),$(i).text(a),$(this).after(i),$(this).wrap(t)}),$(".article-entry").find("img").fancybox({selector:'[data-fancybox="images"]',hash:!1,loop:!1,closeClick:!0,helpers:{overlay:{closeClick:!0}},buttons:["zoom","close"]})}$(function(){pjax_fancybox()})</script><script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script><script>var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });</script><script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script><script type="text/javascript">function pjax_scrollrebeal(){ScrollReveal().reveal(".l_main .reveal",{distance:"32px",duration:"800",interval:"20",scale:"1",easing:"ease-out"})}$(function(){pjax_scrollrebeal()})</script><script>let APlayerController = new Object();
+  APlayerController.id = '134573504';  // 设定全局音乐播放ID
+  APlayerController.volume = '0.7';</script><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js"></script><script src="/js/aplayer.js"></script><script src="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogJs/Valine.min.js"></script><script>var GUEST_INFO = ['nick', 'mail', 'link'];
+    var meta = 'nick,mail,link'.split(',').filter(function (item) {
+        return GUEST_INFO.indexOf(item) > -1
+    });
+    var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+    var requiredFields = 'nick,mail'.split(',').filter(function (item) {
+        return REQUIRED_FIELDS.indexOf(item) > -1
+    });
+
+    var tagMeta = '博主,小伙伴,访客'.split(',');
+    var friends = 'd32d39c8e126512382ee4b831a8f8002,d06adebbcbaa24413cc1b53dc8576ed0,ab2579686cf0e99e1ba40a932e0400f5,e846889207767f93e049a14a29a12d55,3f96b7b64421af2309f48ce09f483e00,36937ffd56ac7ac077c3e2dceae74dc5,00fdb1c48ae14c86afce12a8f9fc3d77,fde3448b9705037f2021664c8b8e6cb1,dd04aab66ee54f77e80e8a7781a3e8e2,35d7010131d4f17efe9842174c3c1c2c,ee307e1162191d9120f967483af6d490,15f39db75e8624d52353ae6943eb66ca,187c2861161c500c97a69290c89b5526,876272e6ce1dd1059dabdc871f59d251,9be62391e297826516364374435f758c,e086f9ab51f37cb606fc6378c36cd9aa,e8b473e9af0f2718265c88b809a0a7b2,3ce1e6c77b4910f1871106cb30dc62b0,28b57baa4e8f13fe4292ccb2de267e30,3c915d7f53fe9ae72235eb188968ad86'.split(',');
+    var master = '6a565e6c47127afdd40d5d46089db2c5'.split(',');
+    // 输入框背景文字
+    var metaPlaceholder = {"nick": "昵称/QQ号(必填)", "mail": "邮箱（必填，完全保密）", "link": "网址(https://)"};
+
+    function emoji(path, idx, ext) {
+        return path + "/" + path + "-" + idx + "." + ext;
+    }
+
+    var emojiMaps = {};
+    for (var i = 1; i <= 2; i++) {
+        emojiMaps['fun-' + i] = emoji('fun', i, 'gif');
+    }
+    for (var i = 1; i <= 54; i++) {
+        emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+    }
+    for (var i = 1; i <= 101; i++) {
+        emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+    }
+    for (var i = 1; i <= 116; i++) {
+        emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+    }
+    for (var i = 1; i <= 125; i++) {
+        emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+    }
+    for (var i = 1; i <= 4; i++) {
+        emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+    }
+
+    function pjax_valine() {
+        let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ?
+            decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
+        let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
+            "粘贴图片到此处可以自动上传，填写邮箱可以收到邮件回复哦(●&#39;◡&#39;●)" : $.trim($('#pjax-comment-placeholder').text());
+
+        let ALLPATH = '';
+        if(ALLPATH != '') pageUrl = ALLPATH;
+
+        var valine = new Valine();
+        valine.init({
+            el: '#valine_container',
+            meta: meta,
+            placeholder: pagePlaceholder,
+            path: pageUrl,
+            appId: "gYcUzERw1BSKyARbzWH2OQzu-gzGzoHsz",
+            appKey: "7xvFncnnyG2QI60iDY3E4PuO",
+            pageSize: '10',
+            avatar: 'monsterid',
+            lang: 'zh-cn',
+            visitor: 'true',
+            highlight: 'true',
+            mathJax: 'false',
+            enableQQ: 'true',
+            requiredFields: requiredFields,
+            emojiCDN: 'https://cdn.jsdelivr.net/gh/XuxuGood/cdn/blogImages/emoji/valine/',
+            emojiMaps: emojiMaps,
+            tagMeta: tagMeta,
+            master: master,
+            friends: friends,
+            metaPlaceholder: metaPlaceholder
+        })
+    }
+
+    $(function () {
+        pjax_valine();
+    });</script><script defer src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js" data-pjax></script><script src="/js/app.js"></script><script src="/js/search.js"></script><script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script><script type="text/javascript">$(function(){Waves.attach(".flat-btn",["waves-button"]),Waves.attach(".float-btn",["waves-button","waves-float"]),Waves.attach(".float-btn-light",["waves-button","waves-float","waves-light"]),Waves.attach(".flat-box",["waves-block"]),Waves.attach(".float-box",["waves-block","waves-float"]),Waves.attach(".waves-image"),Waves.init()})</script><script defer>const LCCounter = {
+    app_id: 'gYcUzERw1BSKyARbzWH2OQzu-gzGzoHsz',
+    app_key: '7xvFncnnyG2QI60iDY3E4PuO',
+    custom_api_server: '',
+
+    // 查询存储的记录
+    getRecord(Counter, url, title) {
+      return new Promise(function (resolve, reject) {
+        Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({url})))
+          .then(resp => resp.json())
+          .then(({results, code, error}) => {
+            if (code === 401) {
+              throw error;
+            }
+            if (results && results.length > 0) {
+              var record = results[0];
+              resolve(record);
+            } else {
+              Counter('post', '/classes/Counter', {url, title: title, times: 0})
+                .then(resp => resp.json())
+                .then((record, error) => {
+                  if (error) {
+                    throw error;
+                  }
+                  resolve(record);
+                }).catch(error => {
+                console.error('Failed to create', error);
+                reject(error);
+              });
+            }
+          }).catch((error) => {
+          console.error('LeanCloud Counter Error:', error);
+          reject(error);
+        });
+      })
+    },
+
+    // 发起自增请求
+    increment(Counter, incrArr) {
+      return new Promise(function (resolve, reject) {
+        Counter('post', '/batch', {
+          "requests": incrArr
+        }).then((res) => {
+          res = res.json();
+          if (res.error) {
+            throw res.error;
+          }
+          resolve(res);
+        }).catch((error) => {
+          console.error('Failed to save visitor count', error);
+          reject(error);
+        });
+      });
+    },
+
+    // 构建自增请求体
+    buildIncrement(objectId) {
+      return {
+        "method": "PUT",
+        "path": `/1.1/classes/Counter/${ objectId }`,
+        "body": {
+          "times": {
+            '__op': 'Increment',
+            'amount': 1
+          }
+        }
+      }
+    },
+
+    // 校验是否为有效的 UV
+    validUV() {
+      var key = 'LeanCloudUVTimestamp';
+      var flag = localStorage.getItem(key);
+      if (flag) {
+        // 距离标记小于 24 小时则不计为 UV
+        if (new Date().getTime() - parseInt(flag) <= 86400000) {
+          return false;
+        }
+      }
+      localStorage.setItem(key, new Date().getTime().toString());
+      return true;
+    },
+
+    addCount(Counter) {
+      var enableIncr = '' === 'true' && window.location.hostname !== 'localhost';
+      enableIncr = true;
+      var getterArr = [];
+      var incrArr = [];
+      // 请求 PV 并自增
+      var pvCtn = document.querySelector('#lc-sv');
+      if (pvCtn || enableIncr) {
+        var pvGetter = this.getRecord(Counter, 'https://hasaik.com' + '/#lc-sv', 'Visits').then((record) => {
+          incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-sv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + 1;
+              if (pvCtn) {
+                pvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(pvGetter);
+      }
+
+      // 请求 UV 并自增
+      var uvCtn = document.querySelector('#lc-uv');
+      if (uvCtn || enableIncr) {
+        var uvGetter = this.getRecord(Counter, 'https://hasaik.com' + '/#lc-uv', 'Visitors').then((record) => {
+          var vuv = this.validUV();
+          vuv && incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-uv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + (vuv ? 1 : 0);
+              if (uvCtn) {
+                uvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(uvGetter);
+      }
+
+      // 请求文章的浏览数，如果是当前页面就自增
+      var allPV = document.querySelectorAll('#lc-pv');
+      if (allPV.length > 0 || enableIncr) {
+        for (i = 0; i < allPV.length; i++) {
+          let pv = allPV[i];
+          let title = pv.getAttribute('data-title');
+          var url = 'https://hasaik.com' + pv.getAttribute('data-path');
+          if (url) {
+            var viewGetter = this.getRecord(Counter, url, title).then((record) => {
+              // 是当前页面就自增
+              if (pv.getAttribute('data-path') == window.location.pathname) {
+                incrArr.push(this.buildIncrement(record.objectId));
+              }
+              if (pv) {
+                var ele = pv.querySelector('#lc-pv #number');
+                if (ele) {
+                  if (pv.getAttribute('data-path') == window.location.pathname) {
+                    ele.innerText = (record.times || 0) + 1;
+                  } else {
+                    ele.innerText = record.times || 0;
+                  }
+                  pv.style.display = 'inline';
+                }
+              }
+            });
+            getterArr.push(viewGetter);
+          }
+        }
+      }
+
+      // 如果启动计数自增，批量发起自增请求
+      if (enableIncr) {
+        Promise.all(getterArr).then(() => {
+          incrArr.length > 0 && this.increment(Counter, incrArr);
+        })
+      }
+
+    },
+
+
+    fetchData(api_server) {
+      var Counter = (method, url, data) => {
+        return fetch(`${ api_server }/1.1${ url }`, {
+          method,
+          headers: {
+            'X-LC-Id': this.app_id,
+            'X-LC-Key': this.app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      this.addCount(Counter);
+    },
+
+    refreshCounter() {
+      var api_server = this.app_id.slice(-9) !== '-MdYXbMMI' ? this.custom_api_server : `https://${ this.app_id.slice(0, 8).toLowerCase() }.api.lncldglobal.com`;
+      if (api_server) {
+        this.fetchData(api_server);
+      } else {
+        fetch('https://app-router.leancloud.cn/2/route?appId=' + this.app_id)
+          .then(resp => resp.json())
+          .then(({api_server}) => {
+            this.fetchData('https://' + api_server);
+          });
+      }
+    }
+
+  };
+
+  LCCounter.refreshCounter();
+
+  document.addEventListener('pjax:complete', function () {
+    LCCounter.refreshCounter();
+  });</script><!-- more --><script src="/js/crash_cheat.js"></script><script src="/js/message.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><div class="pjax-animate"><script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script><div id="loading-bar-wrapper"><script>NProgress.configure({parent:"#loading-bar-wrapper",trickleSpeed:100})</script></div><script>window.ShowLoading=function(){NProgress.start()},window.HideLoading=function(){NProgress.done()}</script></div><script>var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+        pjax = new Pjax({
+            elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+            selectors: [
+                "title",
+                "#pjax-container",
+                "#pjax-header-nav-list"
+            ],
+            cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+            timeout: 5000
+        });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+        window.stop(); // 相当于点击了浏览器的停止按钮
+
+        try {
+            var currentUrl = window.location.pathname;
+            var targetUrl = e.triggerElement.href;
+            var banUrl = [""];
+            if (banUrl[0] != "") {
+                banUrl.forEach(item => {
+                    if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+                        window.location.href = targetUrl;
+                    }
+                });
+            }
+        } catch (error) {}
+
+        window.subData = null; // 移除标题（用于一二级导航栏切换处）
+        $.fancybox.close();    // 关闭弹窗
+        $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
+        $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
+        $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
+
+        // 解绑事件 避免重复监听
+        $('.s-top').unbind('click');
+        $('.menu a').unbind('click');
+        $(window).unbind('resize');
+        $(window).unbind('scroll');
+        $(document).unbind('scroll');
+        $(document).unbind('click');
+        $('body').unbind('click');
+        window.ShowLoading();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+        // 关于百度统计对 SPA 页面的处理：
+        // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
+        // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
+        // 
+
+        // 关于谷歌统计对 SPA 页面的处理：
+        // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
+        // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
+        
+
+        $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style", ""); // 移除小尾巴的移除
+        $('.menu-phone.list-v').removeAttr("style", ""); // 移除小尾巴的移除
+        $('script[data-pjax], .pjax-reload script').each(function () {
+            $(this).parent().append($(this).remove());
+        });
+
+        try {
+            pjax_fancybox();
+            
+            
+            if ('') {
+                $('').backstretch("resize");
+            } else {
+                $.backstretch("resize");
+            }
+            
+            
+            
+            pjax_scrollrebeal();
+            
+            
+            pjax_initCopyCode();
+            
+            
+            pjax_valine();
+            
+            
+            
+            
+            
+        } catch (e) {
+            console.log(e);
+        }
+        window.HideLoading();
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+        window.HideLoading();
+        window.location.href = e.triggerElement.href;
+    });</script></div></body></html><!-- rebuild by neat -->

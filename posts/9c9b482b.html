@@ -1,0 +1,558 @@
+<!-- build time:Thu Aug 20 2020 12:17:59 GMT+0000 (Coordinated Universal Time) --><!DOCTYPE html><html><head hexo-theme="https://github.com/volantis-x/hexo-theme-volantis/tree/3.0.0"><meta charset="utf-8"><meta name="renderer" content="webkit"><meta name="force-rendering" content="webkit"><meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"><meta name="HandheldFriendly" content="True"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><title>Hexo博客+Next主题鼠标点击特效 - Xu&#39;s Blog</title><meta name="keywords" content="Hexo,鼠标点击特效"><meta name="description" content="感觉鼠标点击出现效果也还不错哈，不妨在本站空白处点击一下看看效果~"><link rel="alternate" href="/atom.xml" title="Xu's Blog" type="application/atom+xml"><meta name="theme-color" content="#FFFFFF"><meta name="msapplication-TileColor" content="#1BC3FB"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css"><link rel="shortcut icon" type="image/x-icon" href="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/favicon.png"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/message.css" type="text/css"><script src="https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js"></script></head><body><header class="l_header auto shadow blur" style="opacity:0"><div class="container"><div class="wrapper"><div class="nav-sub"><p class="title"></p><ul class="switcher nav-list-h m-phone" id="pjax-header-nav-list"><li><a class="s-comment fas fa-comments fa-fw" target="_self" href="javascript:void(0)"></a></li><li><a class="s-toc fas fa-list fa-fw" target="_self" href="javascript:void(0)"></a></li></ul></div><div class="nav-main"><a class="title flat-box" target="_self" href="/"><i class="fas fa-dragon"></i> Xu's Blog</a><div class="menu navigation"><ul class="nav-list-h m-pc"><li><a class="menuitem flat-box faa-parent animated-hover" href="/" id="home"><i class="fas fa-home faa-tada fa-fw"></i> 主页</a></li><li><a class="menuitem flat-box faa-parent animated-hover"><i class="fas fa-tasks fa-fw"></i> 找文章</a><ul class="list-v"><li><a class="menuitem flat-box faa-parent animated-hover" href="/archives/" id="archives"><i class="fas fa-archive faa-tada fa-fw"></i> 归档</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/" id="categories"><i class="fas fa-folder-open faa-tada fa-fw"></i> 分类</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/tags/" id="tags"><i class="fas fa-tags faa-tada fa-fw"></i> 标签</a></li></ul></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/links/" id="links"><i class="fas fa-link faa-tada fa-fw"></i> 朋友</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/about/" id="about"><i class="fas fa-info-circle faa-tada fa-fw"></i> 关于</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/comments/" id="comments"><i class="fas fa-comments faa-tada fa-fw"></i> 留言</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="https://travellings.now.sh" id="https:travellingsnowsh" rel="external nofollow noopener noreferrer" target="_blank"><i class="fas fa-paper-plane faa-tada fa-fw"></i> 开往</a></li><li><a class="menuitem flat-box faa-parent animated-hover"><i class="fas fa-fan fa-spin fa-fw"></i> 更多</a><ul class="list-v"><li><a class="menuitem flat-box faa-parent animated-hover" href="/photos/" id="photos"><i class="fas fa-camera-retro faa-tada fa-fw"></i> 我的相册</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/resume/" id="resume"><i class="fas fa-drafting-compass faa-tada fa-fw"></i> 我的简历</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="https://gycuzerwzfyu.leanapp.cn/" rel="external nofollow noopener noreferrer" target="_blank" id="https:gycuzerwzfyuleanappcn"><i class="fas fa-comments faa-tada fa-fw"></i> 评论管理</a></li><hr><li><a class="menuitem flat-box faa-parent animated-hover" href="/tools/" id="tools"><i class="fas fa-cog faa-tada fa-fw"></i> 实用工具</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/catchTheCat/" id="catchTheCat"><i class="fas fa-cat faa-tada fa-fw"></i> 围住小猫</a></li></ul></li></ul></div><div class="m_search"><form name="searchform" class="form u-search-form"><i class="icon fas fa-search fa-fw"></i> <input type="text" class="input u-search-input" placeholder="搜索...(◕ܫ◕)"></form></div><div style="display:flex;z-index:1"><canvas id="particleClockCanvas" style="width:100px;margin-top:4px;margin-left:20px"></canvas></div><script src="/js/canvas-clock.js"></script><style>@media screen and (max-width:768px){#particleClockCanvas{display:none}}</style><ul class="switcher nav-list-h m-phone"><li><a class="s-search fas fa-search fa-fw" target="_self" href="javascript:void(0)"></a></li><li><a class="s-menu fas fa-bars fa-fw" target="_self" href="javascript:void(0)"></a><ul class="menu-phone list-v navigation white-box"><li><a class="menuitem flat-box faa-parent animated-hover" href="/" id="home"><i class="fas fa-home faa-tada fa-fw"></i> 主页</a></li><li><a class="menuitem flat-box faa-parent animated-hover"><i class="fas fa-tasks fa-fw"></i> 找文章</a><ul class="list-v"><li><a class="menuitem flat-box faa-parent animated-hover" href="/archives/" id="archives"><i class="fas fa-archive faa-tada fa-fw"></i> 归档</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/" id="categories"><i class="fas fa-folder-open faa-tada fa-fw"></i> 分类</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/tags/" id="tags"><i class="fas fa-tags faa-tada fa-fw"></i> 标签</a></li></ul></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/links/" id="links"><i class="fas fa-link faa-tada fa-fw"></i> 朋友</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/about/" id="about"><i class="fas fa-info-circle faa-tada fa-fw"></i> 关于</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/comments/" id="comments"><i class="fas fa-comments faa-tada fa-fw"></i> 留言</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="https://travellings.now.sh" id="https:travellingsnowsh" rel="external nofollow noopener noreferrer" target="_blank"><i class="fas fa-paper-plane faa-tada fa-fw"></i> 开往</a></li><li><a class="menuitem flat-box faa-parent animated-hover"><i class="fas fa-fan fa-spin fa-fw"></i> 更多</a><ul class="list-v"><li><a class="menuitem flat-box faa-parent animated-hover" href="/photos/" id="photos"><i class="fas fa-camera-retro faa-tada fa-fw"></i> 我的相册</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/resume/" id="resume"><i class="fas fa-drafting-compass faa-tada fa-fw"></i> 我的简历</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="https://gycuzerwzfyu.leanapp.cn/" rel="external nofollow noopener noreferrer" target="_blank" id="https:gycuzerwzfyuleanappcn"><i class="fas fa-comments faa-tada fa-fw"></i> 评论管理</a></li><hr><li><a class="menuitem flat-box faa-parent animated-hover" href="/tools/" id="tools"><i class="fas fa-cog faa-tada fa-fw"></i> 实用工具</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/catchTheCat/" id="catchTheCat"><i class="fas fa-cat faa-tada fa-fw"></i> 围住小猫</a></li></ul></li></ul></li></ul></div></div></div></header><div class="l_body"><div class="l_cover"><div class="cover-wrapper post featured" style="display:none"><div class="cover-backstretch"></div><div class="cover-body"><div class="top"><img no-lazy class="logo" src="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/logo.png"></div><div class="bottom"><div class="menu navigation"><div class="list-h"><a href="/" id="home"><img src="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/menu/home.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/menu/home.png" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif"><p>主页</p></a><a href="/archives/" id="archives"><img src="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/menu/archive.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/menu/archive.png" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif"><p>归档</p></a><a href="/links/" id="links"><img src="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/menu/link.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/menu/link.png" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif"><p>朋友</p></a><a href="/comments/" id="comments"><img src="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/menu/comments.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/menu/comments.png" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif"><p>留言</p></a><a href="/about/" id="about"><img src="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/menu/about.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/menu/about.png" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif"><p>关于</p></a></div></div></div></div><div class="scroll-down" style="display:none"><i class="fa fa-chevron-down scroll-down-effects"></i></div></div></div><div class="safearea"><div class="body-wrapper" id="pjax-container"><div id="pjax-data" style="display:none"><div id="pjax-ispage">true</div><div id="pjax-pageTitle">Hexo博客+Next主题鼠标点击特效</div><div id="pjax-enable-cover">true</div><div id="pjax-comment-path">none</div><div id="pjax-comment-placeholder">none</div></div><script>document.getElementsByClassName("cover-wrapper")[0].style.display="none",document.getElementsByClassName("l_header","cover-wrapper")[0].classList.add("show")</script><div class="l_main"><article id="post" class="post white-box reveal md shadow floatable article-type-post" itemscope itemprop="blogPost"><div class="article-header"><div class="article-meta" id="top"><a title="Hexo博客+Next主题鼠标点击特效" href="/posts/9c9b482b.html"><img class="thumbnail lazyload placeholder" src="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/article-thumbnail/hexo.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/article-thumbnail/hexo.png" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif"></a><h1 class="title"><a href="/posts/9c9b482b.html">Hexo博客+Next主题鼠标点击特效</a></h1><div class="new-meta-box"><div class="new-meta-item author"><a class="author" href="/" rel="nofollow"><img no-lazy src="https://hasaik.com/images/avatar.jpg"><p>Mr. X</p></a></div><div class="new-meta-item date"><a class="notlink"><i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i><p>发布于：2019-11-14</p></a></div><div class="new-meta-item category"><a class="notlink"><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i> <a class="category-link" href="/categories/Hexo/">Hexo</a></a></div><div class="new-meta-item comments-count"><a href="javascript:void(0);" onclick="scrollToComments()"><i class="fas fa-comment-dots fa-fw"></i> <span class="valine-comment-count" data-xid="/posts/9c9b482b.html">0</span> <span class="leancloud-comments-count">&nbsp;条评论</span></a></div><script>function scrollToComments(){
+       // 校正页面定位（被导航栏挡住的区域）
+       var scrollCorrection = 80; // (header height = 64px) + (gap = 16px)
+       var $headerAnchor = $('.l_header');
+       if ($headerAnchor[0]) {
+           scrollCorrection = $headerAnchor[0].clientHeight + 16;
+       }
+       scrollToElement($('.l_body .comments'),scrollCorrection);
+    }
+   // 校正页面定位（被导航栏挡住的区域）
+   function scrollToElement(elem, scrollCorrection) {
+       const $elem = elem.href ? $(elem.getAttribute('href')) : $(elem);
+       $('html, body').animate({
+           'scrollTop': $elem.offset().top - scrollCorrection
+       }, 500);
+   }</script><div class="new-meta-item wordcount"><a class="notlink"><i class="fas fa-keyboard fa-fw" aria-hidden="true"></i><p>字数统计：2.4k字</p></a></div><div class="new-meta-item readtime"><a class="notlink"><i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i><p>阅读时长≈ 14分钟</p></a></div></div></div></div><section class="article typo"><div class="article-entry" itemprop="articleBody"><div class="note primary">感觉鼠标点击出现效果也还不错哈，不妨在本站空白处点击一下看看效果~</div><h2 id="效果">效果</h2><p><img src="https://s2.ax1x.com/2019/11/15/MUqJgS.jpg" class="lazyload placeholder" data-srcset="https://s2.ax1x.com/2019/11/15/MUqJgS.jpg" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif" alt="效果"></p><h2 id="配置">配置</h2><p>在主题 <code>_config.yml</code> 中添加动态配置项</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cursor_effect:</span><br><span class="line">  enabled: <span class="literal">true</span></span><br><span class="line">  <span class="built_in">type</span>: love  <span class="comment"># fireworks：礼花 | explosion：爆炸 | love：浮出爱心 | text：浮出文字</span></span><br></pre></td></tr></table></figure><h2 id="代码">代码</h2><p>文件位置：/themes/next/layout/_custom/custom.swig ，添加如下代码：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#123;% <span class="keyword">if</span> theme.cursor_effect %&#125;</span><br><span class="line">  &#123;% <span class="keyword">if</span> theme.cursor_effect.type == <span class="string">&quot;fireworks&quot;</span> %&#125;</span><br><span class="line">    &lt;script src=<span class="string">&quot;/js/cursor/fireworks.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">  &#123;% elseif theme.cursor_effect.type == <span class="string">&quot;explosion&quot;</span> %&#125;</span><br><span class="line">    &lt;canvas class=<span class="string">&quot;fireworks&quot;</span> style=<span class="string">&quot;position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;&quot;</span> &gt;&lt;/canvas&gt;</span><br><span class="line">    &lt;script src=<span class="string">&quot;//cdn.bootcss.com/animejs/2.2.0/anime.min.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script src=<span class="string">&quot;/js/cursor/explosion.min.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">  &#123;% elseif theme.cursor_effect.type == <span class="string">&quot;love&quot;</span> %&#125;</span><br><span class="line">    &lt;script src=<span class="string">&quot;/js/cursor/love.min.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">  &#123;% elseif theme.cursor_effect.type == <span class="string">&quot;text&quot;</span> %&#125;</span><br><span class="line">    &lt;script src=<span class="string">&quot;/js/cursor/text.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">  &#123;% endif %&#125;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure><p>如果是第一次使用这个 <code>custom.swig</code> ，则需要在 /themes/next/layout/_layout.swig 中的 <code>&lt;/body&gt;</code> 结束之前引入</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% include <span class="string">&#x27;_custom/custom.swig&#x27;</span> %&#125;</span><br></pre></td></tr></table></figure><p>将以下4个 JS 文件复制到目录 /themes/next/source/js/cursor/ 下</p><div class="note default">fireworks.js</div><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br></pre></td><td class="code"><pre><span class="line">class Circle &#123;</span><br><span class="line">  constructor(&#123; origin, speed, color, angle, context &#125;) &#123;</span><br><span class="line">    this.origin = origin</span><br><span class="line">    this.position = &#123; ...this.origin &#125;</span><br><span class="line">    this.color = color</span><br><span class="line">    this.speed = speed</span><br><span class="line">    this.angle = angle</span><br><span class="line">    this.context = context</span><br><span class="line">    this.renderCount = 0</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">draw</span></span>() &#123;</span><br><span class="line">    this.context.fillStyle = this.color</span><br><span class="line">    this.context.beginPath()</span><br><span class="line">    this.context.arc(this.position.x, this.position.y, 2, 0, Math.PI * 2)</span><br><span class="line">    this.context.fill()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">move</span></span>() &#123;</span><br><span class="line">    this.position.x = (Math.sin(this.angle) * this.speed) + this.position.x</span><br><span class="line">    this.position.y = (Math.cos(this.angle) * this.speed) + this.position.y + (this.renderCount * 0.3)</span><br><span class="line">    this.renderCount++</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Boom &#123;</span><br><span class="line">  constructor (&#123; origin, context, circleCount = 16, area &#125;) &#123;</span><br><span class="line">    this.origin = origin</span><br><span class="line">    this.context = context</span><br><span class="line">    this.circleCount = circleCount</span><br><span class="line">    this.area = area</span><br><span class="line">    this.stop = <span class="literal">false</span></span><br><span class="line">    this.circles = []</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  randomArray(range) &#123;</span><br><span class="line">    const length = range.length</span><br><span class="line">    const randomIndex = Math.floor(length * Math.random())</span><br><span class="line">    <span class="built_in">return</span> range[randomIndex]</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">randomColor</span></span>() &#123;</span><br><span class="line">    const range = [<span class="string">&#x27;8&#x27;</span>, <span class="string">&#x27;9&#x27;</span>, <span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;C&#x27;</span>, <span class="string">&#x27;D&#x27;</span>, <span class="string">&#x27;E&#x27;</span>, <span class="string">&#x27;F&#x27;</span>]</span><br><span class="line">    <span class="built_in">return</span> <span class="string">&#x27;#&#x27;</span> + this.randomArray(range) + this.randomArray(range) + this.randomArray(range) + this.randomArray(range) + this.randomArray(range) + this.randomArray(range)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  randomRange(start, end) &#123;</span><br><span class="line">    <span class="built_in">return</span> (end - start) * Math.random() + start</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">init</span></span>() &#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="built_in">let</span> i = 0; i &lt; this.circleCount; i++) &#123;</span><br><span class="line">      const circle = new Circle(&#123;</span><br><span class="line">        context: this.context,</span><br><span class="line">        origin: this.origin,</span><br><span class="line">        color: this.randomColor(),</span><br><span class="line">        angle: this.randomRange(Math.PI - 1, Math.PI + 1),</span><br><span class="line">        speed: this.randomRange(1, 6)</span><br><span class="line">      &#125;)</span><br><span class="line">      this.circles.push(circle)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">move</span></span>() &#123;</span><br><span class="line">    this.circles.forEach((circle, index) =&gt; &#123;</span><br><span class="line">      <span class="keyword">if</span> (circle.position.x &gt; this.area.width || circle.position.y &gt; this.area.height) &#123;</span><br><span class="line">        <span class="built_in">return</span> this.circles.splice(index, 1)</span><br><span class="line">      &#125;</span><br><span class="line">      circle.move()</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">if</span> (this.circles.length == 0) &#123;</span><br><span class="line">      this.stop = <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">draw</span></span>() &#123;</span><br><span class="line">    this.circles.forEach(circle =&gt; circle.draw())</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class CursorSpecialEffects &#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span></span>() &#123;</span><br><span class="line">    this.computerCanvas = document.createElement(<span class="string">&#x27;canvas&#x27;</span>)</span><br><span class="line">    this.renderCanvas = document.createElement(<span class="string">&#x27;canvas&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    this.computerContext = this.computerCanvas.getContext(<span class="string">&#x27;2d&#x27;</span>)</span><br><span class="line">    this.renderContext = this.renderCanvas.getContext(<span class="string">&#x27;2d&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    this.globalWidth = window.innerWidth</span><br><span class="line">    this.globalHeight = window.innerHeight</span><br><span class="line"></span><br><span class="line">    this.booms = []</span><br><span class="line">    this.running = <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  handleMouseDown(e) &#123;</span><br><span class="line">    const boom = new Boom(&#123;</span><br><span class="line">      origin: &#123; x: e.clientX, y: e.clientY &#125;,</span><br><span class="line">      context: this.computerContext,</span><br><span class="line">      area: &#123;</span><br><span class="line">        width: this.globalWidth,</span><br><span class="line">        height: this.globalHeight</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    boom.init()</span><br><span class="line">    this.booms.push(boom)</span><br><span class="line">    this.running || this.run()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">handlePageHide</span></span>() &#123;</span><br><span class="line">    this.booms = []</span><br><span class="line">    this.running = <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">init</span></span>() &#123;</span><br><span class="line">    const style = this.renderCanvas.style</span><br><span class="line">    style.position = <span class="string">&#x27;fixed&#x27;</span></span><br><span class="line">    style.top = style.left = 0</span><br><span class="line">    style.zIndex = <span class="string">&#x27;999999999999999999999999999999999999999999&#x27;</span></span><br><span class="line">    style.pointerEvents = <span class="string">&#x27;none&#x27;</span></span><br><span class="line"></span><br><span class="line">    style.width = this.renderCanvas.width = this.computerCanvas.width = this.globalWidth</span><br><span class="line">    style.height = this.renderCanvas.height = this.computerCanvas.height = this.globalHeight</span><br><span class="line"></span><br><span class="line">    document.body.append(this.renderCanvas)</span><br><span class="line"></span><br><span class="line">    window.addEventListener(<span class="string">&#x27;mousedown&#x27;</span>, this.handleMouseDown.bind(this))</span><br><span class="line">    window.addEventListener(<span class="string">&#x27;pagehide&#x27;</span>, this.handlePageHide.bind(this))</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">run</span></span>() &#123;</span><br><span class="line">    this.running = <span class="literal">true</span></span><br><span class="line">    <span class="keyword">if</span> (this.booms.length == 0) &#123;</span><br><span class="line">      <span class="built_in">return</span> this.running = <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    requestAnimationFrame(this.run.bind(this))</span><br><span class="line"></span><br><span class="line">    this.computerContext.clearRect(0, 0, this.globalWidth, this.globalHeight)</span><br><span class="line">    this.renderContext.clearRect(0, 0, this.globalWidth, this.globalHeight)</span><br><span class="line"></span><br><span class="line">    this.booms.forEach((boom, index) =&gt; &#123;</span><br><span class="line">      <span class="keyword">if</span> (boom.stop) &#123;</span><br><span class="line">        <span class="built_in">return</span> this.booms.splice(index, 1)</span><br><span class="line">      &#125;</span><br><span class="line">      boom.move()</span><br><span class="line">      boom.draw()</span><br><span class="line">    &#125;)</span><br><span class="line">    this.renderContext.drawImage(this.computerCanvas, 0, 0, this.globalWidth, this.globalHeight)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const cursorSpecialEffects = new CursorSpecialEffects()</span><br><span class="line">cursorSpecialEffects.init()</span><br></pre></td></tr></table></figure><div class="note default">explosion.min.js</div><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;use strict&quot;</span>;<span class="keyword">function</span> updateCoords(e)&#123;pointerX=(e.clientX||e.touches[0].clientX)-canvasEl.getBoundingClientRect().left,pointerY=e.clientY||e.touches[0].clientY-canvasEl.getBoundingClientRect().top&#125;<span class="keyword">function</span> setParticuleDirection(e)&#123;var t=anime.random(0,360)*Math.PI/180,a=anime.random(50,180),n=[-1,1][anime.random(0,1)]*a;<span class="built_in">return</span>&#123;x:e.x+n*Math.cos(t),y:e.y+n*Math.sin(t)&#125;&#125;<span class="keyword">function</span> createParticule(e,t)&#123;var a=&#123;&#125;;<span class="built_in">return</span> a.x=e,a.y=t,a.color=colors[anime.random(0,colors.length-1)],a.radius=anime.random(16,32),a.endPos=setParticuleDirection(a),a.draw=<span class="function"><span class="title">function</span></span>()&#123;ctx.beginPath(),ctx.arc(a.x,a.y,a.radius,0,2*Math.PI,!0),ctx.fillStyle=a.color,ctx.fill()&#125;,a&#125;<span class="keyword">function</span> createCircle(e,t)&#123;var a=&#123;&#125;;<span class="built_in">return</span> a.x=e,a.y=t,a.color=<span class="string">&quot;#F00&quot;</span>,a.radius=0.1,a.alpha=0.5,a.lineWidth=6,a.draw=<span class="function"><span class="title">function</span></span>()&#123;ctx.globalAlpha=a.alpha,ctx.beginPath(),ctx.arc(a.x,a.y,a.radius,0,2*Math.PI,!0),ctx.lineWidth=a.lineWidth,ctx.strokeStyle=a.color,ctx.stroke(),ctx.globalAlpha=1&#125;,a&#125;<span class="keyword">function</span> renderParticule(e)&#123;<span class="keyword">for</span>(var t=0;t&lt;e.animatables.length;t++)&#123;e.animatables[t].target.draw()&#125;&#125;<span class="keyword">function</span> animateParticules(e,t)&#123;<span class="keyword">for</span>(var a=createCircle(e,t),n=[],i=0;i&lt;numberOfParticules;i++)&#123;n.push(createParticule(e,t))&#125;anime.timeline().add(&#123;targets:n,x:<span class="keyword">function</span>(e)&#123;<span class="built_in">return</span> e.endPos.x&#125;,y:<span class="keyword">function</span>(e)&#123;<span class="built_in">return</span> e.endPos.y&#125;,radius:0.1,duration:anime.random(1200,1800),easing:<span class="string">&quot;easeOutExpo&quot;</span>,update:renderParticule&#125;).add(&#123;targets:a,radius:anime.random(80,160),lineWidth:0,alpha:&#123;value:0,easing:<span class="string">&quot;linear&quot;</span>,duration:anime.random(600,800)&#125;,duration:anime.random(1200,1800),easing:<span class="string">&quot;easeOutExpo&quot;</span>,update:renderParticule,offset:0&#125;)&#125;<span class="keyword">function</span> debounce(e,t)&#123;var a;<span class="built_in">return</span> <span class="function"><span class="title">function</span></span>()&#123;var n=this,i=arguments;clearTimeout(a),a=setTimeout(<span class="function"><span class="title">function</span></span>()&#123;e.apply(n,i)&#125;,t)&#125;&#125;var canvasEl=document.querySelector(<span class="string">&quot;.fireworks&quot;</span>);<span class="keyword">if</span>(canvasEl)&#123;var ctx=canvasEl.getContext(<span class="string">&quot;2d&quot;</span>),numberOfParticules=30,pointerX=0,pointerY=0,tap=<span class="string">&quot;mousedown&quot;</span>,colors=[<span class="string">&quot;#FF1461&quot;</span>,<span class="string">&quot;#18FF92&quot;</span>,<span class="string">&quot;#5A87FF&quot;</span>,<span class="string">&quot;#FBF38C&quot;</span>],setCanvasSize=debounce(<span class="function"><span class="title">function</span></span>()&#123;canvasEl.width=2*window.innerWidth,canvasEl.height=2*window.innerHeight,canvasEl.style.width=window.innerWidth+<span class="string">&quot;px&quot;</span>,canvasEl.style.height=window.innerHeight+<span class="string">&quot;px&quot;</span>,canvasEl.getContext(<span class="string">&quot;2d&quot;</span>).scale(2,2)&#125;,500),render=anime(&#123;duration:1/0,update:<span class="function"><span class="title">function</span></span>()&#123;ctx.clearRect(0,0,canvasEl.width,canvasEl.height)&#125;&#125;);document.addEventListener(tap,<span class="keyword">function</span>(e)&#123;<span class="string">&quot;sidebar&quot;</span>!==e.target.id&amp;&amp;<span class="string">&quot;toggle-sidebar&quot;</span>!==e.target.id&amp;&amp;<span class="string">&quot;A&quot;</span>!==e.target.nodeName&amp;&amp;<span class="string">&quot;IMG&quot;</span>!==e.target.nodeName&amp;&amp;(render.play(),updateCoords(e),animateParticules(pointerX,pointerY))&#125;,!1),setCanvasSize(),window.addEventListener(<span class="string">&quot;resize&quot;</span>,setCanvasSize,!1)&#125;<span class="string">&quot;use strict&quot;</span>;<span class="keyword">function</span> updateCoords(e)&#123;pointerX=(e.clientX||e.touches[0].clientX)-canvasEl.getBoundingClientRect().left,pointerY=e.clientY||e.touches[0].clientY-canvasEl.getBoundingClientRect().top&#125;<span class="keyword">function</span> setParticuleDirection(e)&#123;var t=anime.random(0,360)*Math.PI/180,a=anime.random(50,180),n=[-1,1][anime.random(0,1)]*a;<span class="built_in">return</span>&#123;x:e.x+n*Math.cos(t),y:e.y+n*Math.sin(t)&#125;&#125;<span class="keyword">function</span> createParticule(e,t)&#123;var a=&#123;&#125;;<span class="built_in">return</span> a.x=e,a.y=t,a.color=colors[anime.random(0,colors.length-1)],a.radius=anime.random(16,32),a.endPos=setParticuleDirection(a),a.draw=<span class="function"><span class="title">function</span></span>()&#123;ctx.beginPath(),ctx.arc(a.x,a.y,a.radius,0,2*Math.PI,!0),ctx.fillStyle=a.color,ctx.fill()&#125;,a&#125;<span class="keyword">function</span> createCircle(e,t)&#123;var a=&#123;&#125;;<span class="built_in">return</span> a.x=e,a.y=t,a.color=<span class="string">&quot;#F00&quot;</span>,a.radius=0.1,a.alpha=0.5,a.lineWidth=6,a.draw=<span class="function"><span class="title">function</span></span>()&#123;ctx.globalAlpha=a.alpha,ctx.beginPath(),ctx.arc(a.x,a.y,a.radius,0,2*Math.PI,!0),ctx.lineWidth=a.lineWidth,ctx.strokeStyle=a.color,ctx.stroke(),ctx.globalAlpha=1&#125;,a&#125;<span class="keyword">function</span> renderParticule(e)&#123;<span class="keyword">for</span>(var t=0;t&lt;e.animatables.length;t++)&#123;e.animatables[t].target.draw()&#125;&#125;<span class="keyword">function</span> animateParticules(e,t)&#123;<span class="keyword">for</span>(var a=createCircle(e,t),n=[],i=0;i&lt;numberOfParticules;i++)&#123;n.push(createParticule(e,t))&#125;anime.timeline().add(&#123;targets:n,x:<span class="keyword">function</span>(e)&#123;<span class="built_in">return</span> e.endPos.x&#125;,y:<span class="keyword">function</span>(e)&#123;<span class="built_in">return</span> e.endPos.y&#125;,radius:0.1,duration:anime.random(1200,1800),easing:<span class="string">&quot;easeOutExpo&quot;</span>,update:renderParticule&#125;).add(&#123;targets:a,radius:anime.random(80,160),lineWidth:0,alpha:&#123;value:0,easing:<span class="string">&quot;linear&quot;</span>,duration:anime.random(600,800)&#125;,duration:anime.random(1200,1800),easing:<span class="string">&quot;easeOutExpo&quot;</span>,update:renderParticule,offset:0&#125;)&#125;<span class="keyword">function</span> debounce(e,t)&#123;var a;<span class="built_in">return</span> <span class="function"><span class="title">function</span></span>()&#123;var n=this,i=arguments;clearTimeout(a),a=setTimeout(<span class="function"><span class="title">function</span></span>()&#123;e.apply(n,i)&#125;,t)&#125;&#125;var canvasEl=document.querySelector(<span class="string">&quot;.fireworks&quot;</span>);<span class="keyword">if</span>(canvasEl)&#123;var ctx=canvasEl.getContext(<span class="string">&quot;2d&quot;</span>),numberOfParticules=30,pointerX=0,pointerY=0,tap=<span class="string">&quot;mousedown&quot;</span>,colors=[<span class="string">&quot;#FF1461&quot;</span>,<span class="string">&quot;#18FF92&quot;</span>,<span class="string">&quot;#5A87FF&quot;</span>,<span class="string">&quot;#FBF38C&quot;</span>],setCanvasSize=debounce(<span class="function"><span class="title">function</span></span>()&#123;canvasEl.width=2*window.innerWidth,canvasEl.height=2*window.innerHeight,canvasEl.style.width=window.innerWidth+<span class="string">&quot;px&quot;</span>,canvasEl.style.height=window.innerHeight+<span class="string">&quot;px&quot;</span>,canvasEl.getContext(<span class="string">&quot;2d&quot;</span>).scale(2,2)&#125;,500),render=anime(&#123;duration:1/0,update:<span class="function"><span class="title">function</span></span>()&#123;ctx.clearRect(0,0,canvasEl.width,canvasEl.height)&#125;&#125;);document.addEventListener(tap,<span class="keyword">function</span>(e)&#123;<span class="string">&quot;sidebar&quot;</span>!==e.target.id&amp;&amp;<span class="string">&quot;toggle-sidebar&quot;</span>!==e.target.id&amp;&amp;<span class="string">&quot;A&quot;</span>!==e.target.nodeName&amp;&amp;<span class="string">&quot;IMG&quot;</span>!==e.target.nodeName&amp;&amp;(render.play(),updateCoords(e),animateParticules(pointerX,pointerY))&#125;,!1),setCanvasSize(),window.addEventListener(<span class="string">&quot;resize&quot;</span>,setCanvasSize,!1)&#125;;</span><br></pre></td></tr></table></figure><div class="note default">love.min.js</div><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!<span class="keyword">function</span>(e,t,a)&#123;<span class="keyword">function</span> <span class="function"><span class="title">n</span></span>()&#123;c(<span class="string">&quot;.heart&#123;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);&#125;.heart:after,.heart:before&#123;content: &#x27;&#x27;;width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;&#125;.heart:after&#123;top: -5px;&#125;.heart:before&#123;left: -5px;&#125;&quot;</span>),o(),r()&#125;<span class="keyword">function</span> <span class="function"><span class="title">r</span></span>()&#123;<span class="keyword">for</span>(var e=0;e&lt;d.length;e++)d[e].alpha&lt;=0?(t.body.removeChild(d[e].el),d.splice(e,1)):(d[e].y--,d[e].scale+=.004,d[e].alpha-=.013,d[e].el.style.cssText=<span class="string">&quot;left:&quot;</span>+d[e].x+<span class="string">&quot;px;top:&quot;</span>+d[e].y+<span class="string">&quot;px;opacity:&quot;</span>+d[e].alpha+<span class="string">&quot;;transform:scale(&quot;</span>+d[e].scale+<span class="string">&quot;,&quot;</span>+d[e].scale+<span class="string">&quot;) rotate(45deg);background:&quot;</span>+d[e].color+<span class="string">&quot;;z-index:99999&quot;</span>);requestAnimationFrame(r)&#125;<span class="keyword">function</span> <span class="function"><span class="title">o</span></span>()&#123;var t=<span class="string">&quot;function&quot;</span>==typeof e.onclick&amp;&amp;e.onclick;e.onclick=<span class="keyword">function</span>(e)&#123;t&amp;&amp;t(),i(e)&#125;&#125;<span class="keyword">function</span> i(e)&#123;var a=t.createElement(<span class="string">&quot;div&quot;</span>);a.className=<span class="string">&quot;heart&quot;</span>,d.push(&#123;el:a,x:e.clientX-5,y:e.clientY-5,scale:1,alpha:1,color:s()&#125;),t.body.appendChild(a)&#125;<span class="keyword">function</span> c(e)&#123;var a=t.createElement(<span class="string">&quot;style&quot;</span>);a.type=<span class="string">&quot;text/css&quot;</span>;try&#123;a.appendChild(t.createTextNode(e))&#125;catch(t)&#123;a.styleSheet.cssText=e&#125;t.getElementsByTagName(<span class="string">&quot;head&quot;</span>)[0].appendChild(a)&#125;<span class="keyword">function</span> <span class="function"><span class="title">s</span></span>()&#123;<span class="built_in">return</span><span class="string">&quot;rgb(&quot;</span>+~~(255*Math.random())+<span class="string">&quot;,&quot;</span>+~~(255*Math.random())+<span class="string">&quot;,&quot;</span>+~~(255*Math.random())+<span class="string">&quot;)&quot;</span>&#125;var d=[];e.requestAnimationFrame=<span class="function"><span class="title">function</span></span>()&#123;<span class="built_in">return</span> e.requestAnimationFrame||e.webkitRequestAnimationFrame||e.mozRequestAnimationFrame||e.oRequestAnimationFrame||e.msRequestAnimationFrame||<span class="keyword">function</span>(e)&#123;setTimeout(e,1e3/60)&#125;&#125;(),n()&#125;(window,document);</span><br></pre></td></tr></table></figure><div class="note default">text.js</div><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">var a_idx = 0;</span><br><span class="line">jQuery(document).ready(<span class="keyword">function</span>($) &#123;</span><br><span class="line">  $(<span class="string">&quot;body&quot;</span>).click(<span class="keyword">function</span>(e) &#123;</span><br><span class="line">    var a = new Array(<span class="string">&quot;富强&quot;</span>, <span class="string">&quot;民主&quot;</span>, <span class="string">&quot;文明&quot;</span>, <span class="string">&quot;和谐&quot;</span>, <span class="string">&quot;自由&quot;</span>, <span class="string">&quot;平等&quot;</span>, <span class="string">&quot;公正&quot;</span> ,<span class="string">&quot;法治&quot;</span>, <span class="string">&quot;爱国&quot;</span>, <span class="string">&quot;敬业&quot;</span>, <span class="string">&quot;诚信&quot;</span>, <span class="string">&quot;友善&quot;</span>);</span><br><span class="line">    var <span class="variable">$i</span> = $(<span class="string">&quot;&lt;span/&gt;&quot;</span>).text(a[a_idx]);</span><br><span class="line">    var x = e.pageX,</span><br><span class="line">      y = e.pageY;</span><br><span class="line">    <span class="variable">$i</span>.css(&#123;</span><br><span class="line">      <span class="string">&quot;z-index&quot;</span>: 99999,</span><br><span class="line">      <span class="string">&quot;top&quot;</span>: y - 28,</span><br><span class="line">      <span class="string">&quot;left&quot;</span>: x - a[a_idx].length * 8,</span><br><span class="line">      <span class="string">&quot;position&quot;</span>: <span class="string">&quot;absolute&quot;</span>,</span><br><span class="line">      <span class="string">&quot;color&quot;</span>: <span class="string">&quot;#ff7a45&quot;</span></span><br><span class="line">    &#125;);</span><br><span class="line">    $(<span class="string">&quot;body&quot;</span>).append(<span class="variable">$i</span>);</span><br><span class="line">    <span class="variable">$i</span>.animate(&#123;</span><br><span class="line">      <span class="string">&quot;top&quot;</span>: y - 180,</span><br><span class="line">      <span class="string">&quot;opacity&quot;</span>: 0</span><br><span class="line">    &#125;, 1500, <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">      <span class="variable">$i</span>.remove();</span><br><span class="line">    &#125;);</span><br><span class="line">    a_idx = (a_idx + 1) % a.length;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><div class="article_footer"><section class="widget copyright desktop mobile"><div class="content"><blockquote><p><svg id="icon-touxiang" viewbox="0 0 1024 1024" width="17" height="17" style="vertical-align:-3.2px"><path d="M614.72 554.538c-49.086-6.399-100.27-2.1-149.256-2.1-119.465 0-209.04 95.972-206.84 215.437 0 17.095 8.498 31.99 23.493 40.488 14.896 10.697 34.09 14.896 53.285 17.095 61.882 6.398 123.664 6.398 198.342 6.398 40.488 0 93.872-2.1 142.858-4.298 27.692 0 53.284-4.3 78.877-14.896 19.194-8.498 29.89-19.194 31.99-40.488 8.498-104.57-72.478-204.84-172.75-217.636zM680.8 375.39c0-87.474-74.678-162.053-164.251-162.053-89.574 0-162.053 74.679-162.053 162.053-2.1 87.474 74.678 164.252 162.053 164.252 89.673 0 164.252-74.678 164.252-164.252z" fill="#FFFFFF"/><path d="M512.35 0C228.733 0 0.5 228.233 0.5 511.85s228.233 511.85 511.85 511.85 511.85-228.233 511.85-511.85S795.967 0 512.35 0z m275.12 772.074c-2.1 21.294-12.797 31.99-31.991 40.488-25.593 10.697-51.185 14.896-78.877 14.896-49.086 2.099-102.37 4.298-142.858 4.298-74.678 0-136.46 0-198.342-6.398-19.195-2.1-38.389-6.398-53.285-17.095-14.895-8.497-23.493-23.493-23.493-40.488-2.1-119.465 87.475-215.437 206.84-215.437 49.085 0 100.27-4.299 149.256 2.1 100.27 12.896 181.247 113.166 172.75 217.636zM354.495 375.39c0-87.474 72.479-162.053 162.053-162.053S680.8 288.016 680.8 375.39c0 89.574-74.679 164.252-164.252 164.252-87.375 0-164.152-76.778-162.053-164.252z" fill="#249FF8"/></svg> 本文由 <a href="https://hasaik.com">·银河小徐</a> 创作，如果您觉得本文不错，请随意赞赏</p><p><svg id="icon-fenxiang" viewbox="0 0 1024 1024" width="17" height="17" style="vertical-align:-3.2px"><path d="M512 512m-512 0a512 512 0 1 0 1024 0 512 512 0 1 0-1024 0Z" fill="#F3B243"/><path d="M630.784 323.584m-90.112 0a90.112 90.112 0 1 0 180.224 0 90.112 90.112 0 1 0-180.224 0Z" fill="#FFFFFF"/><path d="M630.784 688.128m-90.112 0a90.112 90.112 0 1 0 180.224 0 90.112 90.112 0 1 0-180.224 0Z" fill="#FFFFFF"/><path d="M319.488 512m-90.112 0a90.112 90.112 0 1 0 180.224 0 90.112 90.112 0 1 0-180.224 0Z" fill="#FFFFFF"/><path d="M341.037056 480.370688l257.343488-175.7184 27.713536 40.59136-257.339392 175.7184z" fill="#FFFFFF"/><path d="M349.052928 488.452096l252.854272 182.10816-28.725248 39.886848-252.874752-182.10816z" fill="#FFFFFF"/></svg> 博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p><p><svg id="icon-ziyuan" viewbox="0 0 1024 1024" width="17" height="17" style="vertical-align:-3.2px"><path d="M511.854421 0a511.854421 511.854421 0 1 0 512.145579 511.854421A511.854421 511.854421 0 0 0 511.854421 0z" fill="#39B54A"/><path d="M576.491328 630.355417l-116.462895 116.462894a129.56497 129.56497 0 0 1-182.555587 0l-2.0381-2.038101a128.982656 128.982656 0 0 1 0-182.26443l81.232868-81.232868a179.644015 179.644015 0 0 0 13.102076 70.460051l-52.69946 52.408302a69.877737 69.877737 0 0 0 0 98.702303l2.038101 2.038101a70.168894 70.168894 0 0 0 98.702303 0l116.462895-116.462894a69.877737 69.877737 0 0 0 0-98.702304l-2.038101-2.0381a69.586579 69.586579 0 0 0-13.975547-10.772818l42.508956-42.508956a128.109184 128.109184 0 0 1 13.102076 11.355132l2.0381 2.0381a129.273813 129.273813 0 0 1 0 182.26443z" fill="#FFFFFF"/><path d="M746.235997 460.901905l-81.232869 81.232869a179.352858 179.352858 0 0 0-13.102076-70.460051l52.69946-52.408303a69.877737 69.877737 0 0 0 0-98.702303l-2.038101-2.038101a69.877737 69.877737 0 0 0-98.702303 0l-116.462894 116.462895a69.877737 69.877737 0 0 0 0 98.702303l2.0381 2.038101a68.421951 68.421951 0 0 0 13.975548 10.772817l-42.508957 42.508957a136.552744 136.552744 0 0 1-13.102076-11.355132l-2.0381-2.038101a128.982656 128.982656 0 0 1 0-182.26443l116.462894-116.462894a129.56497 129.56497 0 0 1 182.555587 0l2.038101 2.0381a128.982656 128.982656 0 0 1 0 182.26443z" fill="#FFFFFF"/></svg> 本文永久链接是：<a href="https://hasaik.com/posts/9c9b482b.html">https://hasaik.com/posts/9c9b482b.html</a></p></blockquote></div></section><div id="reward"><div>您的喜欢是作者写作最大的动力！❤️</div><div class="reward"><a href="https://github.com/Kaiyuan/donate-page" target="_blank" class="tr3" title="Github" rel="external nofollow noopener noreferrer"><span id="github"></span></a><ul id="RewardBox" class="list pos-f tr3"><li id="AliPayOR" title="支付宝打赏">AliPay</li><li id="WeChatPayOR" title="微信打赏">WeChatPay</li><li id="QQPayOR" title="QQ打赏">QQPay</li></ul><div id="RewardText" class="tr3">Donate</div><div id="QRBox" class="pos-f left-100"><div id="MainBox"></div></div></div></div><script>jQuery(document).ready(function(){var a=$("#QRBox"),d=$("#MainBox");function t(e){e&&d.css("background-image","url("+e+")"),$("#RewardText,#RewardBox,#github").addClass("blurC"),a.fadeIn(300,function(e){d.addClass("showQR")})}$("#RewardBox>li").click(function(e){var a=$(this).attr("id");"AliPayOR"===a?t("https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/reward/AliPayQR.png"):"WeChatPayOR"===a?t("https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/reward/WeChatQR.png"):"QQPayOR"===a&&t("https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/reward/QQPayQR.png")}),d.click(function(e){d.removeClass("showQR").addClass("hideQR"),setTimeout(function(e){a.fadeOut(300,function(e){d.removeClass("hideQR")}),$("#RewardText,#RewardBox,#github").removeClass("blurC")},600)})})</script><style>#reward{text-align:center;width:100%;margin-top:50px}#reward .reward{margin-top:80px;margin-bottom:-100px;display:inline-block}#RewardBox{position:relative;top:calc(50% - 15px);background-color:#fff;border:1px solid #ddd;border-radius:6px;float:left;z-index:1}.reward ul{padding-left:0;margin-left:0}#RewardBox #AliPayOR{background-image:url(https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/reward/alipay.png)}#RewardBox #WeChatPayOR{background-image:url(https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/reward/wechatpay.png)}#RewardBox #QQPayOR{background-image:url(https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/reward/qqpay.png)}#RewardBox>li:first-child{border-width:0}#RewardText{position:relative;font-size:12px;width:70px;height:70px;line-height:50px;color:#fff;background:#ffd886 url(https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/reward/like.png) no-repeat center 10px;background-size:20px;border-radius:35px;text-align:center;left:calc(50% - 120px);top:-80px;transform:rotatez(-15deg)}.tr3{transition:all .3s}#QRBox{position:relative;top:-100px;left:0;z-index:1;background-color:rgba(255,255,255,.3);display:none;perspective:400px}.left-100{width:100%;height:100%}#RewardBox li{margin-top:0;margin-bottom:0;width:74px;float:left;text-align:center;border-left:1px solid #ddd;background:no-repeat center center;background-color:rgba(204,217,220,.1);background-size:50px;transition:all .3s;cursor:url(https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/ayuda.cur),auto;overflow:hidden;line-height:600px;height:28px;-webkit-filter:grayscale(1);filter:grayscale(1);opacity:.5}#RewardBox li:hover{background-color:rgba(204,217,220,.3);-webkit-filter:grayscale(0);filter:grayscale(0);opacity:1}#RewardBox a{display:block}#github{position:relative;display:inline-block;z-index:1;width:24px;height:24px;top:-10px;left:-14px;background:no-repeat center center url(https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/reward/github.png);background-size:contain;opacity:.3;transform:rotatez(15deg)}#MainBox{cursor:url(https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/ayuda.cur),auto;position:absolute;text-align:center;width:200px;height:200px;left:calc(50% - 100px);top:calc(50% - 100px);background:#fff no-repeat center center;background-size:190px;border-radius:6px;box-shadow:0 2px 7px rgba(0,0,0,.3);opacity:0;transition:all 1s ease-in-out;transform-style:preserve-3d;transform-origin:center center;overflow:hidden}.reward .blurC{-webkit-filter:blur(3px);filter:blur(3px)}#MainBox.showQR{opacity:1;animation-name:showQR;animation-duration:3s;animation-timing-function:ease-in-out;animation-iteration-count:1;animation-fill-mode:forwards;-webkit-animation:showQR 3s ease-in-out 0s 1 normal forwards}@keyframes showQR{from{transform:rotateX(90deg)}8%{opacity:1;transform:rotateX(-60deg)}18%{opacity:1;transform:rotateX(40deg)}34%{opacity:1;transform:rotateX(-28deg)}44%{opacity:1;transform:rotateX(18deg)}58%{opacity:1;transform:rotateX(-12deg)}72%{opacity:1;transform:rotateX(9deg)}88%{opacity:1;transform:rotateX(-5deg)}96%{opacity:1;transform:rotateX(2deg)}to{opacity:1}}#MainBox.hideQR{opacity:1;animation-name:hideQR;animation-duration:.5s;animation-timing-function:ease-in-out;animation-iteration-count:1;animation-fill-mode:forwards;-webkit-animation:hideQR .5s ease-in-out 0s 1 normal forwards}@keyframes hideQR{20%,50%{transform:scale(1.08,1.08);opacity:1}to{opacity:0;transform:rotateZ(40deg) scale(.6,.6)}}.article .article-entry #reward .reward ul li:before{content:none}</style></div></div><div class="article-meta" id="bottom"><hr><div class="new-meta-box"><div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-08-20T12:17:14+00:00"><a class="notlink"><i class="fas fa-edit fa-fw" aria-hidden="true"></i><p>更新于：2020-08-20</p></a></div><div class="new-meta-item meta-tags"><a class="tag" href="/tags/Hexo/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Hexo</p></a></div><div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%82%B9%E5%87%BB%E7%89%B9%E6%95%88/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>点击特效</p></a></div><div class="new-meta-item share -mob-share-list"><div class="-mob-share-list share-body"><a class="-mob-share-qq" rel="external nofollow noopener noreferrer" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://hasaik.com/posts/9c9b482b.html&title=Hexo博客+Next主题鼠标点击特效 - Xu's Blog&pics=https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/article-thumbnail/hexo.png&summary="><img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif"> </a><a class="-mob-share-qzone" rel="external nofollow noopener noreferrer" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://hasaik.com/posts/9c9b482b.html&title=Hexo博客+Next主题鼠标点击特效 - Xu's Blog&pics=https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/article-thumbnail/hexo.png&summary="><img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif"> </a><a class="-mob-share-weibo" rel="external nofollow noopener noreferrer" target="_blank" href="http://service.weibo.com/share/share.php?url=https://hasaik.com/posts/9c9b482b.html&title=Hexo博客+Next主题鼠标点击特效 - Xu's Blog&pics=https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/article-thumbnail/hexo.png&summary="><img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif"></a><div class="hoverbox"><a class="share"><img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif"></a><div class="target"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPgAAAD4CAAAAADkunTXAAACRklEQVR42u3aS3KDMBAFQN//0sneKRfzw4GhtQPbSC02zzN6/Tx0vMDBwcHBwRfBX8Xx54Ef7h99fnT//fPuesHBwcHBwTfCwwEgCMyCovN11wsODg4ODr4ZfhgAhhYSDSjRjQivFxwcHBwcHDxcGMgWELIBBhwcHBwcHPz8ADPdUAAHBwcHBwcfKNAXF5K9f7lOCjg4ODg4+IXg5QNz/3RdXi84ODg4OPgieHdkGwJTBwXL6wUHBwcHB18EP6uBX204ROfJrg8cHBwcHPwJ8KkgMQ0pQ6udFHBwcHBw8BvAu5BuA6D6AsovBBwcHBwcfBF8KsCcXajIzvtxPnBwcHBw8EXw6B/4aIGhGlSqwSb9gsDBwcHBwRfDpwJF93dfbyiAg4ODg4PfEN5tCHQDS3cDygEGHBwcHBx8Ebxa8J8qRFQLE+mNBQcHBwcHXwTvNvinDgRMXbcbCuDg4ODg4DeCTwWYbgHh7OeBg4ODg4Nvhh+Bso35auOh2uAIvyhwcHBwcPDF8PSDmoX/bGNhvJMCDg4ODg6+CJ6deOp73RHeKHBwcHBw8EXw7qgWBKoHCNoFD3BwcHBw8EXwbmCIbkQWOtVgOCxEgIODg4ODL4BXg8ZUA+LsDQQHBwcHB38CvBogsgWEKLDaUEgHGHBwcHBw8AfDxxaWLCxE1wEODg4ODg5eL0RUD+Z1x9eSGzg4ODg4+AXg2YZCuJB/AM1+L/sccHBwcHDwzfBqMKhelwNI8aAAODg4ODj4RvjTBjg4ODg4+ILxC64uBC7AzVYHAAAAAElFTkSuQmCC"></div></div><a class="-mob-share-telegram" rel="external nofollow noopener noreferrer" target="_blank" href="https://t.me/share/url?url=https://hasaik.com/posts/9c9b482b.html&text=Hexo博客+Next主题鼠标点击特效 - Xu's Blog"><img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/telegram.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/telegram.png" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif"></a></div></div></div></div><div class="prev-next"><a class="prev" href="/posts/89ea6c8b.html"><p class="title"><i class="fas fa-chevron-left" aria-hidden="true"></i>Hexo博客Valine评论样式美化</p><p class="content">Valine 是一款比较轻量级的纯前端的评论系统，目前很多个人博客都在使用 Valine 评论系统，并且支持匿名留言。 .LinkCard,.LinkCard:hover{text-decora...</p></a><a class="next" href="/posts/7fbe9500.html"><p class="title">Hexo博客中加入豆瓣读书页面<i class="fas fa-chevron-right" aria-hidden="true"></i></p><p class="content">在Hexo博客个性化定制中，加入豆瓣读书界面是一个很不错的功能，可以进入我的个人阅读界面查看效果，那么我是怎么做到的呢？其实很简单，我们只需要加入一个 hexo-douban 模块即可。 .Li...</p></a></div></section></article><article class="post white-box reveal comments shadow floatable"><section class="article typo"><p ct><i class="fas fa-comments"></i> 用户交流区</p><p cst>温馨提示: 遵纪守法, 友善评论!</p><section id="comments"><div id="valine_container" class="valine_thread"><i class="fas fa-cog fa-spin fa-fw fa-2x"></i></div></section></section></article></div><aside class="l_side"><section class="widget blogger shadow floatable desktop mobile"><div class="content"><a class="avatar flat-box" rectangle href="/about/"><img no-lazy src="/images/avatar.jpg"></a><div class="text"><h2>·银河小徐</h2></div><div id="binft" align="center"></div><script src="/js/typewriter-color.js"></script><div class="social-wrapper"><a href="https://github.com/XuxuGood" class="social fab fa-github flat-btn" target="_blank" rel="external nofollow noopener noreferrer"></a> <a href="mailto:22476705@qq.com" class="social fas fa-envelope flat-btn" target="_blank" rel="external nofollow noopener noreferrer"></a> <a href="https://mailchi.mp/3ca18a2a9749/xuxuy" class="social fas fa-heartbeat flat-btn" target="_blank" rel="external nofollow noopener noreferrer"></a> <a href="https://blog.csdn.net/qq_42889280" class="social fab fa-cuttlefish flat-btn" target="_blank" rel="external nofollow noopener noreferrer"></a> <a href="/atom.xml" class="social fas fa-rss flat-btn" target="_blank" rel="external nofollow noopener noreferrer"></a></div></div></section><section class="widget toc-wrapper shadow floatable desktop mobile" id="toc-div"><header class="pure"><div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;本文目录</div></header><div class="content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%88%E6%9E%9C"><span class="toc-number">1.</span> <span class="toc-text">效果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE"><span class="toc-number">2.</span> <span class="toc-text">配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-number">3.</span> <span class="toc-text">代码</span></a></li></ol></div></section><script>$("span[class='toc-number']").each(function(){var t=$(this).text();$(this).text(t.substring(0,t.length-1))})</script><style>.l_side .toc-wrapper .toc-item .toc-link .toc-number:before{content:'【'}.l_side .toc-wrapper .toc-item .toc-link .toc-number:after{content:'】'}</style><section class="widget related_posts shadow floatable desktop mobile"><header class="pure"><div><i class="fas fa-bookmark fa-fw" aria-hidden="true"></i>&nbsp;相关文章</div></header><div class="content"><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/posts/7fbe9500.html" title="Hexo博客中加入豆瓣读书页面" rel="bookmark">Hexo博客中加入豆瓣读书页面</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/posts/d0bc4f5d.html" title="Hexo+Next7.8.0 引入 Folding 容器" rel="bookmark">Hexo+Next7.8.0 引入 Folding 容器</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/posts/19c94341.html" title="为Hexo添加RSS订阅" rel="bookmark">为Hexo添加RSS订阅</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/posts/dd9d9f86.html" title="本站已开通订阅功能" rel="bookmark">本站已开通订阅功能</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/posts/61913369.html" title="Hexo优化之lazyload图片懒加载" rel="bookmark">Hexo优化之lazyload图片懒加载</a></h3></div></li></ul></div></section><script>var popularPosts=$(".popular-posts");0===popularPosts.length&&$(".related_posts .content").append('<div class="no-popular-posts">🔔 暂无相关文章(◕ܫ◕)</div>')</script></aside></div><footer class="clearfix"><br><br><div class="aplayer-container"><meting-js theme="#1BCDFC" autoplay volume="0.7" loop order="list" fixed="false" list-max-height="320px" server="netease" type="playlist" id="134573504" list-folded="true"></meting-js></div><br><div class="social-wrapper"><a href="https://github.com/XuxuGood" class="social fab fa-github flat-btn" target="_blank" rel="external nofollow noopener noreferrer"></a> <a href="mailto:22476705@qq.com" class="social fas fa-envelope flat-btn" target="_blank" rel="external nofollow noopener noreferrer"></a> <a href="https://mailchi.mp/3ca18a2a9749/xuxuy" class="social fas fa-heartbeat flat-btn" target="_blank" rel="external nofollow noopener noreferrer"></a> <a href="https://blog.csdn.net/qq_42889280" class="social fab fa-cuttlefish flat-btn" target="_blank" rel="external nofollow noopener noreferrer"></a> <a href="/atom.xml" class="social fas fa-rss flat-btn" target="_blank" rel="external nofollow noopener noreferrer"></a></div><a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank" rel="external nofollow noopener noreferrer"><img no-lazy src="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/upyun.png" width="60" height="auto"></a><br>Copyright <i class="far fa-copyright"></i> 2019-2020 <a href="/" target="_blank">XU'S BLOG </a>丨 <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span><script>var now=new Date;function createtime(){var n=new Date("10/09/2019 00:00:00");now.setTime(now.getTime()+250),days=(now-n)/1e3/60/60/24,dnum=Math.floor(days),hours=(now-n)/1e3/60/60-24*dnum,hnum=Math.floor(hours),1==String(hnum).length&&(hnum="0"+hnum),minutes=(now-n)/1e3/60-1440*dnum-60*hnum,mnum=Math.floor(minutes),1==String(mnum).length&&(mnum="0"+mnum),seconds=(now-n)/1e3-86400*dnum-3600*hnum-60*mnum,snum=Math.round(seconds),1==String(snum).length&&(snum="0"+snum),document.getElementById("timeDate").innerHTML="网站已运行 "+dnum+" 天 ",document.getElementById("times").innerHTML=hnum+" 小时 "+mnum+" 分 "+snum+" 秒"}setInterval("createtime()",250)</script><br><br><div class="github-badge"><a style="color:#fff" rel="external nofollow noopener noreferrer" href="https://hexo.io/" target="_blank" title="由 Hexo 强力驱动"><span class="badge-subject">Powered</span><span class="badge-value bg-blue">Hexo</span></a></div><div class="github-badge"><a style="color:#fff" rel="external nofollow noopener noreferrer" href="https://github.com/" target="_blank" title="静态网页托管于 GitHub Pages 和 Coding Pages"><span class="badge-subject">Hosted</span><span class="badge-value bg-brightgreen">GitHub &amp; Coding</span></a></div><div class="github-badge"><a style="color:#fff" rel="external nofollow noopener noreferrer" href="https://www.aliyun.com/" target="_blank" title="阿里云提供域名相关服务"><span class="badge-subject">DNS</span><span class="badge-value bg-blueviolet">Aliyun</span></a></div><div class="github-badge"><a style="color:#fff" rel="external nofollow noopener noreferrer" href="https://www.jsdelivr.com/" target="_blank" title="jsDelivr 提供 CDN 加速服务"><span class="badge-subject">CDN</span><span class="badge-value bg-orange">jsDelivr</span></a></div><div class="github-badge"><a style="color:#fff" rel="external nofollow noopener noreferrer" href="https://github.com/volantis-x/hexo-theme-volantis/" target="_blank" title="站点使用 Volantis 主题"><span class="badge-subject">Theme</span><span class="badge-value bg-blue">Volantis</span></a></div><div class="github-badge"><a style="color:#fff" rel="external nofollow noopener noreferrer" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="本站点采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议进行许可"><span class="badge-subject"><i class="fa fa-copyright"></i></span><span class="badge-value bg-gradient">BY-NC-SA 4.0</span></a></div><div class="github-badge"><span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet">73.4k</span></div></footer><a class="s-top fas fa-arrow-up fa-fw" href="javascript:void(0)"></a></div></div><div><div id="rightmenu-wrapper"><ul class="list-v rightmenu" id="rightmenu-content"><li class="option"><a class="vlts-menu opt fix-cursor-default" id="menu-copy-text" onclick="document.execCommand("copy")"><i class="fa fa-copy fa-fw"></i>复制文本<hr id="hr-text"><a class="vlts-menu opt fix-cursor-default" id="menu-copy-href"><i class="fa fa-link fa-fw"></i>复制链接</a> <a class="vlts-menu opt fix-cursor-default" id="menu-open-href"><i class="fa fa-external-link-square-alt fa-fw"></i>在新标签页打开</a><hr id="hr-href"><a class="vlts-menu opt fix-cursor-default" id="menu-copy-src"><i class="fa fa-image fa-fw"></i>复制图片地址</a><hr id="hr-src"></li><li class="navigation"><a class="nav icon-only fix-cursor-default" onclick="history.back()"><i class="fa fa-arrow-left fa-fw"></i></a> <a class="nav icon-only fix-cursor-default" onclick="history.forward()"><i class="fa fa-arrow-right fa-fw"></i></a> <a class="nav icon-only fix-cursor-default" onclick="window.location.reload()"><i class="fa fa-redo fa-fw"></i></a> <a class="nav icon-only fix-cursor-default" href="/"><i class="fa fa-home fa-fw"></i></a></li><hr><li><a class="vlts-menu fix-cursor-default" href="/comments/" id="comments"><i class="fas fa-comments fa-fw"></i> 留言</a></li><li><a class="vlts-menu fix-cursor-default" href="/photos/" id="photos"><i class="fas fa-camera-retro fa-fw"></i> 相册</a></li><li><a class="vlts-menu fix-cursor-default" href="/links/" id="links"><i class="fas fa-users fa-fw"></i> 小伙伴们</a></li><hr><li><a class="vlts-menu fix-cursor-default" href="/tools/" id="tools"><i class="fas fa-cog fa-fw"></i> 实用工具</a></li><li><a class="vlts-menu fix-cursor-default" href="/catchTheCat/" id="catchTheCat"><i class="fas fa-cat fa-fw"></i> 围住小猫</a></li><hr><li class="music name"><p class="nav music-title fix-cursor-default"></p></li><li class="music ctrl"><a class="nav icon-only backward fix-cursor-default" onclick="aplayerBackward()"><i class="fa fa-step-backward fa-fw"></i></a> <a class="nav icon-only toggle fix-cursor-default" onclick="aplayerToggle()"><i class="fa fa-play fa-fw"></i></a> <a class="nav icon-only forward fix-cursor-default" onclick="aplayerForward()"><i class="fa fa-step-forward fa-fw"></i></a></li><li class="music volume"><a class="nav volume"><div class="aplayer-volume-bar-wrap"><div class="aplayer-volume-bar fix-cursor-pointer"><div class="aplayer-volume"></div><i class="left fa fa-volume-off fa-fw"></i> <i class="right fa fa-volume-up fa-fw"></i></div></div></a></li></ul></div><script>window.document.oncontextmenu = function (event) {
+      if (event.ctrlKey) return true;
+      if (/Android|webOS|BlackBerry/i.test(navigator.userAgent)) return true;
+      return popMenu(event);
+    };
+    document.addEventListener("click", function (event) {
+      var mymenu = document.getElementById('rightmenu-wrapper');
+      mymenu.style.display = "none";
+    });
+    function popMenu(event) {
+      var mymenu = document.getElementById('rightmenu-wrapper');
+      var menuContent = document.getElementById('rightmenu-content');
+      var screenWidth = document.documentElement.clientWidth || document.body.clientWidth;
+      var screenHeight = document.documentElement.clientHeight || document.body.clientHeight;
+      mymenu.style.left = event.clientX + "px"; // 获取鼠标位置
+      mymenu.style.top = event.clientY + "px";
+      mymenu.style.display = 'block';
+      if (event.clientX * 2 > screenWidth) {
+        menuContent.classList.add('left');
+      } else {
+        menuContent.classList.remove('left');
+      }
+      if (event.clientY * 2 > screenHeight) {
+        menuContent.classList.add('top');
+      } else {
+        menuContent.classList.remove('top');
+      }
+
+      let hrText = document.getElementById('hr-text');
+      let hrSrc = document.getElementById('hr-src');
+      let hrHref = document.getElementById('hr-href');
+
+      // 选中图片
+      let copySrc = document.getElementById('menu-copy-src');
+      if (copySrc != undefined) {
+        if (event.target.currentSrc) {
+          copySrc.style.display = 'block';
+          copySrc.addEventListener("click", function (e) {
+            copyString(event.target.currentSrc);
+          },{once: true});
+          hrSrc.style.display = 'block';
+        } else {
+          copySrc.style.display = 'none';
+          hrSrc.style.display = 'none';
+        }
+      }
+
+      // 选中按钮
+      // 判断是不是按钮
+      let href = '';
+      if (event.path) {
+        for (i = 0; i < event.path.length; i++) {
+          if (event.path[i].href != undefined && event.path[i].href.length > 0) {
+            href = event.path[i].href;
+          }
+        }
+      }
+
+      let copyText = document.getElementById('menu-copy-text');
+      copyText.style.display = 'none';
+      hrText.style.display = 'none';
+      if (href.length == 0) {
+        // 选中文本
+        if (window.getSelection().toString()) {
+          copyText.style.display = 'block';
+          hrText.style.display = 'block';
+        }
+      }
+
+      // 在新标签页打开
+      let openHref = document.getElementById('menu-open-href');
+      if (openHref != undefined) {
+        if (href.length > 0) {
+          openHref.style.display = 'block';
+          openHref.addEventListener("click", function (e) {
+            window.open(href);
+          },{once: true});
+          hrHref.style.display = 'block';
+        } else {
+          openHref.style.display = 'none';
+          hrHref.style.display = 'none';
+        }
+      }
+      // 复制链接
+      let copyHref = document.getElementById('menu-copy-href');
+      if (copyHref != undefined) {
+        if (href.length > 0) {
+          copyHref.style.display = 'block';
+          copyHref.addEventListener("click", function (e) {
+            copyString(href);
+          },{once: true});
+        } else {
+          copyHref.style.display = 'none';
+        }
+      }
+
+      // 有音乐播放器
+      if (true == true && ('comments,photos,links,hr,tools,catchTheCat,hr,music'||[]).includes('music')) {
+        // 如果有aplayer，初始化一下
+      	try {
+      		checkAPlayer();
+          updateTitle();
+      	} catch (error) {
+      		console.log(error);
+      	}
+      }
+
+      return false; // 该行代码确保系统自带的右键菜单不会被调出
+    }
+    function hideMenu() {
+      document.getElementById('rightmenu-wrapper').style.display = 'none';
+    }
+    function copyString(str) {
+      const input = document.createElement('input');
+      input.setAttribute('readonly', 'readonly');
+      document.body.appendChild(input);
+      input.setAttribute('value', str);
+      input.select();
+      document.execCommand('copy');
+      document.body.removeChild(input);
+    }
+    document.execCommand('click');</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script><script type="text/javascript">$(function(){var a=["https://cdn.jsdelivr.net/gh/XuxuGood/cdn/blogImages/wallpaper/wallpaper5.png"];!function(a){for(var n=a.length;n--;){var r=Math.floor(Math.random()*n),t=a[r];a[r]=a[n],a[n]=t}}(a),$.backstretch(a,{duration:"10000",fade:"1500"})})</script><script>var SEARCH_SERVICE="hexo",ROOT="/";ROOT.endsWith("/")||(ROOT+="/")</script><script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script><script>window.lazyLoadOptions={elements_selector:".lazyload",threshold:0},window.addEventListener("LazyLoad::Initialized",function(n){window.lazyLoadInstance=n.detail.instance},!1),document.addEventListener("DOMContentLoaded",function(){lazyLoadInstance.update()}),document.addEventListener("pjax:complete",function(){lazyLoadInstance.update()})</script><script async src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script><script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script><script>function pjax_fancybox(){$(".md").find("img").not(".inline").not("a img").each(function(){var t=document.createElement("a");$(t).attr("pjax-fancybox",""),$(t).attr("href",$(this).attr("src")),$(this).attr("data-original")&&$(t).attr("href",$(this).attr("data-original")),$(t).attr("data-fancybox","images");var a="";$(this).attr("alt")&&($(t).attr("data-caption",$(this).attr("alt")),a=$(this).attr("alt"));var e=document.createElement("div");$(e).addClass("fancybox"),$(this).wrap(e);var i=document.createElement("span");$(i).addClass("image-caption"),$(i).text(a),$(this).after(i),$(this).wrap(t)}),$(".article-entry").find("img").fancybox({selector:'[data-fancybox="images"]',hash:!1,loop:!1,closeClick:!0,helpers:{overlay:{closeClick:!0}},buttons:["zoom","close"]})}$(function(){pjax_fancybox()})</script><script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script><script>var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });</script><script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script><script type="text/javascript">function pjax_scrollrebeal(){ScrollReveal().reveal(".l_main .reveal",{distance:"32px",duration:"800",interval:"20",scale:"1",easing:"ease-out"})}$(function(){pjax_scrollrebeal()})</script><script>let APlayerController = new Object();
+  APlayerController.id = '134573504';  // 设定全局音乐播放ID
+  APlayerController.volume = '0.7';</script><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js"></script><script src="/js/aplayer.js"></script><script src="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogJs/Valine.min.js"></script><script>var GUEST_INFO = ['nick', 'mail', 'link'];
+    var meta = 'nick,mail,link'.split(',').filter(function (item) {
+        return GUEST_INFO.indexOf(item) > -1
+    });
+    var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+    var requiredFields = 'nick,mail'.split(',').filter(function (item) {
+        return REQUIRED_FIELDS.indexOf(item) > -1
+    });
+
+    var tagMeta = '博主,小伙伴,访客'.split(',');
+    var friends = 'd32d39c8e126512382ee4b831a8f8002,d06adebbcbaa24413cc1b53dc8576ed0,ab2579686cf0e99e1ba40a932e0400f5,e846889207767f93e049a14a29a12d55,3f96b7b64421af2309f48ce09f483e00,36937ffd56ac7ac077c3e2dceae74dc5,00fdb1c48ae14c86afce12a8f9fc3d77,fde3448b9705037f2021664c8b8e6cb1,dd04aab66ee54f77e80e8a7781a3e8e2,35d7010131d4f17efe9842174c3c1c2c,ee307e1162191d9120f967483af6d490,15f39db75e8624d52353ae6943eb66ca,187c2861161c500c97a69290c89b5526,876272e6ce1dd1059dabdc871f59d251,9be62391e297826516364374435f758c,e086f9ab51f37cb606fc6378c36cd9aa,e8b473e9af0f2718265c88b809a0a7b2,3ce1e6c77b4910f1871106cb30dc62b0,28b57baa4e8f13fe4292ccb2de267e30,3c915d7f53fe9ae72235eb188968ad86'.split(',');
+    var master = '6a565e6c47127afdd40d5d46089db2c5'.split(',');
+    // 输入框背景文字
+    var metaPlaceholder = {"nick": "昵称/QQ号(必填)", "mail": "邮箱（必填，完全保密）", "link": "网址(https://)"};
+
+    function emoji(path, idx, ext) {
+        return path + "/" + path + "-" + idx + "." + ext;
+    }
+
+    var emojiMaps = {};
+    for (var i = 1; i <= 2; i++) {
+        emojiMaps['fun-' + i] = emoji('fun', i, 'gif');
+    }
+    for (var i = 1; i <= 54; i++) {
+        emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+    }
+    for (var i = 1; i <= 101; i++) {
+        emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+    }
+    for (var i = 1; i <= 116; i++) {
+        emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+    }
+    for (var i = 1; i <= 125; i++) {
+        emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+    }
+    for (var i = 1; i <= 4; i++) {
+        emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+    }
+
+    function pjax_valine() {
+        let pageUrl = $.trim($('#pjax-comment-path').text()) === "none" ?
+            decodeURI(window.location.pathname) : $.trim($('#pjax-comment-path').text());
+        let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) === "none" ?
+            "粘贴图片到此处可以自动上传，填写邮箱可以收到邮件回复哦(●&#39;◡&#39;●)" : $.trim($('#pjax-comment-placeholder').text());
+
+        let ALLPATH = '';
+        if(ALLPATH != '') pageUrl = ALLPATH;
+
+        var valine = new Valine();
+        valine.init({
+            el: '#valine_container',
+            meta: meta,
+            placeholder: pagePlaceholder,
+            path: pageUrl,
+            appId: "gYcUzERw1BSKyARbzWH2OQzu-gzGzoHsz",
+            appKey: "7xvFncnnyG2QI60iDY3E4PuO",
+            pageSize: '10',
+            avatar: 'monsterid',
+            lang: 'zh-cn',
+            visitor: 'true',
+            highlight: 'true',
+            mathJax: 'false',
+            enableQQ: 'true',
+            requiredFields: requiredFields,
+            emojiCDN: 'https://cdn.jsdelivr.net/gh/XuxuGood/cdn/blogImages/emoji/valine/',
+            emojiMaps: emojiMaps,
+            tagMeta: tagMeta,
+            master: master,
+            friends: friends,
+            metaPlaceholder: metaPlaceholder
+        })
+    }
+
+    $(function () {
+        pjax_valine();
+    });</script><script defer src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js" data-pjax></script><script src="/js/app.js"></script><script src="/js/search.js"></script><script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script><script type="text/javascript">$(function(){Waves.attach(".flat-btn",["waves-button"]),Waves.attach(".float-btn",["waves-button","waves-float"]),Waves.attach(".float-btn-light",["waves-button","waves-float","waves-light"]),Waves.attach(".flat-box",["waves-block"]),Waves.attach(".float-box",["waves-block","waves-float"]),Waves.attach(".waves-image"),Waves.init()})</script><script defer>const LCCounter = {
+    app_id: 'gYcUzERw1BSKyARbzWH2OQzu-gzGzoHsz',
+    app_key: '7xvFncnnyG2QI60iDY3E4PuO',
+    custom_api_server: '',
+
+    // 查询存储的记录
+    getRecord(Counter, url, title) {
+      return new Promise(function (resolve, reject) {
+        Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({url})))
+          .then(resp => resp.json())
+          .then(({results, code, error}) => {
+            if (code === 401) {
+              throw error;
+            }
+            if (results && results.length > 0) {
+              var record = results[0];
+              resolve(record);
+            } else {
+              Counter('post', '/classes/Counter', {url, title: title, times: 0})
+                .then(resp => resp.json())
+                .then((record, error) => {
+                  if (error) {
+                    throw error;
+                  }
+                  resolve(record);
+                }).catch(error => {
+                console.error('Failed to create', error);
+                reject(error);
+              });
+            }
+          }).catch((error) => {
+          console.error('LeanCloud Counter Error:', error);
+          reject(error);
+        });
+      })
+    },
+
+    // 发起自增请求
+    increment(Counter, incrArr) {
+      return new Promise(function (resolve, reject) {
+        Counter('post', '/batch', {
+          "requests": incrArr
+        }).then((res) => {
+          res = res.json();
+          if (res.error) {
+            throw res.error;
+          }
+          resolve(res);
+        }).catch((error) => {
+          console.error('Failed to save visitor count', error);
+          reject(error);
+        });
+      });
+    },
+
+    // 构建自增请求体
+    buildIncrement(objectId) {
+      return {
+        "method": "PUT",
+        "path": `/1.1/classes/Counter/${ objectId }`,
+        "body": {
+          "times": {
+            '__op': 'Increment',
+            'amount': 1
+          }
+        }
+      }
+    },
+
+    // 校验是否为有效的 UV
+    validUV() {
+      var key = 'LeanCloudUVTimestamp';
+      var flag = localStorage.getItem(key);
+      if (flag) {
+        // 距离标记小于 24 小时则不计为 UV
+        if (new Date().getTime() - parseInt(flag) <= 86400000) {
+          return false;
+        }
+      }
+      localStorage.setItem(key, new Date().getTime().toString());
+      return true;
+    },
+
+    addCount(Counter) {
+      var enableIncr = '' === 'true' && window.location.hostname !== 'localhost';
+      enableIncr = true;
+      var getterArr = [];
+      var incrArr = [];
+      // 请求 PV 并自增
+      var pvCtn = document.querySelector('#lc-sv');
+      if (pvCtn || enableIncr) {
+        var pvGetter = this.getRecord(Counter, 'https://hasaik.com' + '/#lc-sv', 'Visits').then((record) => {
+          incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-sv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + 1;
+              if (pvCtn) {
+                pvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(pvGetter);
+      }
+
+      // 请求 UV 并自增
+      var uvCtn = document.querySelector('#lc-uv');
+      if (uvCtn || enableIncr) {
+        var uvGetter = this.getRecord(Counter, 'https://hasaik.com' + '/#lc-uv', 'Visitors').then((record) => {
+          var vuv = this.validUV();
+          vuv && incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-uv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + (vuv ? 1 : 0);
+              if (uvCtn) {
+                uvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(uvGetter);
+      }
+
+      // 请求文章的浏览数，如果是当前页面就自增
+      var allPV = document.querySelectorAll('#lc-pv');
+      if (allPV.length > 0 || enableIncr) {
+        for (i = 0; i < allPV.length; i++) {
+          let pv = allPV[i];
+          let title = pv.getAttribute('data-title');
+          var url = 'https://hasaik.com' + pv.getAttribute('data-path');
+          if (url) {
+            var viewGetter = this.getRecord(Counter, url, title).then((record) => {
+              // 是当前页面就自增
+              if (pv.getAttribute('data-path') == window.location.pathname) {
+                incrArr.push(this.buildIncrement(record.objectId));
+              }
+              if (pv) {
+                var ele = pv.querySelector('#lc-pv #number');
+                if (ele) {
+                  if (pv.getAttribute('data-path') == window.location.pathname) {
+                    ele.innerText = (record.times || 0) + 1;
+                  } else {
+                    ele.innerText = record.times || 0;
+                  }
+                  pv.style.display = 'inline';
+                }
+              }
+            });
+            getterArr.push(viewGetter);
+          }
+        }
+      }
+
+      // 如果启动计数自增，批量发起自增请求
+      if (enableIncr) {
+        Promise.all(getterArr).then(() => {
+          incrArr.length > 0 && this.increment(Counter, incrArr);
+        })
+      }
+
+    },
+
+
+    fetchData(api_server) {
+      var Counter = (method, url, data) => {
+        return fetch(`${ api_server }/1.1${ url }`, {
+          method,
+          headers: {
+            'X-LC-Id': this.app_id,
+            'X-LC-Key': this.app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      this.addCount(Counter);
+    },
+
+    refreshCounter() {
+      var api_server = this.app_id.slice(-9) !== '-MdYXbMMI' ? this.custom_api_server : `https://${ this.app_id.slice(0, 8).toLowerCase() }.api.lncldglobal.com`;
+      if (api_server) {
+        this.fetchData(api_server);
+      } else {
+        fetch('https://app-router.leancloud.cn/2/route?appId=' + this.app_id)
+          .then(resp => resp.json())
+          .then(({api_server}) => {
+            this.fetchData('https://' + api_server);
+          });
+      }
+    }
+
+  };
+
+  LCCounter.refreshCounter();
+
+  document.addEventListener('pjax:complete', function () {
+    LCCounter.refreshCounter();
+  });</script><!-- more --><script src="/js/crash_cheat.js"></script><script src="/js/message.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><div class="pjax-animate"><script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script><div id="loading-bar-wrapper"><script>NProgress.configure({parent:"#loading-bar-wrapper",trickleSpeed:100})</script></div><script>window.ShowLoading=function(){NProgress.start()},window.HideLoading=function(){NProgress.done()}</script></div><script>var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+        pjax = new Pjax({
+            elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+            selectors: [
+                "title",
+                "#pjax-container",
+                "#pjax-header-nav-list"
+            ],
+            cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+            timeout: 5000
+        });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+        window.stop(); // 相当于点击了浏览器的停止按钮
+
+        try {
+            var currentUrl = window.location.pathname;
+            var targetUrl = e.triggerElement.href;
+            var banUrl = [""];
+            if (banUrl[0] != "") {
+                banUrl.forEach(item => {
+                    if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+                        window.location.href = targetUrl;
+                    }
+                });
+            }
+        } catch (error) {}
+
+        window.subData = null; // 移除标题（用于一二级导航栏切换处）
+        $.fancybox.close();    // 关闭弹窗
+        $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
+        $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
+        $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
+
+        // 解绑事件 避免重复监听
+        $('.s-top').unbind('click');
+        $('.menu a').unbind('click');
+        $(window).unbind('resize');
+        $(window).unbind('scroll');
+        $(document).unbind('scroll');
+        $(document).unbind('click');
+        $('body').unbind('click');
+        window.ShowLoading();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+        // 关于百度统计对 SPA 页面的处理：
+        // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
+        // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
+        // 
+
+        // 关于谷歌统计对 SPA 页面的处理：
+        // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
+        // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
+        
+
+        $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style", ""); // 移除小尾巴的移除
+        $('.menu-phone.list-v').removeAttr("style", ""); // 移除小尾巴的移除
+        $('script[data-pjax], .pjax-reload script').each(function () {
+            $(this).parent().append($(this).remove());
+        });
+
+        try {
+            pjax_fancybox();
+            
+            
+            if ('') {
+                $('').backstretch("resize");
+            } else {
+                $.backstretch("resize");
+            }
+            
+            
+            
+            pjax_scrollrebeal();
+            
+            
+            pjax_initCopyCode();
+            
+            
+            pjax_valine();
+            
+            
+            
+            
+            
+        } catch (e) {
+            console.log(e);
+        }
+        window.HideLoading();
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+        window.HideLoading();
+        window.location.href = e.triggerElement.href;
+    });</script></div></body></html><!-- rebuild by neat -->

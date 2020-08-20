@@ -1,0 +1,1044 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Xu&#39;s Blog</title>
+  
+  <subtitle>博观而约取，厚积而薄发</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://hasaik.com/"/>
+  <updated>2020-08-20T12:17:14.777Z</updated>
+  <id>https://hasaik.com/</id>
+  
+  <author>
+    <name>·银河小徐</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java 多线程的实现</title>
+    <link href="https://hasaik.com/posts/f48050ed.html"/>
+    <id>https://hasaik.com/posts/f48050ed.html</id>
+    <published>2020-08-10T09:35:37.000Z</published>
+    <updated>2020-08-20T12:17:14.777Z</updated>
+    
+    <summary type="html">
+    
+      重温 Java 多线程的四种创建方式。
+    
+    </summary>
+    
+    
+      <category term="Java" scheme="https://hasaik.com/categories/Java/"/>
+    
+      <category term="线程" scheme="https://hasaik.com/categories/Java/%E7%BA%BF%E7%A8%8B/"/>
+    
+    
+      <category term="Java" scheme="https://hasaik.com/tags/Java/"/>
+    
+      <category term="线程" scheme="https://hasaik.com/tags/%E7%BA%BF%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Vue 格式化数字为金额格式</title>
+    <link href="https://hasaik.com/posts/6b9072d4.html"/>
+    <id>https://hasaik.com/posts/6b9072d4.html</id>
+    <published>2020-08-06T20:04:10.000Z</published>
+    <updated>2020-08-20T12:17:14.777Z</updated>
+    
+    <summary type="html">
+    
+      贴出 Vue 常用工具方法，格式化数字为金额格式。
+    
+    </summary>
+    
+    
+      <category term="Vue" scheme="https://hasaik.com/categories/Vue/"/>
+    
+    
+      <category term="工具类" scheme="https://hasaik.com/tags/%E5%B7%A5%E5%85%B7%E7%B1%BB/"/>
+    
+      <category term="Vue" scheme="https://hasaik.com/tags/Vue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java 中 sleep() 和 wait() 的区别</title>
+    <link href="https://hasaik.com/posts/47cc5feb.html"/>
+    <id>https://hasaik.com/posts/47cc5feb.html</id>
+    <published>2020-08-02T18:54:14.000Z</published>
+    <updated>2020-08-20T12:17:14.777Z</updated>
+    
+    <summary type="html">
+    
+      用一小段代码来解释一下 Java 中 sleep() 和 wait() 的区别。
+    
+    </summary>
+    
+    
+      <category term="Java" scheme="https://hasaik.com/categories/Java/"/>
+    
+      <category term="线程" scheme="https://hasaik.com/categories/Java/%E7%BA%BF%E7%A8%8B/"/>
+    
+    
+      <category term="Java" scheme="https://hasaik.com/tags/Java/"/>
+    
+      <category term="线程" scheme="https://hasaik.com/tags/%E7%BA%BF%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Vue Element-UI 采用 http-request 方式自定义文件上传</title>
+    <link href="https://hasaik.com/posts/461108bb.html"/>
+    <id>https://hasaik.com/posts/461108bb.html</id>
+    <published>2020-07-29T08:42:50.000Z</published>
+    <updated>2020-08-20T12:17:14.777Z</updated>
+    
+    <summary type="html">
+    
+      今天双手为大家奉上一篇关于 Vue 如何实现自定上传文件，希望你们多多支持。
+    
+    </summary>
+    
+    
+      <category term="Vue" scheme="https://hasaik.com/categories/Vue/"/>
+    
+    
+      <category term="Vue" scheme="https://hasaik.com/tags/Vue/"/>
+    
+      <category term="文件上传" scheme="https://hasaik.com/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java获取两个日期之间包含的年、月、日</title>
+    <link href="https://hasaik.com/posts/f4a01af3.html"/>
+    <id>https://hasaik.com/posts/f4a01af3.html</id>
+    <published>2020-07-09T19:39:16.000Z</published>
+    <updated>2020-08-20T12:17:14.777Z</updated>
+    
+    <summary type="html">
+    
+      Java获取两个日期之间包含的年、月、日。
+    
+    </summary>
+    
+    
+      <category term="Java" scheme="https://hasaik.com/categories/Java/"/>
+    
+    
+      <category term="Java" scheme="https://hasaik.com/tags/Java/"/>
+    
+      <category term="工具类" scheme="https://hasaik.com/tags/%E5%B7%A5%E5%85%B7%E7%B1%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Vue 使用 XMLHttpRequest 导出 excel</title>
+    <link href="https://hasaik.com/posts/34469844.html"/>
+    <id>https://hasaik.com/posts/34469844.html</id>
+    <published>2020-07-06T16:41:32.000Z</published>
+    <updated>2020-08-20T12:17:14.777Z</updated>
+    
+    <summary type="html">
+    
+      介绍 Vue 如何使用 XMLHttpRequest 导出 excel。
+    
+    </summary>
+    
+    
+      <category term="Vue" scheme="https://hasaik.com/categories/Vue/"/>
+    
+    
+      <category term="Vue" scheme="https://hasaik.com/tags/Vue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Vue v-for list数据循环 每3或者（n）个一组</title>
+    <link href="https://hasaik.com/posts/4fc8b649.html"/>
+    <id>https://hasaik.com/posts/4fc8b649.html</id>
+    <published>2020-07-06T15:42:46.000Z</published>
+    <updated>2020-08-20T12:17:14.777Z</updated>
+    
+    <summary type="html">
+    
+      Vue 使用 v-for 进行数据循环 每3或者（n）个一组。
+    
+    </summary>
+    
+    
+      <category term="Vue" scheme="https://hasaik.com/categories/Vue/"/>
+    
+    
+      <category term="Vue" scheme="https://hasaik.com/tags/Vue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Vue获取指定日期的那一周的开始、结束日期（从周日~周六）</title>
+    <link href="https://hasaik.com/posts/faf888d5.html"/>
+    <id>https://hasaik.com/posts/faf888d5.html</id>
+    <published>2020-07-06T15:26:10.000Z</published>
+    <updated>2020-08-20T12:17:14.777Z</updated>
+    
+    <summary type="html">
+    
+      按照指定日期，计算出指定日期这一周的开始、结束日期。
+    
+    </summary>
+    
+    
+      <category term="Vue" scheme="https://hasaik.com/categories/Vue/"/>
+    
+    
+      <category term="Vue" scheme="https://hasaik.com/tags/Vue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Vue兼容ie下载网络图片</title>
+    <link href="https://hasaik.com/posts/ef31a0a3.html"/>
+    <id>https://hasaik.com/posts/ef31a0a3.html</id>
+    <published>2020-07-06T10:48:36.000Z</published>
+    <updated>2020-08-20T12:17:14.777Z</updated>
+    
+    <summary type="html">
+    
+      记录一下如何在 vue 项目中下载网络图片，而不是直接在网页端打开。
+    
+    </summary>
+    
+    
+      <category term="Vue" scheme="https://hasaik.com/categories/Vue/"/>
+    
+    
+      <category term="Vue" scheme="https://hasaik.com/tags/Vue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>事务的四个特性以及事务的隔离级别</title>
+    <link href="https://hasaik.com/posts/fe5c5e4f.html"/>
+    <id>https://hasaik.com/posts/fe5c5e4f.html</id>
+    <published>2020-05-14T10:02:08.000Z</published>
+    <updated>2020-08-20T12:17:14.777Z</updated>
+    
+    <summary type="html">
+    
+      事务是指是程序中一系列严密的逻辑操作，而且所有操作必须全部成功完成，否则在每个操作中所作的所有更改都会被撤消。
+    
+    </summary>
+    
+    
+      <category term="事务" scheme="https://hasaik.com/categories/%E4%BA%8B%E5%8A%A1/"/>
+    
+    
+      <category term="事务" scheme="https://hasaik.com/tags/%E4%BA%8B%E5%8A%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Vue 获取 url 上的参数</title>
+    <link href="https://hasaik.com/posts/41567ba6.html"/>
+    <id>https://hasaik.com/posts/41567ba6.html</id>
+    <published>2020-05-08T08:51:58.000Z</published>
+    <updated>2020-08-20T12:17:14.777Z</updated>
+    
+    <summary type="html">
+    
+      经常我们在项目中需要获取 url 上参数进行使用，所以今天为大家奉上该函数 💜
+    
+    </summary>
+    
+    
+      <category term="Vue" scheme="https://hasaik.com/categories/Vue/"/>
+    
+    
+      <category term="工具类" scheme="https://hasaik.com/tags/%E5%B7%A5%E5%85%B7%E7%B1%BB/"/>
+    
+      <category term="Vue" scheme="https://hasaik.com/tags/Vue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SpringBoot 使用 Allatori 进行代码混淆</title>
+    <link href="https://hasaik.com/posts/7fabafee.html"/>
+    <id>https://hasaik.com/posts/7fabafee.html</id>
+    <published>2020-04-29T12:55:35.000Z</published>
+    <updated>2020-08-20T12:17:14.777Z</updated>
+    
+    <summary type="html">
+    
+      Allatori是一个Java 混淆器，它属于第二代混淆器，因此它能够全方位地保护你的知识产权。
+    
+    </summary>
+    
+    
+      <category term="SpringBoot" scheme="https://hasaik.com/categories/SpringBoot/"/>
+    
+    
+      <category term="SpringBoot" scheme="https://hasaik.com/tags/SpringBoot/"/>
+    
+      <category term="Allatori" scheme="https://hasaik.com/tags/Allatori/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo+Next7.8.0 引入 Folding 容器</title>
+    <link href="https://hasaik.com/posts/d0bc4f5d.html"/>
+    <id>https://hasaik.com/posts/d0bc4f5d.html</id>
+    <published>2020-04-27T13:46:25.000Z</published>
+    <updated>2020-08-20T12:17:14.777Z</updated>
+    
+    <summary type="html">
+    
+      分享一下如何将折叠式容器封装到 Next 主题中。
+    
+    </summary>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/tags/Hexo/"/>
+    
+      <category term="Folding容器" scheme="https://hasaik.com/tags/Folding%E5%AE%B9%E5%99%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CentOS搭建Gitlab的详细教程</title>
+    <link href="https://hasaik.com/posts/a460b91e.html"/>
+    <id>https://hasaik.com/posts/a460b91e.html</id>
+    <published>2020-04-16T14:05:16.000Z</published>
+    <updated>2020-08-20T12:17:14.777Z</updated>
+    
+    <summary type="html">
+    
+      记录一次CentOS搭建gitlab服务器的经历。
+    
+    </summary>
+    
+    
+      <category term="Gitlab" scheme="https://hasaik.com/categories/Gitlab/"/>
+    
+    
+      <category term="CentOS" scheme="https://hasaik.com/tags/CentOS/"/>
+    
+      <category term="Gitlab" scheme="https://hasaik.com/tags/Gitlab/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring Boot 通用解决 LocalDateTime 转为字符串后中间含“T”</title>
+    <link href="https://hasaik.com/posts/45c03634.html"/>
+    <id>https://hasaik.com/posts/45c03634.html</id>
+    <published>2020-04-15T10:37:29.000Z</published>
+    <updated>2020-08-20T12:17:14.777Z</updated>
+    
+    <summary type="html">
+    
+      通用解决LocalDateTime转为字符串后中间含“T”的问题。
+    
+    </summary>
+    
+    
+      <category term="SpringBoot" scheme="https://hasaik.com/categories/SpringBoot/"/>
+    
+    
+      <category term="SpringBoot" scheme="https://hasaik.com/tags/SpringBoot/"/>
+    
+      <category term="LocalDateTime" scheme="https://hasaik.com/tags/LocalDateTime/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo中使用emoji表情</title>
+    <link href="https://hasaik.com/posts/9b280ea3.html"/>
+    <id>https://hasaik.com/posts/9b280ea3.html</id>
+    <published>2020-04-08T11:44:02.000Z</published>
+    <updated>2020-08-20T12:17:14.777Z</updated>
+    
+    <summary type="html">
+    
+      Hexo 开启欢乐的 emoji 之旅 💛
+    
+    </summary>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/tags/Hexo/"/>
+    
+      <category term="Emoji" scheme="https://hasaik.com/tags/Emoji/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>FFmpeg + nginx-http-flv-module + flv.js 实现视频流播放</title>
+    <link href="https://hasaik.com/posts/358f95d9.html"/>
+    <id>https://hasaik.com/posts/358f95d9.html</id>
+    <published>2020-04-01T09:22:38.000Z</published>
+    <updated>2020-08-20T12:17:14.777Z</updated>
+    
+    <summary type="html">
+    
+      最近项目组接了一个视频流项目，项目的主要核心是将网络摄像头RTSP视频流在WEB端实时播放，经过两天的调查和爬坑，终于实现了视频流的播放。
+    
+    </summary>
+    
+    
+      <category term="流媒体服务" scheme="https://hasaik.com/categories/%E6%B5%81%E5%AA%92%E4%BD%93%E6%9C%8D%E5%8A%A1/"/>
+    
+    
+      <category term="nginx-http-flv-module" scheme="https://hasaik.com/tags/nginx-http-flv-module/"/>
+    
+      <category term="视频流播放" scheme="https://hasaik.com/tags/%E8%A7%86%E9%A2%91%E6%B5%81%E6%92%AD%E6%94%BE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Vue axios 刷新 Jwt</title>
+    <link href="https://hasaik.com/posts/fc31ea3.html"/>
+    <id>https://hasaik.com/posts/fc31ea3.html</id>
+    <published>2020-03-03T11:52:04.000Z</published>
+    <updated>2020-08-20T12:17:14.777Z</updated>
+    
+    <summary type="html">
+    
+      讲讲 Vue axios 是如何刷新 Jwt 的。
+    
+    </summary>
+    
+    
+      <category term="Vue" scheme="https://hasaik.com/categories/Vue/"/>
+    
+    
+      <category term="Vue" scheme="https://hasaik.com/tags/Vue/"/>
+    
+      <category term="Jwt" scheme="https://hasaik.com/tags/Jwt/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用SpringBoot AOP 记录操作日志、异常日志</title>
+    <link href="https://hasaik.com/posts/4598d3ed.html"/>
+    <id>https://hasaik.com/posts/4598d3ed.html</id>
+    <published>2020-02-25T15:22:53.000Z</published>
+    <updated>2020-08-20T12:17:14.777Z</updated>
+    
+    <summary type="html">
+    
+      使用SpringBoot AOP 记录操作日志、异常日志。
+    
+    </summary>
+    
+    
+      <category term="SpringBoot" scheme="https://hasaik.com/categories/SpringBoot/"/>
+    
+    
+      <category term="SpringBoot" scheme="https://hasaik.com/tags/SpringBoot/"/>
+    
+      <category term="AOP" scheme="https://hasaik.com/tags/AOP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vue项目中，js根据文件名后缀，判断文件图片、视频、文档、pdf等类型的方法</title>
+    <link href="https://hasaik.com/posts/dc877e7a.html"/>
+    <id>https://hasaik.com/posts/dc877e7a.html</id>
+    <published>2020-02-13T17:23:42.000Z</published>
+    <updated>2020-08-20T12:17:14.777Z</updated>
+    
+    <summary type="html">
+    
+      介绍一个Vue项目中会使用到的工具类，就是根据文件名后缀，判断文件图片、视频、文档、pdf等类型的方法。
+    
+    </summary>
+    
+    
+      <category term="Vue" scheme="https://hasaik.com/categories/Vue/"/>
+    
+    
+      <category term="Vue" scheme="https://hasaik.com/tags/Vue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vue、react等单页应用在微信浏览器中修改标题</title>
+    <link href="https://hasaik.com/posts/a63fb3ae.html"/>
+    <id>https://hasaik.com/posts/a63fb3ae.html</id>
+    <published>2020-02-05T12:07:51.000Z</published>
+    <updated>2020-08-20T12:17:14.777Z</updated>
+    
+    <summary type="html">
+    
+      分享单页应用在微信浏览器中修改标题
+    
+    </summary>
+    
+    
+      <category term="Vue" scheme="https://hasaik.com/categories/Vue/"/>
+    
+    
+      <category term="Vue" scheme="https://hasaik.com/tags/Vue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Nginx配置</title>
+    <link href="https://hasaik.com/posts/5e773fb.html"/>
+    <id>https://hasaik.com/posts/5e773fb.html</id>
+    <published>2020-01-21T15:08:07.000Z</published>
+    <updated>2020-08-20T12:17:14.777Z</updated>
+    
+    <summary type="html">
+    
+      关于 Nginx 的一些配置。
+    
+    </summary>
+    
+    
+      <category term="Nginx" scheme="https://hasaik.com/categories/Nginx/"/>
+    
+    
+      <category term="Nginx" scheme="https://hasaik.com/tags/Nginx/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Vue 日期格式化</title>
+    <link href="https://hasaik.com/posts/c9b4cff2.html"/>
+    <id>https://hasaik.com/posts/c9b4cff2.html</id>
+    <published>2020-01-15T09:39:22.000Z</published>
+    <updated>2020-08-20T12:17:14.777Z</updated>
+    
+    <summary type="html">
+    
+      介绍 Vue 中经常使用的日期格式化工具类。
+    
+    </summary>
+    
+    
+      <category term="Vue" scheme="https://hasaik.com/categories/Vue/"/>
+    
+    
+      <category term="工具类" scheme="https://hasaik.com/tags/%E5%B7%A5%E5%85%B7%E7%B1%BB/"/>
+    
+      <category term="Vue" scheme="https://hasaik.com/tags/Vue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>异常：java.security.InvalidKeyException:Illegal key size</title>
+    <link href="https://hasaik.com/posts/2b56997e.html"/>
+    <id>https://hasaik.com/posts/2b56997e.html</id>
+    <published>2020-01-07T10:13:18.000Z</published>
+    <updated>2020-08-20T12:17:14.777Z</updated>
+    
+    <summary type="html">
+    
+      异常：java.security.InvalidKeyException:Illegal key size.
+    
+    </summary>
+    
+    
+      <category term="BUG" scheme="https://hasaik.com/categories/BUG/"/>
+    
+    
+      <category term="BUG" scheme="https://hasaik.com/tags/BUG/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Element UI DatePicker 禁用当前日之前的时间</title>
+    <link href="https://hasaik.com/posts/69ab28bb.html"/>
+    <id>https://hasaik.com/posts/69ab28bb.html</id>
+    <published>2020-01-06T14:00:20.000Z</published>
+    <updated>2020-08-20T12:17:14.777Z</updated>
+    
+    <summary type="html">
+    
+      这篇文章主要介绍了 vue element-ui el-date-picker 禁用当日之前时间,文中给大家提供了代码段和截图，非常不错，具有一定的参考借鉴价值，需要的朋友可以参考下。
+    
+    </summary>
+    
+    
+      <category term="Vue" scheme="https://hasaik.com/categories/Vue/"/>
+    
+    
+      <category term="Vue" scheme="https://hasaik.com/tags/Vue/"/>
+    
+      <category term="el-date-picker" scheme="https://hasaik.com/tags/el-date-picker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Vue中Axios的封装与使用</title>
+    <link href="https://hasaik.com/posts/4394a738.html"/>
+    <id>https://hasaik.com/posts/4394a738.html</id>
+    <published>2019-12-04T10:05:38.000Z</published>
+    <updated>2020-08-20T12:17:14.777Z</updated>
+    
+    <summary type="html">
+    
+      axios 是一个基于 promise 的 http 库，可运行在浏览器端和 node.js 中。他有很多优秀的特性，例如统一进行拦截请求和响应、取消请求、转换 json 、客户端防御 XSRF 等。所以在日常开发中可以直接推荐我们使用 axios 库。如果还对 axios 不了解的，可以移步 axios 文档。回归正题，我们所要的说的 axios 的封装和 api 接口的统一管理，其实主要目的就是在帮助我们简化代码和利于后期的更新维护。
+    
+    </summary>
+    
+    
+      <category term="Vue" scheme="https://hasaik.com/categories/Vue/"/>
+    
+    
+      <category term="Vue" scheme="https://hasaik.com/tags/Vue/"/>
+    
+      <category term="Axios" scheme="https://hasaik.com/tags/Axios/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>为Hexo添加RSS订阅</title>
+    <link href="https://hasaik.com/posts/19c94341.html"/>
+    <id>https://hasaik.com/posts/19c94341.html</id>
+    <published>2019-11-29T16:04:03.000Z</published>
+    <updated>2020-08-20T12:17:14.777Z</updated>
+    
+    <summary type="html">
+    
+      本篇介绍一下自己的博客如何添加 RSS 订阅功能。
+    
+    </summary>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/tags/Hexo/"/>
+    
+      <category term="Rss" scheme="https://hasaik.com/tags/Rss/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SpringBoot两种打包方式</title>
+    <link href="https://hasaik.com/posts/b4831a5e.html"/>
+    <id>https://hasaik.com/posts/b4831a5e.html</id>
+    <published>2019-11-29T10:00:38.000Z</published>
+    <updated>2020-08-20T12:17:14.777Z</updated>
+    
+    <summary type="html">
+    
+      SpringBoot自带Tomcat，所以我们的项目可以单独部署，不需要依赖Window、Linux系统中的服务器，所以打包出来的 Jar 包是可以直接运行的。
+    
+    </summary>
+    
+    
+      <category term="SpringBoot" scheme="https://hasaik.com/categories/SpringBoot/"/>
+    
+    
+      <category term="SpringBoot" scheme="https://hasaik.com/tags/SpringBoot/"/>
+    
+      <category term="SpringBoot打包" scheme="https://hasaik.com/tags/SpringBoot%E6%89%93%E5%8C%85/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>本站已开通订阅功能</title>
+    <link href="https://hasaik.com/posts/dd9d9f86.html"/>
+    <id>https://hasaik.com/posts/dd9d9f86.html</id>
+    <published>2019-11-25T11:19:18.000Z</published>
+    <updated>2020-08-20T12:17:14.777Z</updated>
+    
+    <summary type="html">
+    
+      小站新开通订阅功能，欢迎大家体验。
+    
+    </summary>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/tags/Hexo/"/>
+    
+      <category term="邮件订阅" scheme="https://hasaik.com/tags/%E9%82%AE%E4%BB%B6%E8%AE%A2%E9%98%85/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo优化之lazyload图片懒加载</title>
+    <link href="https://hasaik.com/posts/61913369.html"/>
+    <id>https://hasaik.com/posts/61913369.html</id>
+    <published>2019-11-19T14:54:16.000Z</published>
+    <updated>2020-08-20T12:17:14.777Z</updated>
+    
+    <summary type="html">
+    
+      Hexo 博客虽然功能很强大，但也越来越繁重了，访问速度上有了一些问题，这里我也考虑了许多，例如加 cdn，将国外的资源引用改为国内镜像等方式。今天又想到如果一个页面的图片很多，那么如何来提高博客的访问速度呢？
+    
+    </summary>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/tags/Hexo/"/>
+    
+      <category term="lazyload" scheme="https://hasaik.com/tags/lazyload/"/>
+    
+      <category term="图片" scheme="https://hasaik.com/tags/%E5%9B%BE%E7%89%87/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java base64加密解密</title>
+    <link href="https://hasaik.com/posts/c4782247.html"/>
+    <id>https://hasaik.com/posts/c4782247.html</id>
+    <published>2019-11-19T13:35:23.000Z</published>
+    <updated>2020-08-20T12:17:14.777Z</updated>
+    
+    <summary type="html">
+    
+      Base 64主要用途不是加密，而是把一些二进制数转成普通字符，方便在网络上传输。 由于一些二进制字符在传输协议中属于控制字符，不能直接传送，所以需要转换一下才可以。由于某些系统中只能使用ASCII字符，Base64就是用来将非ASCII字符的数据转换成ASCII字符的一种方法，Base64特别适合在http，mime协议下快速传输数据。比如网络中图片的传输。
+    
+    </summary>
+    
+    
+      <category term="加密安全" scheme="https://hasaik.com/categories/%E5%8A%A0%E5%AF%86%E5%AE%89%E5%85%A8/"/>
+    
+    
+      <category term="Java" scheme="https://hasaik.com/tags/Java/"/>
+    
+      <category term="Base64" scheme="https://hasaik.com/tags/Base64/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java实现MD5加盐加密和MD5与SHA-1混合加盐加密两种方式</title>
+    <link href="https://hasaik.com/posts/a7df3b40.html"/>
+    <id>https://hasaik.com/posts/a7df3b40.html</id>
+    <published>2019-11-18T12:53:11.000Z</published>
+    <updated>2020-08-20T12:17:14.777Z</updated>
+    
+    <summary type="html">
+    
+      介绍两种加密方式，防止网站轻松破解我们的密码。
+    
+    </summary>
+    
+    
+      <category term="加密安全" scheme="https://hasaik.com/categories/%E5%8A%A0%E5%AF%86%E5%AE%89%E5%85%A8/"/>
+    
+    
+      <category term="Java" scheme="https://hasaik.com/tags/Java/"/>
+    
+      <category term="MD5" scheme="https://hasaik.com/tags/MD5/"/>
+    
+      <category term="SHA-1" scheme="https://hasaik.com/tags/SHA-1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用增强版valine</title>
+    <link href="https://hasaik.com/posts/bf9eba42.html"/>
+    <id>https://hasaik.com/posts/bf9eba42.html</id>
+    <published>2019-11-15T11:48:15.000Z</published>
+    <updated>2020-08-20T12:17:14.777Z</updated>
+    
+    <summary type="html">
+    
+      云淡风轻在很早之前就开发了一款极简的valine评论系统，由于现在Disqus被墙，使用起来步骤太复杂，所以现在大多数个人博客还是以valine为主。但是原生的valine功能过于单调，后来有不少大佬在基于原作者的基础上增强了valine的功能，我想推荐的一款就是 Deserts 增强的valine，作者介绍文档并没有针对hexo博客做出适配，所以我记录一下我在hexo博客中做出的修改。
+    
+    </summary>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/tags/Hexo/"/>
+    
+      <category term="Valine" scheme="https://hasaik.com/tags/Valine/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo博客+Next主题归档页美化</title>
+    <link href="https://hasaik.com/posts/f68f129b.html"/>
+    <id>https://hasaik.com/posts/f68f129b.html</id>
+    <published>2019-11-14T15:39:14.000Z</published>
+    <updated>2020-08-20T12:17:14.777Z</updated>
+    
+    <summary type="html">
+    
+      感觉归档页美化效果也还不错哈，不妨在本站归档页看看效果~
+    
+    </summary>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/tags/Hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo博客Valine评论样式美化</title>
+    <link href="https://hasaik.com/posts/89ea6c8b.html"/>
+    <id>https://hasaik.com/posts/89ea6c8b.html</id>
+    <published>2019-11-14T15:36:50.000Z</published>
+    <updated>2020-08-20T12:17:14.777Z</updated>
+    
+    <summary type="html">
+    
+      Valine 是一款比较轻量级的纯前端的评论系统，目前很多个人博客都在使用 Valine 评论系统，并且支持匿名留言。
+    
+    </summary>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/tags/Hexo/"/>
+    
+      <category term="Valine" scheme="https://hasaik.com/tags/Valine/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo博客+Next主题鼠标点击特效</title>
+    <link href="https://hasaik.com/posts/9c9b482b.html"/>
+    <id>https://hasaik.com/posts/9c9b482b.html</id>
+    <published>2019-11-14T15:30:09.000Z</published>
+    <updated>2020-08-20T12:17:14.777Z</updated>
+    
+    <summary type="html">
+    
+      感觉鼠标点击出现效果也还不错哈，不妨在本站空白处点击一下看看效果~
+    
+    </summary>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/tags/Hexo/"/>
+    
+      <category term="点击特效" scheme="https://hasaik.com/tags/%E7%82%B9%E5%87%BB%E7%89%B9%E6%95%88/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo博客中加入豆瓣读书页面</title>
+    <link href="https://hasaik.com/posts/7fbe9500.html"/>
+    <id>https://hasaik.com/posts/7fbe9500.html</id>
+    <published>2019-11-14T15:08:54.000Z</published>
+    <updated>2020-08-20T12:17:14.777Z</updated>
+    
+    <summary type="html">
+    
+      在Hexo博客个性化定制中，加入豆瓣读书界面是一个很不错的功能，可以进入我的个人阅读界面查看效果，那么我是怎么做到的呢？其实很简单，我们只需要加入一个 hexo-douban 模块即可。
+    
+    </summary>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/tags/Hexo/"/>
+    
+      <category term="豆瓣" scheme="https://hasaik.com/tags/%E8%B1%86%E7%93%A3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo博客界面美化</title>
+    <link href="https://hasaik.com/posts/dff7e11c.html"/>
+    <id>https://hasaik.com/posts/dff7e11c.html</id>
+    <published>2019-11-14T10:43:11.000Z</published>
+    <updated>2020-08-20T12:17:14.777Z</updated>
+    
+    <summary type="html">
+    
+      本样式美化方式只适用于 Next 主题，并且最好懂一些 CSS 前端知识，以便有些不兼容样式部分可以自行在浏览器中 F12 调试。
+    
+    </summary>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/tags/Hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo博客+Next主题深度优化与定制</title>
+    <link href="https://hasaik.com/posts/ab21860c.html"/>
+    <id>https://hasaik.com/posts/ab21860c.html</id>
+    <published>2019-10-17T16:17:56.000Z</published>
+    <updated>2020-08-20T12:17:14.777Z</updated>
+    
+    <summary type="html">
+    
+      本教程只适用于 Next5 或者 Next6 主题，Next7 开始做了大量修改，并删除了 custom.styl 文件，同时增加了很多在 Next7 之前需要手动配置的功能，请随个人喜好进行版本选择。
+    
+    </summary>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/tags/Hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo+NexT 自定义样式博文加密</title>
+    <link href="https://hasaik.com/posts/c1cdcf68.html"/>
+    <id>https://hasaik.com/posts/c1cdcf68.html</id>
+    <published>2019-10-16T16:31:27.000Z</published>
+    <updated>2020-08-20T12:17:14.777Z</updated>
+    
+    <summary type="html">
+    
+      介绍一种自定义博文加密方式，不需要插件，极简模式，相对安全。
+    
+    </summary>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/tags/Hexo/"/>
+    
+      <category term="Password" scheme="https://hasaik.com/tags/Password/"/>
+    
+      <category term="Security" scheme="https://hasaik.com/tags/Security/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo+NexT 博客搭建相册</title>
+    <link href="https://hasaik.com/posts/39d47c89.html"/>
+    <id>https://hasaik.com/posts/39d47c89.html</id>
+    <published>2019-10-15T09:26:09.000Z</published>
+    <updated>2020-08-20T12:17:14.777Z</updated>
+    
+    <summary type="html">
+    
+      Next主题是不带相册功能的，但是我们还想拥有一个自己的小相册，怎么办呢，经过一番资料的查找与爬坑，相册功能终于搭建成功，接下来为大家分享一下如何实现。
+    
+    </summary>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/tags/Hexo/"/>
+    
+      <category term="Photos" scheme="https://hasaik.com/tags/Photos/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo NexT主题之代码块Mac Panel特效</title>
+    <link href="https://hasaik.com/posts/d7399e80.html"/>
+    <id>https://hasaik.com/posts/d7399e80.html</id>
+    <published>2019-10-14T14:45:29.000Z</published>
+    <updated>2020-08-20T12:17:14.777Z</updated>
+    
+    <summary type="html">
+    
+      偶然间发现一款不错的文章代码块样式，类似Mac的面板效果。能设置阴影效果和实现文本编辑功能，不过文本只存在浏览器页面上，不会真正保存。配置的方式也很简单，觉得不错的朋友可以试一下。
+    
+    </summary>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/tags/Hexo/"/>
+    
+      <category term="代码块" scheme="https://hasaik.com/tags/%E4%BB%A3%E7%A0%81%E5%9D%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo博客静态资源压缩</title>
+    <link href="https://hasaik.com/posts/495d0b23.html"/>
+    <id>https://hasaik.com/posts/495d0b23.html</id>
+    <published>2019-10-13T12:52:32.000Z</published>
+    <updated>2020-08-20T12:17:14.777Z</updated>
+    
+    <summary type="html">
+    
+      对于个人博客来说，优化页面的访问速度是很有必要的，如果打开你的个人站点，加载个首页就要十几秒，页面长时间处于空白状态，想必没什么人能够忍受得了吧。个人觉得，如果能把页面的加载时间控制在三四秒内，就很不错了。
+    
+    </summary>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/tags/Hexo/"/>
+    
+      <category term="Gulp" scheme="https://hasaik.com/tags/Gulp/"/>
+    
+      <category term="Neat" scheme="https://hasaik.com/tags/Neat/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>基于 TravisCI 实现 Hexo 在 Github 和 Coding 的同步部署</title>
+    <link href="https://hasaik.com/posts/3e5a3bb6.html"/>
+    <id>https://hasaik.com/posts/3e5a3bb6.html</id>
+    <published>2019-10-12T14:43:34.000Z</published>
+    <updated>2020-08-20T12:17:14.777Z</updated>
+    
+    <summary type="html">
+    
+      关于TravisCI我这里简单介绍一下，TravisCI是一个在线的、分布式的持续集成服务，可以用来构建和测试托管在Github上的代码，并且其本身就是开源的。TravisCI提供了主流编程语言如C#、Java、JavaScript、Ruby、PHP、Node.js等的支持，相比Jenkins而言，它是一个轻量级的持续集成平台，它会在每次提交代码后，根据配置文件来创建一个虚拟机，并执行用户定义的Build任务，这个虚拟机提供版本控制(Git)、项目构建(Node.js)等，在此前提下，我们下面着手Hexo的自动化部署。
+    
+    </summary>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/tags/Hexo/"/>
+    
+      <category term="Github" scheme="https://hasaik.com/tags/Github/"/>
+    
+      <category term="Coding" scheme="https://hasaik.com/tags/Coding/"/>
+    
+      <category term="TravisCI" scheme="https://hasaik.com/tags/TravisCI/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo搭建本地个人博客（基础篇）</title>
+    <link href="https://hasaik.com/posts/e1b9c6c5.html"/>
+    <id>https://hasaik.com/posts/e1b9c6c5.html</id>
+    <published>2019-10-12T09:21:07.000Z</published>
+    <updated>2020-08-20T12:17:14.777Z</updated>
+    
+    <summary type="html">
+    
+      Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。
+    
+    </summary>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="https://hasaik.com/tags/Hexo/"/>
+    
+  </entry>
+  
+</feed>
