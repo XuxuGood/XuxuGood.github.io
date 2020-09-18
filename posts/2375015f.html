@@ -1,0 +1,392 @@
+<!-- build time:Fri Sep 18 2020 03:09:09 GMT+0000 (Coordinated Universal Time) --><!DOCTYPE html><html><head hexo-theme="https://github.com/volantis-x/hexo-theme-volantis/tree/4.0.0-rc.4"><meta charset="utf-8"><meta name="renderer" content="webkit"><meta name="force-rendering" content="webkit"><meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"><meta name="HandheldFriendly" content="True"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv="x-dns-prefetch-control" content="on"><title>Java 垃圾收集算法 - Xu&#39;s Blog</title><meta name="keywords" content="Java,JVM,垃圾收集,算法,内存空间"><meta name="description" content="JVM 中的垃圾回收算法有标记-清除算法、复制算法、标记-整理算法、分代收集算法四种算法。"><link rel="alternate" href="/atom.xml" title="Xu's Blog" type="application/atom+xml"><meta name="theme-color" content="#FFFFFF"><meta name="msapplication-TileColor" content="#1BC3FB"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css"><link rel="shortcut icon" type="image/x-icon" href="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/favicon.png"><link rel="stylesheet" href="/css/style.css"><script>function loadScript(e,t){var n=document.getElementsByTagName("head")[0]||document.documentElement,o=document.createElement("script");o.setAttribute("type","text/javascript"),t&&(o.onload=t),o.setAttribute("src",e),n.appendChild(o)}!function(f){"use strict";function e(e,t,n,o){var r,i,d=f.document,a=d.createElement("link");i=t||(r=(d.body||d.getElementsByTagName("head")[0]).childNodes)[r.length-1];var l=d.styleSheets;if(o)for(var s in o)o.hasOwnProperty(s)&&a.setAttribute(s,o[s]);a.rel="stylesheet",a.href=e,a.media="only x",function e(t){return d.body?t():void setTimeout(function(){e(t)})}(function(){i.parentNode.insertBefore(a,t?i:i.nextSibling)});var u=function(e){for(var t=a.href,n=l.length;n--;)if(l[n].href===t)return e();setTimeout(function(){u(e)})};function c(){a.addEventListener&&a.removeEventListener("load",c),a.media=n||"all"}return a.addEventListener&&a.addEventListener("load",c),(a.onloadcssdefined=u)(c),a}"undefined"!=typeof exports?exports.loadCSS=e:f.loadCSS=e}("undefined"!=typeof global?global:this)</script><script id="loadcss"></script><link rel="stylesheet" href="/css/message.css" type="text/css"><script src="https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js"></script></head><body><header class="l_header auto shadow blur" style="opacity:0"><div class="container"><div class="wrapper"><div class="nav-sub"><p class="title"></p><ul class="switcher nav-list-h m-phone" id="pjax-header-nav-list"><li><a class="s-comment fas fa-comments fa-fw" target="_self" href="javascript:void(0)"></a></li><li><a class="s-toc fas fa-list fa-fw" target="_self" href="javascript:void(0)"></a></li></ul></div><div class="nav-main"><a class="title flat-box" target="_self" href="/"><img no-lazy class="logo" src="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/navbar-logo.png"></a><div class="menu navigation"><ul class="nav-list-h m-pc"><li><a class="menuitem flat-box faa-parent animated-hover" href="/" id="home"><i class="fas fa-home faa-tada fa-fw"></i> 主页</a></li><li><a class="menuitem flat-box faa-parent animated-hover"><i class="fas fa-tasks fa-fw"></i> 找文章</a><ul class="list-v"><li><a class="menuitem flat-box faa-parent animated-hover" href="/archives/" id="archives"><i class="fas fa-archive faa-tada fa-fw"></i> 归档</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/" id="categories"><i class="fas fa-folder-open faa-tada fa-fw"></i> 分类</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/tags/" id="tags"><i class="fas fa-tags faa-tada fa-fw"></i> 标签</a></li></ul></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/links/" id="links"><i class="fas fa-link faa-tada fa-fw"></i> 朋友</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/about/" id="about"><i class="fas fa-info-circle faa-tada fa-fw"></i> 关于</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/comments/" id="comments"><i class="fas fa-comments faa-tada fa-fw"></i> 留言</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="https://travellings.now.sh" id="https:travellingsnowsh" rel="external nofollow noopener noreferrer" target="_blank"><i class="fas fa-paper-plane faa-tada fa-fw"></i> 开往</a></li><li><a class="menuitem flat-box faa-parent animated-hover"><i class="fas fa-fan fa-spin fa-fw"></i> 更多</a><ul class="list-v"><li><a class="menuitem flat-box faa-parent animated-hover" href="/photos/" id="photos"><i class="fas fa-camera-retro faa-tada fa-fw"></i> 我的相册</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/resume/" id="resume"><i class="fas fa-drafting-compass faa-tada fa-fw"></i> 我的简历</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="https://gycuzerwzfyu.leanapp.cn/" rel="external nofollow noopener noreferrer" target="_blank" id="https:gycuzerwzfyuleanappcn"><i class="fas fa-comments faa-tada fa-fw"></i> 评论管理</a></li><hr><li><a class="menuitem flat-box faa-parent animated-hover" href="/tools/" id="tools"><i class="fas fa-cog faa-tada fa-fw"></i> 实用工具</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/catchTheCat/" id="catchTheCat"><i class="fas fa-cat faa-tada fa-fw"></i> 围住小猫</a></li></ul></li></ul></div><div class="m_search"><form name="searchform" class="form u-search-form"><i class="icon fas fa-search fa-fw"></i> <input type="text" class="input u-search-input" placeholder="搜索...(◕ܫ◕)"></form></div><div style="display:flex;z-index:1"><canvas id="particleClockCanvas" style="width:100px;margin-top:4px;margin-left:20px"></canvas></div><script src="/js/canvas-clock.js"></script><style>@media screen and (max-width:768px){#particleClockCanvas{display:none}}</style><ul class="switcher nav-list-h m-phone"><li><a class="s-search fas fa-search fa-fw" target="_self" href="javascript:void(0)"></a></li><li><a class="s-menu fas fa-bars fa-fw" target="_self" href="javascript:void(0)"></a><ul class="menu-phone list-v navigation white-box"><li><a class="menuitem flat-box faa-parent animated-hover" href="/" id="home"><i class="fas fa-home faa-tada fa-fw"></i> 主页</a></li><li><a class="menuitem flat-box faa-parent animated-hover"><i class="fas fa-tasks fa-fw"></i> 找文章</a><ul class="list-v"><li><a class="menuitem flat-box faa-parent animated-hover" href="/archives/" id="archives"><i class="fas fa-archive faa-tada fa-fw"></i> 归档</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/categories/" id="categories"><i class="fas fa-folder-open faa-tada fa-fw"></i> 分类</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/tags/" id="tags"><i class="fas fa-tags faa-tada fa-fw"></i> 标签</a></li></ul></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/links/" id="links"><i class="fas fa-link faa-tada fa-fw"></i> 朋友</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/about/" id="about"><i class="fas fa-info-circle faa-tada fa-fw"></i> 关于</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/comments/" id="comments"><i class="fas fa-comments faa-tada fa-fw"></i> 留言</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="https://travellings.now.sh" id="https:travellingsnowsh" rel="external nofollow noopener noreferrer" target="_blank"><i class="fas fa-paper-plane faa-tada fa-fw"></i> 开往</a></li><li><a class="menuitem flat-box faa-parent animated-hover"><i class="fas fa-fan fa-spin fa-fw"></i> 更多</a><ul class="list-v"><li><a class="menuitem flat-box faa-parent animated-hover" href="/photos/" id="photos"><i class="fas fa-camera-retro faa-tada fa-fw"></i> 我的相册</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/resume/" id="resume"><i class="fas fa-drafting-compass faa-tada fa-fw"></i> 我的简历</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="https://gycuzerwzfyu.leanapp.cn/" rel="external nofollow noopener noreferrer" target="_blank" id="https:gycuzerwzfyuleanappcn"><i class="fas fa-comments faa-tada fa-fw"></i> 评论管理</a></li><hr><li><a class="menuitem flat-box faa-parent animated-hover" href="/tools/" id="tools"><i class="fas fa-cog faa-tada fa-fw"></i> 实用工具</a></li><li><a class="menuitem flat-box faa-parent animated-hover" href="/catchTheCat/" id="catchTheCat"><i class="fas fa-cat faa-tada fa-fw"></i> 围住小猫</a></li></ul></li></ul></li></ul></div></div></div></header><div class="l_body"><div class="l_cover"><div class="cover-wrapper post featured" style="display:none"><div class="cover-backstretch"></div><div class="cover-body"><div class="top"><img no-lazy class="logo" src="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/logo.png"></div><div class="bottom"><div class="menu navigation"><div class="list-h"><a href="/" id="home"><img src="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/icons/menu/home.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/icons/menu/home.png" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif"><p>主页</p></a><a href="/archives/" id="archives"><img src="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/icons/menu/archive.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/icons/menu/archive.png" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif"><p>归档</p></a><a href="/links/" id="links"><img src="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/icons/menu/link.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/icons/menu/link.png" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif"><p>朋友</p></a><a href="/comments/" id="comments"><img src="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/icons/menu/comments.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/icons/menu/comments.png" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif"><p>留言</p></a><a href="/about/" id="about"><img src="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/icons/menu/about.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/icons/menu/about.png" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif"><p>关于</p></a></div></div></div></div><div class="scroll-down" style="display:none"><i class="fas fa-anchor scroll-down-effects"></i></div></div></div><div class="safearea"><div class="body-wrapper" id="pjax-container"><div id="pjax-data" style="display:none"><div id="pjax-ispage">true</div><div id="pjax-pageTitle">Java 垃圾收集算法</div><div id="pjax-enable-cover">true</div><div id="pjax-comment-path"></div><div id="pjax-comment-placeholder"></div></div><script>document.getElementsByClassName("cover-wrapper")[0].style.display="none",document.getElementsByClassName("l_header","cover-wrapper")[0].classList.add("show")</script><div class="l_main"><article class="article post white-box reveal md shadow floatable article-type-post" id="post" itemscope itemprop="blogPost"><div class="headimg-div"><a class="headimg-a"><img class="headimg lazyload placeholder" src="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/article-headimg/JVM-GC.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/article-headimg/JVM-GC.png" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif"></a></div><div class="article-meta" id="top"><a title="Java 垃圾收集算法" href="/posts/2375015f.html"><img class="thumbnail lazyload placeholder" src="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/article-thumbnail/jvm.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/article-thumbnail/jvm.png" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif"></a><h1 class="title">Java 垃圾收集算法</h1><div class="new-meta-box"><div class="new-meta-item author"><a class="author" href="/" rel="nofollow"><img no-lazy src="https://hasaik.com/images/avatar.jpg"><p>Mr. X</p></a></div><div class="new-meta-item date"><a class="notlink"><i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i><p>发布于：2020-08-24</p></a></div><div class="new-meta-item category"><a class="notlink"><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i> <a class="category-link" href="/categories/Java/">Java</a><span class="sep"></span><a class="category-link" href="/categories/Java/JVM/">JVM</a></a></div><div class="new-meta-item comments-count"><a href="javascript:void(0);" onclick="scrollToComments()"><i class="fas fa-comment-dots fa-fw"></i> <span class="valine-comment-count" data-xid="/posts/2375015f.html">0</span> <span class="leancloud-comments-count">&nbsp;条评论</span></a></div><script>function scrollToComments(){
+       // 校正页面定位（被导航栏挡住的区域）
+       var scrollCorrection = 80; // (header height = 64px) + (gap = 16px)
+       var $headerAnchor = $('.l_header');
+       if ($headerAnchor[0]) {
+           scrollCorrection = $headerAnchor[0].clientHeight + 16;
+       }
+       scrollToElement($('.l_body article#comments'),scrollCorrection);
+    }
+   // 校正页面定位（被导航栏挡住的区域）
+   function scrollToElement(elem, scrollCorrection) {
+       const $elem = elem.href ? $(elem.getAttribute('href')) : $(elem);
+       $('html, body').animate({
+           'scrollTop': $elem.offset().top - scrollCorrection
+       }, 500);
+   }</script><div class="new-meta-item wordcount"><a class="notlink"><i class="fas fa-keyboard fa-fw" aria-hidden="true"></i><p>字数统计：1.4k字</p></a></div><div class="new-meta-item readtime"><a class="notlink"><i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i><p>阅读时长≈ 4分钟</p></a></div></div></div><p>JVM 中的垃圾回收算法有标记-清除算法、复制算法、标记-整理算法、分代收集算法四种算法。</p><h2 id="🔥-标记-清除算法">🔥 标记 - 清除算法</h2><p>标记-清除（Mark-Sweep）算法是现代垃圾回收算法的思想基础，它将垃圾回收分为「标记」和「清除」两个阶段：</p><ol><li>在标记阶段，通过 「可达性分析算法」标记出所有需要回收的对象</li><li>在清除阶段，清除所有被标记为可以回收的对象。</li></ol><p>算法示意图如下：</p><p><img src="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/article/abbrlink-2375015f/%E6%A0%87%E8%AE%B0-%E6%B8%85%E9%99%A4%E7%AE%97%E6%B3%95.jpg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/article/abbrlink-2375015f/%E6%A0%87%E8%AE%B0-%E6%B8%85%E9%99%A4%E7%AE%97%E6%B3%95.jpg" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif" alt="标记-清除算法"></p><p>这个算法的<emp>主要缺点</emp>有两个：</p><ol><li>效率问题，标记和清除两个过程的效率都不高</li><li>空间问题，标记清除之后会产生大量不连续的内存碎片，空间碎片太多可能会导致以后在程序运行过程中需要分配较大对象时，无法找到足够的连续内存而不得不提前触发另一次垃圾收集动作。</li></ol><p>后续的很多垃圾收集算法都是基于此算法的思路进行改进而得到的。垃圾收集器中的 CMS 是基于标记-清除算法实现的，不过这种收集器也逐渐被取代了。</p><h2 id="🔥-标记-整理算法">🔥 标记 - 整理算法</h2><p>标记-整理（Mark-Compact）算法，类似于标记-清除算法，不过它标记完对象后，不是直接对可回收对象进行清除；而是让所有仍会存活的对象都向一端移动，然后直接清理掉边界以外的内存。算法示意如下图所示：</p><p><img src="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/article/abbrlink-2375015f/%E6%A0%87%E8%AE%B0-%E6%95%B4%E7%90%86%E7%AE%97%E6%B3%95.jpg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/article/abbrlink-2375015f/%E6%A0%87%E8%AE%B0-%E6%95%B4%E7%90%86%E7%AE%97%E6%B3%95.jpg" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif" alt="标记-整理算法"></p><p>相对于标记-清除算法，标记-整理算法的<emp>优点</emp>是解决了内存空间碎片的问题，使对象创建时的内存分配更快速了（也可以使用 TLAB 进行分配）；<emp>缺点</emp>还是效率问题，标记和整理这两个过程的效率都不高。</p><p>基于标记-整理算法实现的垃圾收集器有很多，如 Serial 收集器、ParNew 收集器、Parallel Old 收集器、G1 收集器等。</p><h2 id="🔥-复制算法">🔥 复制算法</h2><p>复制（copying）算法的思路为：它将内存按容量分为大小相等的两块，每次只使用其中的一块。当正在使用的内存块 A 的内存用完了，就将还活着的对象复制到另一块内存 B 上面，然后再把之前使用的内存块 A 的空间一次性清理掉，就这样循环往复。</p><p>这样使得每次都是对整个半区进行内存回收，内存分配时也不用考虑内存碎片等复杂情况，只需要移动堆顶指针，按顺序分配内存即可。复制算法的<emp>优点</emp>是解决了效率问题和内存碎片的问题，算法示意图如下：</p><p><img src="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/article/abbrlink-2375015f/%E5%A4%8D%E5%88%B6%E7%AE%97%E6%B3%95.jpg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/article/abbrlink-2375015f/%E5%A4%8D%E5%88%B6%E7%AE%97%E6%B3%95.jpg" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif" alt="复制算法"></p><p>由此可见，复制算法的<emp>缺点</emp>就是每次都会浪费掉一半的内存空间，而且，在对象存活率较高时就要进行较多的复制操作，效率会变低。</p><p>现在很多垃圾收集器都采用复制算法来回收新生代。</p><h2 id="🔥-分代收集算法">🔥 分代收集算法</h2><p>分代收集（Generational Collection）算法并没有什么新的垃圾回收思想，它只是根据对象存活周期的不同将内存划分为几块（一般是把 Java 堆划分为新生代和老年代），然后根据各个块的特点采用最适当的垃圾收集算法。</p><p>算法示意如图（其中，Eden、Survivor From 和 Survivor To 空间均属于<emp>新生代</emp>（Young），Old 空间属于<emp>老年代</emp>，一般这几个内存空间的大小比例为：<code>Eden : Survivor From : Survivor To = 8 : 1 : 1</code> 、<code>Young : Old = 1 : 2</code> ）：</p><p><img src="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/article/abbrlink-2375015f/%E5%88%86%E4%BB%A3%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95.jpg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/article/abbrlink-2375015f/%E5%88%86%E4%BB%A3%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95.jpg" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif" alt="分代收集算法"></p><p>如上图所示，分代收集算法的策略为：</p><ul><li>在新生代中，每次垃圾收集都有都发现有大批对象死去，只有少量存活，就选用<emp>复制算法</emp>。将 Eden 和 Survivor From 空间中还存活着的对象一次性复制到 Survivor To 空间上；当 Survivor To 空间不够用时，需要依赖其它内存（这里指老年代）来进行分配担保（Handle Promotion）；最后对刚才用过的 Eden 和 Survivor From 空间进行清理，清理之后 Survivor 区的 From 和 To 进行角色交换，之前的 From 变成了 To，之前的 To 变成了 From，也就是说无论如何都要保证名为 To 的 Survivor 区域是空的。</li><li>在老年代中，因为对象存活率高，也没有额外空间对它进行分配担保，就必须使用「标记-清除」或者「标记-整理」算法来进行回收。</li></ul><p>当前的商业虚拟机基本都是采用的分代收集算法。</p><h2 id="🔥-附：对象的一辈子理解">🔥 附：对象的一辈子理解</h2><p>我是一个普通的 Java 对象，我出生在 Eden 区，在 Eden 区我还看到和我长得很像的小兄弟，我们在 Eden 区中玩了挺长时间。有一天 Eden 区中的人实在太多了，我就被迫去了 Survivor 区的 From 区，自从去了 Survivor 区，我就开始飘了，有时候在 Survivor 区的 From 区，有时候在 Survivor 区的 To 区，居无定所，直到我18岁的时候，爸爸说我成人了，该去社会上闯闯了。于是我就去了老年代那边，老年代里，人很多，并且年龄都挺大的，我这里也认识了很多人。在老年代里，我生活了20年（每次GC加一岁），然后被回收。</p><p>新对象申请内存空间流程图如下：</p><p><img src="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/article/abbrlink-2375015f/%E5%AF%B9%E8%B1%A1%E7%94%B3%E8%AF%B7%E5%86%85%E5%AD%98%E7%A9%BA%E9%97%B4%E6%B5%81%E7%A8%8B.jpg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/article/abbrlink-2375015f/%E5%AF%B9%E8%B1%A1%E7%94%B3%E8%AF%B7%E5%86%85%E5%AD%98%E7%A9%BA%E9%97%B4%E6%B5%81%E7%A8%8B.jpg" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif" alt="新对象申请内存空间流程图"></p><p>如有不正，欢迎指出。</p><div class="footer"><div class="references"><section class="header"><i class="fas fa-quote-left fa-fw" aria-hidden="true"></i> <span>参考资料</span></section><section class="body"><ul><li><a href="https://deecyn.com/jvm-gc-algorithms.html" rel="external nofollow noopener noreferrer" target="_blank">垃圾收集算法</a></li></ul></section></div><div class="related_posts"><section class="header"><i class="fas fa-bookmark fa-fw" aria-hidden="true"></i><span>相关文章</span></section><section class="body"><div class="vlts-rps"><a class="item" href="/posts/6d42a1fc.html" title="CyclicBarrier 的理解和使用" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/photos/nameless/15.jpg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/photos/nameless/15.jpg" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif"><span class="title">CyclicBarrier 的理解和使用</span><span class="excerpt">CyclicBarrier 是一个同步辅助类，它允许一组线程互相等待，直到到达某个公共屏障点 (common barrie...</span></a><a class="item" href="/posts/cf9c1454.html" title="CountDownLatch 的理解和使用" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/photos/nameless/15.jpg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/photos/nameless/15.jpg" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif"><span class="title">CountDownLatch 的理解和使用</span><span class="excerpt">最近在看多线程之间的通信，笔者我觉得自己的脑袋实在不够用了，很多东西看过就忘，所以今天抽出点时间码一遍 CountDown...</span></a><a class="item" href="/posts/f48050ed.html" title="Java 多线程的实现" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/photos/nameless/15.jpg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/photos/nameless/15.jpg" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif"><span class="title">Java 多线程的实现</span><span class="excerpt">重温 Java 多线程的四种创建方式。</span></a><a class="item" href="/posts/47cc5feb.html" title="Java 中 sleep() 和 wait() 的区别" rel="bookmark "><img src="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/photos/nameless/15.jpg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/photos/nameless/15.jpg" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif"><span class="title">Java 中 sleep() 和 wait() 的区别</span><span class="excerpt">用一小段代码来解释一下 Java 中 sleep() 和 wait() 的区别。</span></a></div></section></div><div class="copyright"><blockquote><p><svg id="icon-touxiang" viewbox="0 0 1024 1024" width="17" height="17" style="vertical-align:-3.2px"><path d="M614.72 554.538c-49.086-6.399-100.27-2.1-149.256-2.1-119.465 0-209.04 95.972-206.84 215.437 0 17.095 8.498 31.99 23.493 40.488 14.896 10.697 34.09 14.896 53.285 17.095 61.882 6.398 123.664 6.398 198.342 6.398 40.488 0 93.872-2.1 142.858-4.298 27.692 0 53.284-4.3 78.877-14.896 19.194-8.498 29.89-19.194 31.99-40.488 8.498-104.57-72.478-204.84-172.75-217.636zM680.8 375.39c0-87.474-74.678-162.053-164.251-162.053-89.574 0-162.053 74.679-162.053 162.053-2.1 87.474 74.678 164.252 162.053 164.252 89.673 0 164.252-74.678 164.252-164.252z" fill="#FFFFFF"/><path d="M512.35 0C228.733 0 0.5 228.233 0.5 511.85s228.233 511.85 511.85 511.85 511.85-228.233 511.85-511.85S795.967 0 512.35 0z m275.12 772.074c-2.1 21.294-12.797 31.99-31.991 40.488-25.593 10.697-51.185 14.896-78.877 14.896-49.086 2.099-102.37 4.298-142.858 4.298-74.678 0-136.46 0-198.342-6.398-19.195-2.1-38.389-6.398-53.285-17.095-14.895-8.497-23.493-23.493-23.493-40.488-2.1-119.465 87.475-215.437 206.84-215.437 49.085 0 100.27-4.299 149.256 2.1 100.27 12.896 181.247 113.166 172.75 217.636zM354.495 375.39c0-87.474 72.479-162.053 162.053-162.053S680.8 288.016 680.8 375.39c0 89.574-74.679 164.252-164.252 164.252-87.375 0-164.152-76.778-162.053-164.252z" fill="#249FF8"/></svg> 本文由 <a href="https://hasaik.com">·银河小徐</a> 创作，如果您觉得本文不错，请随意赞赏</p><p><svg id="icon-fenxiang" viewbox="0 0 1024 1024" width="17" height="17" style="vertical-align:-3.2px"><path d="M512 512m-512 0a512 512 0 1 0 1024 0 512 512 0 1 0-1024 0Z" fill="#F3B243"/><path d="M630.784 323.584m-90.112 0a90.112 90.112 0 1 0 180.224 0 90.112 90.112 0 1 0-180.224 0Z" fill="#FFFFFF"/><path d="M630.784 688.128m-90.112 0a90.112 90.112 0 1 0 180.224 0 90.112 90.112 0 1 0-180.224 0Z" fill="#FFFFFF"/><path d="M319.488 512m-90.112 0a90.112 90.112 0 1 0 180.224 0 90.112 90.112 0 1 0-180.224 0Z" fill="#FFFFFF"/><path d="M341.037056 480.370688l257.343488-175.7184 27.713536 40.59136-257.339392 175.7184z" fill="#FFFFFF"/><path d="M349.052928 488.452096l252.854272 182.10816-28.725248 39.886848-252.874752-182.10816z" fill="#FFFFFF"/></svg> 博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p><p><svg id="icon-ziyuan" viewbox="0 0 1024 1024" width="17" height="17" style="vertical-align:-3.2px"><path d="M511.854421 0a511.854421 511.854421 0 1 0 512.145579 511.854421A511.854421 511.854421 0 0 0 511.854421 0z" fill="#39B54A"/><path d="M576.491328 630.355417l-116.462895 116.462894a129.56497 129.56497 0 0 1-182.555587 0l-2.0381-2.038101a128.982656 128.982656 0 0 1 0-182.26443l81.232868-81.232868a179.644015 179.644015 0 0 0 13.102076 70.460051l-52.69946 52.408302a69.877737 69.877737 0 0 0 0 98.702303l2.038101 2.038101a70.168894 70.168894 0 0 0 98.702303 0l116.462895-116.462894a69.877737 69.877737 0 0 0 0-98.702304l-2.038101-2.0381a69.586579 69.586579 0 0 0-13.975547-10.772818l42.508956-42.508956a128.109184 128.109184 0 0 1 13.102076 11.355132l2.0381 2.0381a129.273813 129.273813 0 0 1 0 182.26443z" fill="#FFFFFF"/><path d="M746.235997 460.901905l-81.232869 81.232869a179.352858 179.352858 0 0 0-13.102076-70.460051l52.69946-52.408303a69.877737 69.877737 0 0 0 0-98.702303l-2.038101-2.038101a69.877737 69.877737 0 0 0-98.702303 0l-116.462894 116.462895a69.877737 69.877737 0 0 0 0 98.702303l2.0381 2.038101a68.421951 68.421951 0 0 0 13.975548 10.772817l-42.508957 42.508957a136.552744 136.552744 0 0 1-13.102076-11.355132l-2.0381-2.038101a128.982656 128.982656 0 0 1 0-182.26443l116.462894-116.462894a129.56497 129.56497 0 0 1 182.555587 0l2.038101 2.0381a128.982656 128.982656 0 0 1 0 182.26443z" fill="#FFFFFF"/></svg> 本文永久链接是：<a href="https://hasaik.com/posts/2375015f.html">https://hasaik.com/posts/2375015f.html</a></p></blockquote></div><div id="reward"><div>您的喜欢是作者写作最大的动力！❤️</div><div class="reward"><a href="https://github.com/Kaiyuan/donate-page" target="_blank" class="tr3" title="Github" rel="external nofollow noopener noreferrer"><span id="github"></span></a><ul id="RewardBox" class="list pos-f tr3"><li id="AliPayOR" title="支付宝打赏">AliPay</li><li id="WeChatPayOR" title="微信打赏">WeChatPay</li><li id="QQPayOR" title="QQ打赏">QQPay</li></ul><div id="RewardText" class="tr3">Donate</div><div id="QRBox" class="pos-f left-100"><div id="MainBox"></div></div></div></div><script>jQuery(document).ready(function(){var a=$("#QRBox"),d=$("#MainBox");function t(e){e&&d.css("background-image","url("+e+")"),$("#RewardText,#RewardBox,#github").addClass("blurC"),a.fadeIn(300,function(e){d.addClass("showQR")})}$("#RewardBox>li").click(function(e){var a=$(this).attr("id");"AliPayOR"===a?t("https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/reward/AliPayQR.png"):"WeChatPayOR"===a?t("https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/reward/WeChatQR.png"):"QQPayOR"===a&&t("https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/reward/QQPayQR.png")}),d.click(function(e){d.removeClass("showQR").addClass("hideQR"),setTimeout(function(e){a.fadeOut(300,function(e){d.removeClass("hideQR")}),$("#RewardText,#RewardBox,#github").removeClass("blurC")},600)})})</script><style>#reward{text-align:center;width:100%;margin-top:40px;margin-bottom:-32px}#reward .reward{margin-left:20px;margin-top:80px;margin-bottom:-100px;display:inline-block}#RewardBox{position:relative;top:calc(50% - 15px);background-color:#fff;border:1px solid #ddd;border-radius:6px;float:left;z-index:1}.reward ul{padding-left:0;margin-left:0}#RewardBox #AliPayOR{background-image:url(https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/reward/alipay.png)}#RewardBox #WeChatPayOR{background-image:url(https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/reward/wechatpay.png)}#RewardBox #QQPayOR{background-image:url(https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/reward/qqpay.png)}#RewardBox>li:first-child{border-width:0}#RewardText{position:relative;font-size:12px;width:70px;height:70px;line-height:40px;color:#fff;background:#ffd886 url(https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/reward/like.png) no-repeat center 10px;background-size:20px;border-radius:35px;text-align:center;left:calc(50% - 120px);top:-80px;transform:rotatez(-15deg)}.tr3{transition:all .3s}#QRBox{position:relative;top:-100px;left:0;z-index:1;background-color:rgba(255,255,255,.3);display:none;perspective:400px}.left-100{width:100%;height:100%}#RewardBox li{margin-top:0;margin-bottom:0;width:74px;float:left;text-align:center;border-left:1px solid #ddd;background:no-repeat center center;background-color:rgba(204,217,220,.1);background-size:50px;transition:all .3s;cursor:url(https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/ayuda.cur),auto;overflow:hidden;line-height:600px;height:28px;-webkit-filter:grayscale(1);filter:grayscale(1);opacity:.5}#RewardBox li:hover{background-color:rgba(204,217,220,.3);-webkit-filter:grayscale(0);filter:grayscale(0);opacity:1}#RewardBox a{display:block}#github{position:relative;display:inline-block;z-index:1;width:24px;height:24px;top:-2px;left:-14px;background:no-repeat center center url(https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/reward/github.png);background-size:contain;opacity:.3;transform:rotatez(15deg)}#MainBox{cursor:url(https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/ayuda.cur),auto;position:absolute;text-align:center;width:200px;height:200px;left:calc(50% - 100px);top:calc(50% - 100px);background:#fff no-repeat center center;background-size:190px;border-radius:6px;box-shadow:0 2px 7px rgba(0,0,0,.3);opacity:0;transition:all 1s ease-in-out;transform-style:preserve-3d;transform-origin:center center;overflow:hidden}.reward .blurC{-webkit-filter:blur(3px);filter:blur(3px)}#MainBox.showQR{opacity:1;animation-name:showQR;animation-duration:3s;animation-timing-function:ease-in-out;animation-iteration-count:1;animation-fill-mode:forwards;-webkit-animation:showQR 3s ease-in-out 0s 1 normal forwards}@keyframes showQR{from{transform:rotateX(90deg)}8%{opacity:1;transform:rotateX(-60deg)}18%{opacity:1;transform:rotateX(40deg)}34%{opacity:1;transform:rotateX(-28deg)}44%{opacity:1;transform:rotateX(18deg)}58%{opacity:1;transform:rotateX(-12deg)}72%{opacity:1;transform:rotateX(9deg)}88%{opacity:1;transform:rotateX(-5deg)}96%{opacity:1;transform:rotateX(2deg)}to{opacity:1}}#MainBox.hideQR{opacity:1;animation-name:hideQR;animation-duration:.5s;animation-timing-function:ease-in-out;animation-iteration-count:1;animation-fill-mode:forwards;-webkit-animation:hideQR .5s ease-in-out 0s 1 normal forwards}@keyframes hideQR{20%,50%{transform:scale(1.08,1.08);opacity:1}to{opacity:0;transform:rotateZ(40deg) scale(.6,.6)}}.md #reward .reward ul li:before{content:none}</style></div><div class="article-meta" id="bottom"><hr><div class="new-meta-box"><div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-18T03:08:25+00:00"><a class="notlink"><i class="fas fa-edit fa-fw" aria-hidden="true"></i><p>更新于：2020-09-18</p></a></div><div class="new-meta-item meta-tags"><a class="tag" href="/tags/Java/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Java</p></a></div><div class="new-meta-item meta-tags"><a class="tag" href="/tags/JVM/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>JVM</p></a></div><div class="new-meta-item share -mob-share-list"><div class="-mob-share-list share-body"><a class="-mob-share-qq" rel="external nofollow noopener noreferrer" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://hasaik.com/posts/2375015f.html&title=Java 垃圾收集算法 - Xu's Blog&pics=https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/article-thumbnail/jvm.png&summary="><img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif"> </a><a class="-mob-share-qzone" rel="external nofollow noopener noreferrer" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://hasaik.com/posts/2375015f.html&title=Java 垃圾收集算法 - Xu's Blog&pics=https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/article-thumbnail/jvm.png&summary="><img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif"> </a><a class="-mob-share-weibo" rel="external nofollow noopener noreferrer" target="_blank" href="http://service.weibo.com/share/share.php?url=https://hasaik.com/posts/2375015f.html&title=Java 垃圾收集算法 - Xu's Blog&pics=https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/article-thumbnail/jvm.png&summary="><img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif"></a><div class="hoverbox"><a class="share"><img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif"></a><div class="target"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPgAAAD4CAAAAADkunTXAAACRUlEQVR42u3ay3HDMAwFQPffdFJARiPiQyuElrfEtoTF6Q3Az89LzwccHBwcHHwQ/JM8fx548fnq77LPi9YLDg4ODg4+Eb4cAG6+f1XoaiOizwv/HhwcHBwcfDD8NgAEYdXPVxuxXC84ODg4ODh4uNDqgAMcHBwcHBx8f4BZXQxUFwrg4ODg4ODgDQP64qAiC318kwIODg4ODv6P4NmBwVN/p+sFBwcHBwcfBK+eaGO6BhjpesHBwcHBwQfBswEh2oBqA6v1gYODg4ODT4RHC4r+vwuShmYHEeDg4ODg4AfCdy8WogOLbEPDAQYcHBwcHPxAeHUhUF0gVBcG4TrAwcHBwcEHw3cDuhqZvUgADg4ODg4+Ed69UKgGlO0LBXBwcHBw8EHw7ot74YKKFw3akhs4ODg4OPiB8Grh0UauNiAbkJYXCuDg4ODg4AfDs0EhOlCIBpjqBcLbAAMODg4ODj4A3hVEuhf/1YFEepMCDg4ODg4+AP6tAUMWkg1Y4ODg4ODgb4CXX9A1OEjWUd6kgIODg4ODHwjvHiRUg0w28Fx+Dg4ODg4OPghePdEA0fX8aCPBwcHBwcEnwquBobqAWA0i2QXD7SACHBwcHBx8ADwbKMIv3vS95UEIODg4ODj4YHh0EV+9OJBdEKTfCw4ODg4ODt5+kSAbYMKNBAcHBwcHB98/+G86jyc3cHBwcHDwL8KrF+5WG7LrgsFtsAIHBwcHBx8IzwaDaOOyi4LoomJ5oQAODg4ODn4w/G0HHBwcHBx8wPkFmUOEnw/gNr4AAAAASUVORK5CYII="></div></div><a class="-mob-share-telegram" rel="external nofollow noopener noreferrer" target="_blank" href="https://t.me/share/url?url=https://hasaik.com/posts/2375015f.html&text=Java 垃圾收集算法 - Xu's Blog"><img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/telegram.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/telegram.png" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif"></a></div></div></div></div><div class="prev-next"><a class="prev" href="/posts/6d42a1fc.html"><p class="title"><i class="fas fa-chevron-left" aria-hidden="true"></i>CyclicBarrier 的理解和使用</p><p class="content">🔥 CyclicBarrier 的理解 CyclicBarrier 是一个同步辅助类，它允许一组线程互相等待，直到到达某个公共屏障点 (common barrier point)。在涉及一组固...</p></a><a class="next" href="/posts/cf9c1454.html"><p class="title">CountDownLatch 的理解和使用<i class="fas fa-chevron-right" aria-hidden="true"></i></p><p class="content">最近在看多线程之间的通信，笔者我觉得自己的脑袋实在不够用了，很多东西看过就忘，所以今天抽出点时间码一遍 CountDownLatch 的理解和使用。 此文也是从网上查找的资料，然后自己敲一遍，以...</p></a></div></article><article class="post white-box reveal shadow floatable" id="comments"><p ct><i class="fas fa-comments"></i> 用户交流区</p><p cst>温馨提示: 遵纪守法, 友善评论!</p><div id="valine_container" class="valine_thread"><i class="fas fa-cog fa-spin fa-fw fa-2x"></i></div></article></div><aside class="l_side"><section class="widget blogger shadow floatable desktop mobile"><div class="content"><a class="avatar flat-box" rectangle href="/about/"><img no-lazy src="/images/avatar.jpg"></a><div class="text"><h2>·银河小徐</h2></div><div id="binft" align="center"></div><script src="/js/typewriter-color.js"></script><div class="social-wrapper"><a href="https://github.com/XuxuGood" class="social flat-btn" target="_blank" rel="external nofollow noopener noreferrer"><img src="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/icons/social/029-github.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/icons/social/029-github.png" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif"> </a><a href="mailto:22476705@qq.com" class="social flat-btn" target="_blank" rel="external nofollow noopener noreferrer"><img src="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/icons/social/053-email.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/icons/social/053-email.png" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif"> </a><a href="https://mailchi.mp/3ca18a2a9749/xuxuy" class="social flat-btn" target="_blank" rel="external nofollow noopener noreferrer"><img src="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/icons/social/052-heartbeat.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/icons/social/052-heartbeat.png" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif"> </a><a href="https://blog.csdn.net/qq_42889280" class="social flat-btn" target="_blank" rel="external nofollow noopener noreferrer"><img src="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/icons/social/051-csdn.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/icons/social/051-csdn.png" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif"> </a><a href="/atom.xml" class="social flat-btn" target="_blank" rel="external nofollow noopener noreferrer"><img src="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/icons/social/020-rss.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/icons/social/020-rss.png" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif"></a></div></div></section><section class="widget toc-wrapper shadow floatable desktop mobile" id="toc-div"><header class="pure"><div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;本文目录</div></header><div class="content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%94%A5-%E6%A0%87%E8%AE%B0-%E6%B8%85%E9%99%A4%E7%AE%97%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">🔥 标记 - 清除算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%94%A5-%E6%A0%87%E8%AE%B0-%E6%95%B4%E7%90%86%E7%AE%97%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">🔥 标记 - 整理算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%94%A5-%E5%A4%8D%E5%88%B6%E7%AE%97%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text">🔥 复制算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%94%A5-%E5%88%86%E4%BB%A3%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95"><span class="toc-number">4.</span> <span class="toc-text">🔥 分代收集算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%94%A5-%E9%99%84%EF%BC%9A%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%B8%80%E8%BE%88%E5%AD%90%E7%90%86%E8%A7%A3"><span class="toc-number">5.</span> <span class="toc-text">🔥 附：对象的一辈子理解</span></a></li></ol></div></section><script>$("span[class='toc-number']").each(function(){var t=$(this).text();$(this).text(t.substring(0,t.length-1))})</script><style>.l_side .toc-wrapper .toc-item .toc-link .toc-number:before{content:'【'}.l_side .toc-wrapper .toc-item .toc-link .toc-number:after{content:'】'}</style></aside></div><footer class="footer clearfix"><br><br><div class="aplayer-container"></div><br><div class="social-wrapper"><a href="https://github.com/XuxuGood" class="social flat-btn" target="_blank" rel="external nofollow noopener noreferrer"><img src="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/icons/social/029-github.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/icons/social/029-github.png" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif"> </a><a href="mailto:22476705@qq.com" class="social flat-btn" target="_blank" rel="external nofollow noopener noreferrer"><img src="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/icons/social/053-email.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/icons/social/053-email.png" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif"> </a><a href="https://mailchi.mp/3ca18a2a9749/xuxuy" class="social flat-btn" target="_blank" rel="external nofollow noopener noreferrer"><img src="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/icons/social/052-heartbeat.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/icons/social/052-heartbeat.png" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif"> </a><a href="https://blog.csdn.net/qq_42889280" class="social flat-btn" target="_blank" rel="external nofollow noopener noreferrer"><img src="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/icons/social/051-csdn.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/icons/social/051-csdn.png" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif"> </a><a href="/atom.xml" class="social flat-btn" target="_blank" rel="external nofollow noopener noreferrer"><img src="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/icons/social/020-rss.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/icons/social/020-rss.png" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif"></a></div>Copyright <i class="far fa-copyright"></i> 2019-2020 <a href="/" target="_blank">XU'S BLOG </a>丨 <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span><script>var now=new Date;function createtime(){var n=new Date("10/09/2019 00:00:00");now.setTime(now.getTime()+250),days=(now-n)/1e3/60/60/24,dnum=Math.floor(days),hours=(now-n)/1e3/60/60-24*dnum,hnum=Math.floor(hours),1==String(hnum).length&&(hnum="0"+hnum),minutes=(now-n)/1e3/60-1440*dnum-60*hnum,mnum=Math.floor(minutes),1==String(mnum).length&&(mnum="0"+mnum),seconds=(now-n)/1e3-86400*dnum-3600*hnum-60*mnum,snum=Math.round(seconds),1==String(snum).length&&(snum="0"+snum),document.getElementById("timeDate").innerHTML="网站已运行 "+dnum+" 天 ",document.getElementById("times").innerHTML=hnum+" 小时 "+mnum+" 分 "+snum+" 秒"}setInterval("createtime()",250)</script><br><br><div class="github-badge"><a style="color:#fff" rel="external nofollow noopener noreferrer" href="https://hexo.io/" target="_blank" title="由 Hexo 强力驱动"><span class="badge-subject">Powered</span><span class="badge-value bg-blue">Hexo</span></a></div><div class="github-badge"><a style="color:#fff" rel="external nofollow noopener noreferrer" href="https://github.com/" target="_blank" title="静态网页托管于 GitHub Pages 和 Coding Pages"><span class="badge-subject">Hosted</span><span class="badge-value bg-brightgreen">GitHub &amp; Coding</span></a></div><div class="github-badge"><a style="color:#fff" rel="external nofollow noopener noreferrer" href="https://www.aliyun.com/" target="_blank" title="阿里云提供域名相关服务"><span class="badge-subject">DNS</span><span class="badge-value bg-blueviolet">Aliyun</span></a></div><div class="github-badge"><a style="color:#fff" rel="external nofollow noopener noreferrer" href="https://www.jsdelivr.com/" target="_blank" title="jsDelivr 提供 CDN 加速服务"><span class="badge-subject">CDN</span><span class="badge-value bg-orange">jsDelivr</span></a></div><div class="github-badge"><a style="color:#fff" rel="external nofollow noopener noreferrer" href="https://github.com/volantis-x/hexo-theme-volantis/" target="_blank" title="站点使用 Volantis 主题"><span class="badge-subject">Theme</span><span class="badge-value bg-blue">Volantis</span></a></div><div class="github-badge"><a style="color:#fff" rel="external nofollow noopener noreferrer" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="本站点采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议进行许可"><span class="badge-subject"><i class="fa fa-copyright"></i></span><span class="badge-value bg-gradient">BY-NC-SA 4.0</span></a></div><div class="github-badge"><span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet">82.5k</span></div></footer><a class="s-top fas fa-arrow-up fa-fw" href="javascript:void(0)"></a></div></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js"></script><script>function pjax_fancybox(){$(".md .gallery").find("img").each(function(){var a=document.createElement("a");$(a).attr("class","fancybox"),$(a).attr("pjax-fancybox",""),$(a).attr("href",$(this).attr("src")),$(this).attr("data-original")&&$(a).attr("href",$(this).attr("data-original")),$(a).attr("data-fancybox","images");var t="";$(this).attr("alt")&&($(a).attr("data-caption",$(this).attr("alt")),t=$(this).attr("alt"));var n=document.createElement("div");$(n).addClass("fancybox"),$(this).wrap(n);var e=document.createElement("span");$(e).addClass("image-caption"),$(e).text(t),$(this).after(e),$(this).wrap(a)}),$(".md .gallery").find("img").fancybox({selector:'[data-fancybox="images"]',hash:!1,loop:!1,closeClick:!0,helpers:{overlay:{closeClick:!0}},buttons:["zoom","close"]})}function SCload_fancybox(){0!=$(".md .gallery").find("img").length&&(loadCSS("https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css",document.getElementById("loadcss")),setTimeout(function(){loadScript("https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js",pjax_fancybox)},1))}$(function(){SCload_fancybox()})</script><script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script><script type="text/javascript">$(function(){var a=["https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/wallpaper/wallpaper4.jpg"];!function(a){for(var r=a.length;r--;){var t=Math.floor(Math.random()*r),n=a[t];a[t]=a[r],a[r]=n}}(a),$.backstretch(a,{duration:"10000",fade:"1500"})})</script><div id="rightmenu-wrapper"><ul class="list-v rightmenu" id="rightmenu-content"><li class="option"><a class="vlts-menu opt fix-cursor-default" id="menu-copy-text" onclick='document.execCommand("copy")'><i class="fa fa-copy fa-fw"></i>复制文本</a><hr id="hr-text"><a class="vlts-menu opt fix-cursor-default" id="menu-copy-href"><i class="fa fa-link fa-fw"></i>复制链接</a> <a class="vlts-menu opt fix-cursor-default" id="menu-open-href"><i class="fa fa-external-link-square-alt fa-fw"></i>在新标签页打开</a><hr id="hr-href"><a class="vlts-menu opt fix-cursor-default" id="menu-copy-src"><i class="fa fa-image fa-fw"></i>复制图片地址</a><hr id="hr-src"></li><li class="navigation"><a class="nav icon-only fix-cursor-default" onclick="history.back()"><i class="fa fa-arrow-left fa-fw"></i></a> <a class="nav icon-only fix-cursor-default" onclick="history.forward()"><i class="fa fa-arrow-right fa-fw"></i></a> <a class="nav icon-only fix-cursor-default" onclick="window.location.reload()"><i class="fa fa-redo fa-fw"></i></a> <a class="nav icon-only fix-cursor-default" href="/"><i class="fa fa-home fa-fw"></i></a></li><hr><li><a class="vlts-menu fix-cursor-default" href="/comments/" id="comments"><i class="fas fa-comments fa-fw"></i> 留言</a></li><li><a class="vlts-menu fix-cursor-default" href="/photos/" id="photos"><i class="fas fa-camera-retro fa-fw"></i> 相册</a></li><li><a class="vlts-menu fix-cursor-default" href="/links/" id="links"><i class="fas fa-users fa-fw"></i> 小伙伴们</a></li><hr><li><a class="vlts-menu fix-cursor-default" href="/tools/" id="tools"><i class="fas fa-cog fa-fw"></i> 实用工具</a></li><li><a class="vlts-menu fix-cursor-default" href="/catchTheCat/" id="catchTheCat"><i class="fas fa-cat fa-fw"></i> 围住小猫</a></li></ul></div><script>window.document.oncontextmenu = function (event) {
+      if (event.ctrlKey) return true;
+      if (/Android|webOS|BlackBerry/i.test(navigator.userAgent)) return true;
+      return popMenu(event);
+    };
+    document.addEventListener("click", function (event) {
+      var mymenu = document.getElementById('rightmenu-wrapper');
+      mymenu.style.display = "none";
+    });
+    function popMenu(event) {
+      var mymenu = document.getElementById('rightmenu-wrapper');
+      var menuContent = document.getElementById('rightmenu-content');
+      var screenWidth = document.documentElement.clientWidth || document.body.clientWidth;
+      var screenHeight = document.documentElement.clientHeight || document.body.clientHeight;
+      mymenu.style.left = event.clientX + "px"; // 获取鼠标位置
+      mymenu.style.top = event.clientY + "px";
+      mymenu.style.display = 'block';
+      if (event.clientX * 2 > screenWidth) {
+        menuContent.classList.add('left');
+      } else {
+        menuContent.classList.remove('left');
+      }
+      if (event.clientY * 2 > screenHeight) {
+        menuContent.classList.add('top');
+      } else {
+        menuContent.classList.remove('top');
+      }
+
+      let hrText = document.getElementById('hr-text');
+      let hrSrc = document.getElementById('hr-src');
+      let hrHref = document.getElementById('hr-href');
+
+      // 选中图片
+      let copySrc = document.getElementById('menu-copy-src');
+      if (copySrc != undefined) {
+        if (event.target.currentSrc) {
+          copySrc.style.display = 'block';
+          copySrc.addEventListener("click", function (e) {
+            copyString(event.target.currentSrc);
+          },{once: true});
+          hrSrc.style.display = 'block';
+        } else {
+          copySrc.style.display = 'none';
+          hrSrc.style.display = 'none';
+        }
+      }
+
+      // 选中按钮
+      // 判断是不是按钮
+      let href = '';
+      if (event.path) {
+        for (i = 0; i < event.path.length; i++) {
+          if (event.path[i].href != undefined && event.path[i].href.length > 0) {
+            href = event.path[i].href;
+          }
+        }
+      }
+
+      let copyText = document.getElementById('menu-copy-text');
+      copyText.style.display = 'none';
+      hrText.style.display = 'none';
+      if (href.length == 0) {
+        // 选中文本
+        if (window.getSelection().toString()) {
+            if ('true' == 'true') {
+                copyText.style.display = 'block';
+                hrText.style.display = 'block';
+            }
+        }
+      }
+
+      // 在新标签页打开
+      let openHref = document.getElementById('menu-open-href');
+      if (openHref != undefined) {
+        if (href.length > 0) {
+          openHref.style.display = 'block';
+          openHref.addEventListener("click", function (e) {
+            window.open(href);
+          },{once: true});
+          hrHref.style.display = 'block';
+        } else {
+          openHref.style.display = 'none';
+          hrHref.style.display = 'none';
+        }
+      }
+      // 复制链接
+      let copyHref = document.getElementById('menu-copy-href');
+      if (copyHref != undefined) {
+        if (href.length > 0) {
+          copyHref.style.display = 'block';
+          copyHref.addEventListener("click", function (e) {
+            copyString(href);
+          },{once: true});
+        } else {
+          copyHref.style.display = 'none';
+        }
+      }
+
+      // 有音乐播放器
+      if ('false' == true && ('comments,photos,links,hr,tools,catchTheCat'||[]).includes('music')) {
+        // 如果有aplayer，初始化一下
+      	try {
+      		checkAPlayer();
+          updateTitle();
+      	} catch (error) {
+      		console.log(error);
+      	}
+      }
+
+      return false; // 该行代码确保系统自带的右键菜单不会被调出
+    }
+    function hideMenu() {
+      document.getElementById('rightmenu-wrapper').style.display = 'none';
+    }
+    function copyString(str) {
+      const input = document.createElement('input');
+      input.setAttribute('readonly', 'readonly');
+      document.body.appendChild(input);
+      input.setAttribute('value', str);
+      input.select();
+      document.execCommand('copy');
+      document.body.removeChild(input);
+    }
+    document.execCommand('click');</script><script>function loadIssuesJS(){0!=$(".md").find(".issues-api").length&&setTimeout(function(){loadScript("/js/issues.js")},1)}$(function(){loadIssuesJS()})</script><script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script><script>window.lazyLoadOptions={elements_selector:".lazyload",threshold:0},window.addEventListener("LazyLoad::Initialized",function(n){window.lazyLoadInstance=n.detail.instance},!1),document.addEventListener("DOMContentLoaded",function(){lazyLoadInstance.update()}),document.addEventListener("pjax:complete",function(){lazyLoadInstance.update()})</script><script>window.FPConfig={delay:0,ignoreKeywords:[],maxRPS:5,hoverDelay:25}</script><script defer src="https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script><script>var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+        if($(".highlight .code pre").length+$(".article pre code").length==0)return;
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });</script><script src="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogJs/Valine.min.js"></script><script>var GUEST_INFO = ['nick', 'mail', 'link'];
+    var meta = 'nick,mail,link'.split(',').filter(function (item) {
+        return GUEST_INFO.indexOf(item) > -1
+    });
+    var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+    var requiredFields = 'nick,mail'.split(',').filter(function (item) {
+        return REQUIRED_FIELDS.indexOf(item) > -1
+    });
+
+    var tagMeta = '博主,小伙伴,访客'.split(',');
+    var friends = 'd32d39c8e126512382ee4b831a8f8002,d06adebbcbaa24413cc1b53dc8576ed0,ab2579686cf0e99e1ba40a932e0400f5,e846889207767f93e049a14a29a12d55,3f96b7b64421af2309f48ce09f483e00,36937ffd56ac7ac077c3e2dceae74dc5,00fdb1c48ae14c86afce12a8f9fc3d77,fde3448b9705037f2021664c8b8e6cb1,dd04aab66ee54f77e80e8a7781a3e8e2,35d7010131d4f17efe9842174c3c1c2c,ee307e1162191d9120f967483af6d490,15f39db75e8624d52353ae6943eb66ca,187c2861161c500c97a69290c89b5526,876272e6ce1dd1059dabdc871f59d251,9be62391e297826516364374435f758c,e086f9ab51f37cb606fc6378c36cd9aa,e8b473e9af0f2718265c88b809a0a7b2,3ce1e6c77b4910f1871106cb30dc62b0,28b57baa4e8f13fe4292ccb2de267e30,3c915d7f53fe9ae72235eb188968ad86,3e440f8724c5acd24d0a4fab6eb6a6d1,c531da832f0416df03fc57754b39fefd,adb7d1cd192658a55c0ad22a3309cecf,8f9395b39f5a1e06301e25337c5b81c0,fc2c9b067f65c9e2d7057ba797f7cfca,0ba7b878d4a392fb04f8f4090fcc2248'.split(',');
+    var master = '6a565e6c47127afdd40d5d46089db2c5'.split(',');
+    // 输入框背景文字
+    var metaPlaceholder = {"nick": "昵称/QQ号(必填)", "mail": "邮箱（必填，完全保密）", "link": "网址(https://)"};
+
+    function emoji(path, idx, ext) {
+        return path + "/" + path + "-" + idx + "." + ext;
+    }
+
+    var emojiMaps = {};
+    for (var i = 1; i <= 2; i++) {
+        emojiMaps['fun-' + i] = emoji('fun', i, 'gif');
+    }
+    for (var i = 1; i <= 54; i++) {
+        emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+    }
+    for (var i = 1; i <= 101; i++) {
+        emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+    }
+    for (var i = 1; i <= 116; i++) {
+        emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+    }
+    for (var i = 1; i <= 125; i++) {
+        emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+    }
+    for (var i = 1; i <= 4; i++) {
+        emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+    }
+
+    function pjax_valine() {
+        if(!document.querySelectorAll("#valine_container")[0])return;
+
+        let pagePlaceholder = $.trim($('#pjax-comment-placeholder').text()) || "粘贴图片到此处可以自动上传，填写邮箱可以收到邮件回复哦(●&#39;◡&#39;●)";
+
+        let path = $.trim($('#pjax-comment-path').text());
+        if (path.length == 0) {
+            let defaultPath = '';
+            path = defaultPath || decodeURI(window.location.pathname);
+        }
+
+        var valine = new Valine();
+        valine.init({
+            el: '#valine_container',
+            meta: meta,
+            placeholder: pagePlaceholder,
+            path: path,
+            appId: "gYcUzERw1BSKyARbzWH2OQzu-gzGzoHsz",
+            appKey: "7xvFncnnyG2QI60iDY3E4PuO",
+            pageSize: '10',
+            avatar: 'monsterid',
+            lang: 'zh-cn',
+            visitor: 'true',
+            highlight: 'true',
+            mathJax: 'false',
+            enableQQ: 'true',
+            requiredFields: requiredFields,
+            emojiCDN: 'https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/emoji/valine/',
+            emojiMaps: emojiMaps,
+            tagMeta: tagMeta,
+            master: master,
+            friends: friends,
+            metaPlaceholder: metaPlaceholder
+        })
+    }
+
+    $(function () {
+        pjax_valine();
+    });</script><script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5/lib/darkmode-js.min.js" aysc></script><script type="text/javascript">function getClientHeight(){return document.body.clientHeight&&document.documentElement.clientHeight?document.body.clientHeight<document.documentElement.clientHeight?document.body.clientHeight:document.documentElement.clientHeight:document.body.clientHeight>document.documentElement.clientHeight?document.body.clientHeight:document.documentElement.clientHeight}function supportCss3(e){function t(e){return e.replace(/-(\w)/g,function(e,t){return t.toUpperCase()})}var n,o=["webkit","Moz","ms","o"],i=[],d=document.documentElement.style;for(n in o)i.push(t(o[n]+"-"+e));for(n in i.push(t(e)),i)if(i[n]in d)return!0;return!1}var options={bottom:"32px",right:"unset",left:"16px",time:"0s",mixColor:"#f4f4f4",backgroundColor:"#f4f4f4",buttonColorDark:"#333",buttonColorLight:"#ddd",saveInCookies:!0,label:"",autoMatchOsTheme:!0};function pjax_darkmodejs(){}supportCss3("mix-blend-mode")&&(window.darkmode=new Darkmode(options),window.darkmode.showWidget(),pjax_darkmodejs())</script><script defer src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js" data-pjax></script><script src="/js/app.js"></script><script src="/js/search.js"></script><script>const SearchServiceimagePath="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/img/";
+const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
+(function ($) {
+  
+    customSearch = new HexoSearch({
+      imagePath: SearchServiceimagePath
+    });
+  
+})(jQuery);</script><script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script><script type="text/javascript">$(function(){Waves.attach(".flat-btn",["waves-button"]),Waves.attach(".float-btn",["waves-button","waves-float"]),Waves.attach(".float-btn-light",["waves-button","waves-float","waves-light"]),Waves.attach(".flat-box",["waves-block"]),Waves.attach(".float-box",["waves-block","waves-float"]),Waves.attach(".waves-image"),Waves.init()})</script><script src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@2/js/comment_typing.js"></script><!-- more --><script src="/js/crash_cheat.js"></script><script src="/js/message.js"></script>{% if theme.fairyDustCursor.enable %}<script async src="/js/fairyDustCursor.js"></script>{% endif %}<script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><div class="pjax-animate"><script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script><div id="loading-bar-wrapper"><script>NProgress.configure({parent:"#loading-bar-wrapper",trickleSpeed:100})</script></div><script>window.ShowLoading=function(){NProgress.start()},window.HideLoading=function(){NProgress.done()}</script></div><script>var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+        pjax = new Pjax({
+            elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+            selectors: [
+                "title",
+                "#pjax-container",
+                "#pjax-header-nav-list"
+            ],
+            cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+            timeout: 5000
+        });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+        window.stop(); // 相当于点击了浏览器的停止按钮
+
+        try {
+            var currentUrl = window.location.pathname;
+            var targetUrl = e.triggerElement.href;
+            var banUrl = [""];
+            if (banUrl[0] != "") {
+                banUrl.forEach(item => {
+                    if (currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+                        window.location.href = targetUrl;
+                    }
+                });
+            }
+        } catch (error) {
+        }
+
+        window.subData = null; // 移除标题（用于一二级导航栏切换处）
+        if (typeof $.fancybox != "undefined") {
+            $.fancybox.close();    // 关闭弹窗
+        }
+        $('.l_header .switcher .s-search').removeClass('active'); // 关闭移动端激活的搜索框
+        $('.l_header').removeClass('z_search-open'); // 关闭移动端激活的搜索框
+        $('.wrapper').removeClass('sub'); // 跳转页面时关闭二级导航
+
+        // 解绑事件 避免重复监听
+        $('.s-top').unbind('click');
+        $('.menu a').unbind('click');
+        $(window).unbind('resize');
+        $(window).unbind('scroll');
+        $(document).unbind('scroll');
+        $(document).unbind('click');
+        $('body').unbind('click');
+        window.ShowLoading();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+        // 关于百度统计对 SPA 页面的处理：
+        // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
+        // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
+        // 
+
+        // 关于谷歌统计对 SPA 页面的处理：
+        // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
+        // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
+        
+
+        $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style", ""); // 移除小尾巴的移除
+        $('.menu-phone.list-v').removeAttr("style", ""); // 移除小尾巴的移除
+        $('script[data-pjax], .pjax-reload script').each(function () {
+            $(this).parent().append($(this).remove());
+        });
+
+        try {
+            if (typeof $.fancybox == "undefined") {
+                SCload_fancybox();
+            } else {
+                pjax_fancybox();
+            }
+            
+            
+            if ('') {
+                $('').backstretch("resize");
+                if ($('.cover-wrapper').is(':hidden')) {
+                    $('.cover-backstretch').backstretch("pause");
+                } else {
+                    $('.cover-backstretch').backstretch("next");
+                }
+            } else {
+                $.backstretch("resize");
+                if ($('.cover-wrapper').is(':hidden')) {
+                    $.backstretch("pause");
+                } else {
+                    $.backstretch("next");
+                }
+            }
+            
+            
+            
+            
+            if (typeof IssuesAPI == "undefined") {
+                loadIssuesJS();
+            }
+            
+            
+            pjax_initCopyCode();
+            
+            
+            pjax_valine();
+            
+            
+            
+            
+            
+            pjax_darkmodejs();
+            
+        } catch (e) {
+            console.log(e);
+        }
+        window.HideLoading();
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+        window.HideLoading();
+        window.location.href = e.triggerElement.href;
+    });</script></div></body></html><!-- rebuild by neat -->
